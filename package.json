@@ -38,13 +38,12 @@
     ]
   },
   "devDependencies": {
-    "prettier": "2.2.1",
+    "prettier": "^2.2.1",
     "eslint": "^7.20.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
     "husky": "^5.0.9",
-    "lint-staged": "^10.5.4",
-    "prettier": "^2.2.1"
+    "lint-staged": "^10.5.4"
   },
   "husky": {
     "hooks": {
