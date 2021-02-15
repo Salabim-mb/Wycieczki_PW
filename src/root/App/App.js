@@ -5,13 +5,12 @@ import Router from "root/Router";
 
 import Category from '../../components/Category'
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Router />
-      <Category />
-    </BrowserRouter>
-  );
-}
+const App = () => (
+  <BrowserRouter>
+    <Router />
+    <Category />
+  </BrowserRouter>
+);
+
 
 export default App;

@@ -18,6 +18,8 @@
     "import/no-named-as-default": 0,
     "import/no-named-as-default-member": 0,
     "react/prop-types": 1,
+    "react/jsx-props-no-spreading": 0,
+    "camelcase": "off",
     "react/destructuring-assignment": 0,
     "react/jsx-filename-extension": [
       1,
