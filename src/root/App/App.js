@@ -2,11 +2,16 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'root/Router';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 const App = () => (
-	<BrowserRouter>
-		<Router />
-	</BrowserRouter>
+	<QueryClientProvider client={queryClient}>
+		<BrowserRouter>
+			<Router />
+		</BrowserRouter>
+	</QueryClientProvider>
 );
 
 export default App;
