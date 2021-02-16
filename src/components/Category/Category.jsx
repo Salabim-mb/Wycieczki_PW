@@ -5,6 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { useParams } from "react-router-dom";
+
 
 import Image from './components/Image'
 
@@ -25,26 +27,33 @@ const dummyData = [
     },
 ]
 
-const Category = () => (
-    <Container>
-        <Image imgSrc={logo} imgAlt="obrazek" />
-        {dummyData.map((data) => (
-            <Card >
-                <CardContent>
-                    <Typography color="textSecondary" gutterBottom>
-                        {data.date}
-                    </Typography>
-                    <Typography variant="h5" component="h2">
-                        {data.tiitle}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
-            </Card>
-        ))}
+const Category = () => {
+    const { id } = useParams();
 
-    </Container>
-);
+    const reciveData = () => {
+        console.log(id)
+    }
 
+    return (
+        <Container>
+            <Image imgSrc={logo} imgAlt="obrazek" />
+            {dummyData.map((data) => (
+                <Card >
+                    <CardContent>
+                        <Typography color="textSecondary" gutterBottom>
+                            {data.date}
+                        </Typography>
+                        <Typography variant="h5" component="h2">
+                            {data.title}
+                        </Typography>
+                    </CardContent>
+                    <CardActions>
+                        <Button size="small" onClick={reciveData}>Learn More</Button>
+                    </CardActions>
+                </Card>
+            ))}
+
+        </Container>
+    );
+}
 export default Category
