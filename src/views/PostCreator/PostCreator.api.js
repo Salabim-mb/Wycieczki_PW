@@ -30,3 +30,33 @@ export const sendPost = async (token, post, id) => {
 	}
 	throw new Error('');
 };
+
+export const uploadPhoto = async (token, post, id) => {
+	const url = `${id}`;
+
+	const headers = {
+		Authorization: `${token}`,
+	};
+
+	const response = await fetch(url, { headers, method: 'GET' });
+
+	if (response.status === 201) {
+		return response.json();
+	}
+	throw new Error('');
+};
+
+export const reserveSpace = async (token, post, id) => {
+	const url = `${id}`;
+
+	const headers = {
+		Authorization: `${token}`,
+	};
+
+	const response = await fetch(url, { headers, method: 'POST' });
+
+	if (response.status === 201) {
+		return response.json();
+	}
+	throw new Error('');
+};

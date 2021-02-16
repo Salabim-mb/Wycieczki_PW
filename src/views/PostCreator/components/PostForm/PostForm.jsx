@@ -1,19 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useMutation } from 'react-query';
-import { sendPost } from 'views/PostCreator/PostCreator.api';
+import { sendPost, reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TextField, Button } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { CloudUpload } from '@material-ui/icons';
+import { ImageAdapter } from '..';
+
+/* eslint-disable no-param-reassign */
 
 const PostForm = ({ post }) => {
-	const mutation = useMutation(postData => sendPost('', postData));
+	const postMutation = useMutation(postData => sendPost('', postData));
+	const reserveMutation = useMutation(() => reserveSpace());
 
 	function MyCustomUploadAdapterPlugin(editor) {
 		// adapter for images
-		return editor;
+		reserveMutation.mutate();
+		const { data } = reserveMutation;
+		editor.plugins.get('FileRepository').createUploadAdapter = loader =>
+			new ImageAdapter(loader, data?.id);
 	}
 
 	const formik = useFormik({
@@ -25,7 +32,7 @@ const PostForm = ({ post }) => {
 		},
 
 		onSubmit: values => {
-			mutation.mutate(values);
+			postMutation.mutate(values);
 		},
 	});
 
@@ -70,7 +77,7 @@ const PostForm = ({ post }) => {
 						extraPlugins: [MyCustomUploadAdapterPlugin],
 					}}
 					onChange={(e, editor) => {
-						console.log(editor, e);
+						formik.setFieldValue('content', editor.getData());
 					}}
 					className="text-justify"
 					editor={ClassicEditor}

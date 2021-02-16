@@ -6,7 +6,7 @@ import { getPost } from './PostCreator.api';
 import { PostForm } from './components';
 
 const PostCreator = () => {
-	const { status, isLoading, isError, error, data } = useQuery('post', getPost);
+	const { isLoading, isError, error, data } = useQuery('post', getPost);
 
 	return (
 		<Container>
