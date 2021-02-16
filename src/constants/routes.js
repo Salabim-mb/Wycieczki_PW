@@ -17,7 +17,7 @@ export const pathList = {
 	},
 	POST_CREATOR: {
 		name: 'Kreator wpisów',
-		path: '/blog/post-creator',
+		path: '/blog/post-creator/:id?',
 	},
 };
 
