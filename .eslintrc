@@ -2,7 +2,8 @@
 	"extends": ["airbnb", "prettier", "prettier/react"],
 	"parser": "babel-eslint",
 	"env": {
-		"jest": true
+		"jest": true,
+		"browser": true
 	},
 	"globals": {
 		"window": true,
