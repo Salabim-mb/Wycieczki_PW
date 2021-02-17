@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import alertStyle from 'constants/alertOptions';
 
 export const AlertContext = React.createContext({
 	open: false,
@@ -9,14 +10,14 @@ export const AlertContext = React.createContext({
 export const AlertProvider = (props) => {
 	const [open, setOpen] = useState(false);
 	const [message, setMessage] = useState("");
-	const [severity, setSeverity] = useState("error");
+	const [severity, setSeverity] = useState(alertStyle.ERROR);
 
 	const data = {
 		open,
 		message,
 		severity,
 		changeVisibility: (newOpen) => setOpen(newOpen),
-		changeMessage: (newMessage, newSeverity="error") => {
+		changeMessage: (newMessage, newSeverity=alertStyle.ERROR) => {
 			setOpen(true);
 			setMessage(newMessage);
 			setSeverity(newSeverity);

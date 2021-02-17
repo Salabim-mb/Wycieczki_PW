@@ -1,12 +1,8 @@
-import React, {useContext, useEffect, useState} from "react";
-import Snackbar from "@material-ui/core/Snackbar";
-import MuiAlert from '@material-ui/lab/Alert';
-import { makeStyles } from "@material-ui/core/styles";
-import {AlertContext} from "context/AlertContext";
-
-const Alert = (props) => (
-	<MuiAlert elevation={6} variant="filled" {...props} />
-);
+import React, { useContext, useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Snackbar from '@material-ui/core/Snackbar';
+import { AlertContext } from 'context/AlertContext';
+import MuiAlert from '@material-ui/lab/Alert'
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -17,34 +13,62 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+const Alert = (props) => (
+	<MuiAlert elevation={6} variant="filled" {...props} />
+);
+
 const AlertPopup = () => {
 	const alertC = useContext(AlertContext);
-	const classes = useStyles();
-	const [open, setOpen] = useState(alertC.open);
+	const [snackPack, setSnackPack] = React.useState([]);
+	const [open, setOpen] = React.useState(false);
+	const [messageInfo, setMessageInfo] = React.useState(undefined);
+
 	useEffect(() => {
 		if (alertC.open) {
+			setOpen(false)
+			setSnackPack((prev) => [...prev, {
+				message: alertC?.message,
+				key: new Date().getTime(),
+				severity: alertC.severity
+			}]);
 			setOpen(true);
 		}
-	}, [alertC.open]);
+	}, [alertC.open, alertC.message])
+
+	useEffect(() => {
+		if (snackPack.length && !messageInfo) {
+			setMessageInfo({ ...snackPack[0] });
+			setSnackPack((prev) => prev.slice(1));
+			setOpen(true);
+		} else if (snackPack.length && messageInfo && open) {
+			setOpen(false);
+		}
+	}, [snackPack, messageInfo, open]);
 
 	const handleClose = (event, reason) => {
-		if (reason !== 'clickaway') {
-			setOpen(false);
-			alertC.changeVisibility(false);
+		if (reason === 'clickaway') {
+			return;
 		}
+		setOpen(false);
+		alertC.changeVisibility(false);
 	};
 
+	const handleExited = () => {
+		setMessageInfo(undefined);
+	};
+
+	const classes = useStyles();
 	return (
-		open && (
-			<div className={classes.root}>
-				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-					<Alert severity={alertC.severity} onClose={handleClose}>
-						{alertC.message}
+		<>
+			<div key={messageInfo?.message} className={classes.root}>
+				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose} onExited={handleExited}>
+					<Alert severity="error" onClose={handleClose}>
+						{messageInfo?.message}
 					</Alert>
 				</Snackbar>
 			</div>
-		)
-	)
-};
+		</>
+	);
+}
 
 export default AlertPopup;
