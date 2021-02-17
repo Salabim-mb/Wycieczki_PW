@@ -5,8 +5,10 @@
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/user-event": "^12.7.0",
+    "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-query": "^3.9.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "universal-cookie": "^4.0.4",
