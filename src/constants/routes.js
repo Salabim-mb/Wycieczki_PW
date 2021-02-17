@@ -1,3 +1,5 @@
+import Category from 'components/Category'
+
 export const path_list = {
     DASHBOARD: {
         name: "Strona główna",
@@ -6,7 +8,6 @@ export const path_list = {
     BLOG_CATEGORIES: {
         name: "Kategorie",
         path: "/blog/:category",
-        redirect: (newCategory) => `/blog/${newCategory}`,
     },
     BLOG_ENTRY: {
         name: "Wpis",
@@ -16,5 +17,8 @@ export const path_list = {
 }
 
 export default [
-
+    {
+        path: path_list.BLOG_CATEGORIES.path,
+        component: Category
+    }
 ]

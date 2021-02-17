@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useParams } from "react-router-dom";
 
-
 import Image from './components/Image'
 
 import logo from '../../logo.svg'
@@ -28,10 +27,10 @@ const dummyData = [
 ]
 
 const Category = () => {
-    const { id } = useParams();
+    const params = useParams();
 
     const reciveData = () => {
-        console.log(id)
+        console.log(params)
     }
 
     return (
