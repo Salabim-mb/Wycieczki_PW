@@ -53,15 +53,11 @@ const AlertPopup = () => {
 		alertC.changeVisibility(false);
 	};
 
-	const handleExited = () => {
-		setMessageInfo(undefined);
-	};
-
 	const classes = useStyles();
 	return (
 		<>
 			<div key={messageInfo?.message} className={classes.root}>
-				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose} onExited={handleExited}>
+				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose} onExited={() => setMessageInfo(undefined)}>
 					<Alert severity="error" onClose={handleClose}>
 						{messageInfo?.message}
 					</Alert>
