@@ -1,6 +1,6 @@
 import Category from 'components/Category'
 
-export const path_list = {
+export const pathList = {
     DASHBOARD: {
         name: "Strona główna",
         path: "/",
@@ -12,13 +12,13 @@ export const path_list = {
     BLOG_ENTRY: {
         name: "Wpis",
         path: "/blog/:category/:entry_id",
-        redirect: (category, entry_id) => `/blog/${category}/${entry_id}`,
+        redirect: (category, entryId) => `/blog/${category}/${entryId}`,
     },
 }
 
 export default [
     {
-        path: path_list.BLOG_CATEGORIES.path,
+        path: pathList.BLOG_CATEGORIES.path,
         component: Category
     }
 ]
