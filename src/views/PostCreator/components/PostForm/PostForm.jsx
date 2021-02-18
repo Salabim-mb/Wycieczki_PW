@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './ckeditor.css';
 import { useMutation } from 'react-query';
 import { sendPost, reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, Box } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { CloudUpload } from '@material-ui/icons';
 import { ImageAdapter } from '..';
@@ -51,18 +52,20 @@ const PostForm = ({ post }) => {
 						}}
 					/>
 				</Button>
-				<Button variant="contained" component="label" color="default" startIcon={<CloudUpload />}>
-					Prześlij nagłówek
-					<input
-						id="header"
-						name="header"
-						type="file"
-						hidden
-						onChange={event => {
-							formik.setFieldValue('header', event.currentTarget.files[0]);
-						}}
-					/>
-				</Button>
+				<Box my={2}>
+					<Button variant="contained" component="label" color="default" startIcon={<CloudUpload />}>
+						Prześlij nagłówek
+						<input
+							id="header"
+							name="header"
+							type="file"
+							hidden
+							onChange={event => {
+								formik.setFieldValue('header', event.currentTarget.files[0]);
+							}}
+						/>
+					</Button>
+				</Box>
 				<TextField
 					fullWidth
 					id="title"
@@ -70,6 +73,7 @@ const PostForm = ({ post }) => {
 					label="Tytuł posta"
 					value={formik.values.title}
 					onChange={formik.handleChange}
+					my={2}
 				/>
 				<CKEditor
 					config={{
@@ -79,11 +83,25 @@ const PostForm = ({ post }) => {
 					onChange={(e, editor) => {
 						formik.setFieldValue('content', editor.getData());
 					}}
-					className="text-justify"
 					editor={ClassicEditor}
-					data=""
+					data={formik.values.content}
 				/>
-				<Button type="submit">Prześlij post</Button>
+				<Box my={2}>
+					<Button
+						variant="contained"
+						my={2}
+						component="label"
+						color="default"
+						startIcon={<CloudUpload />}
+					>
+						Dodaj załącznik do posta
+						<input id="header" name="header" type="file" hidden />
+					</Button>
+				</Box>
+
+				<Button type="submit" variant="contained" color="primary">
+					Prześlij post
+				</Button>
 			</form>
 		</>
 	);
