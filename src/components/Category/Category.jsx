@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components'
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -26,16 +27,38 @@ const dummyData = [
     },
 ]
 
+const StyledContainer = styled(Container)`
+    margin:0;
+    padding: 0!important;
+`;
+
 const Category = () => {
+    const [categories, setCategories] = useState([])
     const params = useParams();
 
     const reciveData = () => {
         console.log(params)
+        fetch('https://example.com/profile', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                setCategories(data)
+                console.log(categories)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
     }
 
     return (
-        <Container>
+        <StyledContainer>
             <Image imgSrc={logo} imgAlt="obrazek" />
+
             {dummyData.map((data) => (
                 <Card >
                     <CardContent>
@@ -52,7 +75,7 @@ const Category = () => {
                 </Card>
             ))}
 
-        </Container>
+        </StyledContainer>
     );
 }
 export default Category
