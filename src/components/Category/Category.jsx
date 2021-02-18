@@ -8,9 +8,10 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useParams } from "react-router-dom";
 
+import categoryTemp from 'assets/categoryTemp.jpeg'
+
 import Image from './components/Image'
 
-import logo from '../../logo.svg'
 
 const dummyData = [
     {
@@ -57,7 +58,7 @@ const Category = () => {
 
     return (
         <StyledContainer>
-            <Image imgSrc={logo} imgAlt="obrazek" />
+            <Image imgSrc={categoryTemp} imgAlt="obrazek" />
 
             {dummyData.map((data) => (
                 <Card >
