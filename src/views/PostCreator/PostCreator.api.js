@@ -105,3 +105,16 @@ export const getReservation = async id => {
 	// return empty if id is not provided
 	return {};
 };
+
+export const getTopics = async () => {
+	const url = `${paths.BLOG_TOPICS}`;
+
+	const headers = {};
+
+	const response = await fetch(url, { headers, method: 'GET' });
+
+	if (response.status === 200) {
+		return response.json();
+	}
+	throw new Error('');
+};

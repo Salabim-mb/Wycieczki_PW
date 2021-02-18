@@ -5,10 +5,10 @@ import { useMutation } from 'react-query';
 import { sendPost, reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { TextField, Button, Box } from '@material-ui/core';
+import { TextField, Button, Box, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { CloudUpload } from '@material-ui/icons';
-import { ImageAdapter } from '..';
+import { ImageAdapter, TopicSelector } from '..';
 
 /* eslint-disable no-param-reassign */
 
@@ -30,6 +30,8 @@ const PostForm = ({ post }) => {
 			cover: post?.cover || '',
 			title: post?.title || '',
 			content: post?.content || '',
+			topic: post?.topic || -1,
+			showTitle: post?.show_title || true,
 		},
 
 		onSubmit: values => {
@@ -66,6 +68,12 @@ const PostForm = ({ post }) => {
 						/>
 					</Button>
 				</Box>
+				<TopicSelector
+					value={formik.values.topic}
+					handleChange={event => {
+						formik.setFieldValue('topic', event.target.value);
+					}}
+				/>
 				<TextField
 					fullWidth
 					id="title"
@@ -73,8 +81,17 @@ const PostForm = ({ post }) => {
 					label="Tytuł posta"
 					value={formik.values.title}
 					onChange={formik.handleChange}
-					my={2}
 				/>
+				<FormControl>
+					<FormControlLabel
+						checked={formik.values.showTitle}
+						control={<Checkbox />}
+						label="Pokazuj tytuł"
+						onChange={() => {
+							formik.setFieldValue('showTitle', !formik.values.showTitle);
+						}}
+					/>
+				</FormControl>
 				<CKEditor
 					config={{
 						language: 'pl',
@@ -113,6 +130,8 @@ PostForm.propTypes = {
 		cover: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
 		content: PropTypes.string.isRequired,
+		topic: PropTypes.number,
+		show_title: PropTypes.bool,
 	}),
 };
 
