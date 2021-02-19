@@ -1,5 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik';
+import { useQuery } from 'react-query';
 import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
@@ -8,6 +9,8 @@ import paths from 'constants/api';
 
 
 const CategoryCreator = () => {
+    const { isLoading, isError, error, data } = useQuery('title');
+
     const formik = useFormik({
         initialValues: {
             title: '',
@@ -15,6 +18,8 @@ const CategoryCreator = () => {
         },
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
+            console.log(isLoading, isError, error, data)
+
             fetch(`${paths.BLOG_TOPIC}`, {
                 method: 'POST',
                 headers: {
@@ -23,15 +28,14 @@ const CategoryCreator = () => {
                 body: formik.values,
             })
                 .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
+                .then(resp => {
+                    console.log('Success:', resp);
                 })
-                .catch((error) => {
-                    console.error('Error:', error);
+                .catch((err) => {
+                    console.error('Error:', err);
                 });
         },
     });
-
 
     return (
         <Container>
