@@ -39,7 +39,7 @@ const CategoryTile = ({ img, title, desc, link }) => (
                 image={img}
                 title={title}
             />
-            <CardActionArea>
+            <CardActionArea component={Link} to={link}>
 
                 <StyledCardContent>
                     <Typography gutterBottom variant="h5" component="h2">
