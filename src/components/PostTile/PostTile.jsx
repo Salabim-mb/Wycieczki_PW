@@ -32,7 +32,7 @@ const StyledCardContent = styled(CardContent)`
     }
 `;
 
-const CategoryTile = ({ img, title, desc, link }) => (
+const PostTile = ({ img, title, desc, link }) => (
     <Card >
         <StyledDiv>
             <StyledCardMedia
@@ -57,4 +57,4 @@ const CategoryTile = ({ img, title, desc, link }) => (
     </Card>
 );
 
-export default CategoryTile
+export default PostTile
