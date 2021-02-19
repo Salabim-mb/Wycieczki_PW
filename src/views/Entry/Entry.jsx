@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { useParams } from 'react-router-dom';
 
-const Entry = ({ title, image, content }) => {
+const Entry = () => {
     const [postData, setPostData] = useState([])
     const { category, id } = useParams()
     const getData = () => {
@@ -32,12 +32,12 @@ const Entry = ({ title, image, content }) => {
     return (
         <Container>
             {/* img zostanie podmienione na komponent z brancha categoryComponent to póki nie jest zaakceptowany to zostnaie takie prowizoryczne */}
-            <img src={image} alt={title} />
+            <img src={postData.image} alt={postData.title} />
             <Typography variant="h2">
-                {title}
+                {postData.title}
             </Typography>
             <Typography variant="p">
-                {content}
+                {postData.content}
             </Typography>
         </Container>
     )
