@@ -4,18 +4,16 @@ import Router from 'root/Router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
-import PostTile from 'components/PostTile';
 
-import logo from 'logo.svg'
+import GlobalStyle from 'style/GlobalStyle'
 
 const queryClient = new QueryClient();
 
 const App = () => (
 	<ThemeProvider theme={theme}>
+		<GlobalStyle />
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
-				<PostTile img={logo} title='dupa' desc='to tam troche dłuższe, to nw moze być docelowo ileś znaków z postu, założmy 30 i potem na koniec ..., albo jakieś oddzilen w kreatorze.' link='/blog/category/1' />
-				{/* to wyżej to do wywalenia jak zaakcapotwany bedzie pr */}
 				<Router />
 			</BrowserRouter>
 		</QueryClientProvider>
