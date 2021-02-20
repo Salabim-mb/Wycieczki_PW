@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -56,5 +57,19 @@ const PostTile = ({ cover, title, desc, link }) => (
         </CardActions>
     </Card>
 );
+
+PostTile.propTypes = {
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    cover: PropTypes.string.isRequired,
+}
+
+PostTile.defaultProps = {
+    title: 'Tytuł',
+    desc: "Tu powinien być opis",
+    link: '',
+    cover: '',
+}
 
 export default PostTile
