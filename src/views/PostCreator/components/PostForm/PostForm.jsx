@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ckeditor.css';
 import { useMutation } from 'react-query';
@@ -7,12 +7,14 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TextField, Button, Box, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
 import { useFormik } from 'formik';
-import { CloudUpload } from '@material-ui/icons';
-import { ImageAdapter, TopicSelector } from '..';
+import { PhotoCamera, CloudUpload } from '@material-ui/icons';
+import { ImageAdapter, TopicSelector, AttachmentsList } from '..';
 
 /* eslint-disable no-param-reassign */
 
 const PostForm = ({ post }) => {
+	const [attachments, setAttachments] = useState([]);
+
 	const postMutation = useMutation(postData => sendPost('', postData));
 	const reserveMutation = useMutation(() => reserveSpace());
 
@@ -42,12 +44,13 @@ const PostForm = ({ post }) => {
 	return (
 		<>
 			<form onSubmit={formik.handleSubmit}>
-				<Button variant="contained" component="label" color="default" startIcon={<CloudUpload />}>
+				<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
 					Prześlij cover
 					<input
 						id="cover"
 						name="cover"
 						type="file"
+						accept="image/*"
 						hidden
 						onChange={event => {
 							formik.setFieldValue('cover', event.currentTarget.files[0]);
@@ -55,12 +58,13 @@ const PostForm = ({ post }) => {
 					/>
 				</Button>
 				<Box my={2}>
-					<Button variant="contained" component="label" color="default" startIcon={<CloudUpload />}>
+					<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
 						Prześlij nagłówek
 						<input
 							id="header"
 							name="header"
 							type="file"
+							accept="image/*"
 							hidden
 							onChange={event => {
 								formik.setFieldValue('header', event.currentTarget.files[0]);
@@ -74,14 +78,17 @@ const PostForm = ({ post }) => {
 						formik.setFieldValue('topic', event.target.value);
 					}}
 				/>
-				<TextField
-					fullWidth
-					id="title"
-					name="title"
-					label="Tytuł posta"
-					value={formik.values.title}
-					onChange={formik.handleChange}
-				/>
+				<Box mt={2}>
+					<TextField
+						fullWidth
+						id="title"
+						name="title"
+						label="Tytuł posta"
+						variant="outlined"
+						value={formik.values.title}
+						onChange={formik.handleChange}
+					/>
+				</Box>
 				<FormControl>
 					<FormControlLabel
 						checked={formik.values.showTitle}
@@ -112,10 +119,21 @@ const PostForm = ({ post }) => {
 						startIcon={<CloudUpload />}
 					>
 						Dodaj załącznik do posta
-						<input id="header" name="header" type="file" hidden />
+						<input
+							id="header"
+							name="header"
+							type="file"
+							hidden
+							onChange={event => {
+								setAttachments(prevAttachments => [
+									...prevAttachments,
+									{ id: prevAttachments.length, file: event.currentTarget.files[0] },
+								]);
+							}}
+						/>
 					</Button>
 				</Box>
-
+				<AttachmentsList attachments={attachments} setAttachments={setAttachments} />
 				<Button type="submit" variant="contained" color="primary">
 					Prześlij post
 				</Button>
