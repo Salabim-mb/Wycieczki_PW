@@ -1,42 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components'
-import Container from '@material-ui/core/Container';
 import { useParams } from "react-router-dom";
-
 import PostTile from 'components/PostTile'
-
 import paths from 'constants/api'
-
 import Image from './components/Image'
-
-import logo from '../../logo.svg'
-
-
-const dummyData = [
-    {
-        title: 'XDD',
-        cover: logo,
-        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
-        link: '/blog/liceum/1'
-    },
-    {
-        title: 'XDD',
-        cover: logo,
-        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
-        link: '/blog/liceum/1'
-    },
-    {
-        title: 'XDD',
-        cover: logo,
-        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
-        link: '/blog/liceum/1'
-    },
-]
-
-const StyledContainer = styled(Container)`
-    margin:0;
-    padding: 0!important;
-`;
+import StyledContainer from './Category.css'
 
 const Category = () => {
     const [category, setCategory] = useState([])
@@ -90,7 +57,7 @@ const Category = () => {
         <StyledContainer>
             <Image imgSrc={category.cover} imgAlt={category.title} />
 
-            {dummyData.map((data) => (
+            {posts?.map((data) => (
                 <PostTile cover={data.cover} title={data.title} desc={data.desc} link={`/liceum/${params.category}/${data.id}`} />
             ))}
 
