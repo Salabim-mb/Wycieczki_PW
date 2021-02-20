@@ -1,20 +1,11 @@
-export const pathList = {
-    DASHBOARD: {
-        name: "Strona główna",
-        path: "/",
-    },
-    BLOG_CATEGORIES: {
-        name: "Kategorie",
-        path: "/blog/:category",
-        redirect: (newCategory) => `/blog/${newCategory}`,
-    },
-    BLOG_ENTRY: {
-        name: "Wpis",
-        path: "/blog/:category/:entry_id",
-        redirect: (category, entryId) => `/blog/${category}/${entryId}`,
-    },
-}
+// import React from 'react';
+import BlogList from '../pages/BlogList';
+import { paths as pathList } from './paths';
 
 export default [
-
+    {
+        path: pathList.DASHBOARD.path,
+        component: BlogList,
+        exact: true
+    }
 ]
