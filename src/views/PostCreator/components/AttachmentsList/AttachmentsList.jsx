@@ -30,7 +30,10 @@ const AttachmentsList = ({ attachments, setAttachments }) => {
 						</Avatar>
 					</ListItemAvatar>
 					<ListItemText primary={name} />
-					<ListItemSecondaryAction onClick={() => handleDeleteItem(name)}>
+					<ListItemSecondaryAction
+						onClick={() => handleDeleteItem(id)}
+						data-testid={`deleteIcon${id}`}
+					>
 						<IconButton edge="end" aria-label="delete">
 							<Delete />
 						</IconButton>

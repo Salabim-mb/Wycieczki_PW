@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AttachmentsList should match snapshot 1`] = `
+<div>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            attachment.jpg
+          </span>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+        data-testid="deleteIcon0"
+      >
+        <button
+          aria-label="delete"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
