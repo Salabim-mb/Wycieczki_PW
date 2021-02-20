@@ -1,30 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
 import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 import { useParams } from "react-router-dom";
+
+import PostTile from 'components/PostTile'
 
 import categoryTemp from 'assets/categoryTemp.jpeg'
 
 import Image from './components/Image'
 
+import logo from '../../logo.svg'
 
 const dummyData = [
     {
         title: 'XDD',
-        date: '21.21.2002'
+        cover: logo,
+        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
+        link: '/blog/liceum/1'
     },
     {
         title: 'XDD',
-        date: '21.21.2002'
+        cover: logo,
+        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
+        link: '/blog/liceum/1'
     },
     {
         title: 'XDD',
-        date: '21.21.2002'
+        cover: logo,
+        desc: "dsflkjlkafsdjlsadfkjasdlkjafdsl;kjasdlkfjasdlkjfasldjfalskdjfalds;kjfadslkfjasldkjadslkjfadslkfjasdlkjadslkfjsadl;jadsflkjfasdjkfasld",
+        link: '/blog/liceum/1'
     },
 ]
 
@@ -56,24 +60,17 @@ const Category = () => {
             });
     }
 
+    useEffect(() => {
+        reciveData()
+
+    }, [])
+
     return (
         <StyledContainer>
             <Image imgSrc={categoryTemp} imgAlt="obrazek" />
 
             {dummyData.map((data) => (
-                <Card >
-                    <CardContent>
-                        <Typography color="textSecondary" gutterBottom>
-                            {data.date}
-                        </Typography>
-                        <Typography variant="h5" component="h2">
-                            {data.title}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button size="small" onClick={reciveData}>Learn More</Button>
-                    </CardActions>
-                </Card>
+                <PostTile cover={data.cover} title={data.title} desc={data.desc} link={data.link} />
             ))}
 
         </StyledContainer>
