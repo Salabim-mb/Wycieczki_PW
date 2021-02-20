@@ -58,6 +58,18 @@ export const uploadPhoto = async (token, id, file, flag, attachment) => {
 
 export const uploadAttachment = async (token, id, file) => uploadPhoto(token, id, file, null, true);
 
+export const sendAttachments = async (token, id, attachments) => {
+	const response = await Promise.all(
+		attachments.map(({ file }) => uploadAttachment(token, id, file)),
+	);
+	const isFail = response.forEach(({ status }) => {
+		if (status !== 201) {
+			throw new Error('');
+		}
+	});
+	return isFail;
+};
+
 export const deleteAttachment = async (token, id, isImage) => {
 	const startOfUrl = isImage ? paths.BLOG_IMAGE : paths.BLOG_DOWNLOADABLE;
 	const url = `${startOfUrl}${id}/`;

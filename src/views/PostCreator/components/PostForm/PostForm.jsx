@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ckeditor.css';
 import { useMutation } from 'react-query';
-import { sendPost, reserveSpace } from 'views/PostCreator/PostCreator.api';
+import { sendPost, reserveSpace, sendAttachments } from 'views/PostCreator/PostCreator.api';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TextField, Button, Box, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
@@ -16,14 +16,20 @@ const PostForm = ({ post }) => {
 	const [attachments, setAttachments] = useState([]);
 
 	const postMutation = useMutation(postData => sendPost('', postData));
+	const attachmentsMutation = useMutation(attachmentList => sendAttachments(attachmentList));
 	const reserveMutation = useMutation(() => reserveSpace());
 
 	function MyCustomUploadAdapterPlugin(editor) {
 		// adapter for images
-		reserveMutation.mutate();
-		const { data } = reserveMutation;
+		let id = post?.reservation;
+		if (!post) {
+			reserveMutation.mutate();
+			const { data } = reserveMutation;
+			id = data?.id;
+		}
+
 		editor.plugins.get('FileRepository').createUploadAdapter = loader =>
-			new ImageAdapter(loader, data?.id);
+			new ImageAdapter(loader, id);
 	}
 
 	const formik = useFormik({
@@ -37,6 +43,7 @@ const PostForm = ({ post }) => {
 		},
 
 		onSubmit: values => {
+			attachmentsMutation.mutate(attachments);
 			postMutation.mutate(values);
 		},
 	});
@@ -144,6 +151,7 @@ const PostForm = ({ post }) => {
 
 PostForm.propTypes = {
 	post: PropTypes.shape({
+		reservation: PropTypes.number.isRequired,
 		header: PropTypes.string.isRequired,
 		cover: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
@@ -154,7 +162,7 @@ PostForm.propTypes = {
 };
 
 PostForm.defaultProps = {
-	post: null,
+	post: {},
 };
 
 export default PostForm;
