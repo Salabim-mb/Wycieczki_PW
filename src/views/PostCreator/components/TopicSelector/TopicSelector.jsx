@@ -1,14 +1,12 @@
 import React from 'react';
 import { Select, MenuItem } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { useQuery } from 'react-query';
 import { AlertInfo } from 'components';
-import { getTopics } from 'views/PostCreator/PostCreator.api';
+import { useTopicsQuery } from 'views/PostCreator/PostCreator.hooks';
 
 const TopicSelector = ({ value, handleChange }) => {
-	const { isLoading, isError, error, data, isSuccess } = useQuery('topics', getTopics, {
-		enabled: false,
-	});
+	const { isLoading, isError, error, data, isSuccess } = useTopicsQuery();
+
 	return (
 		<>
 			<Select labelId="topicSelector" id="select" value={value} onChange={handleChange}>

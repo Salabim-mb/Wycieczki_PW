@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './ckeditor.css';
-import { useMutation } from 'react-query';
-import { sendPost, reserveSpace, sendAttachments } from 'views/PostCreator/PostCreator.api';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TextField, Button, Box, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
 import { useFormik } from 'formik';
 import { PhotoCamera, CloudUpload } from '@material-ui/icons';
 import { ImageAdapter, TopicSelector, AttachmentsList } from '..';
+import {
+	usePostMutation,
+	useAttachmentsMutation,
+	useReserveMutation,
+} from '../../PostCreator.hooks';
 
 /* eslint-disable no-param-reassign */
 
 const PostForm = ({ post }) => {
 	const [attachments, setAttachments] = useState([]);
+	const [reservation, setReservation] = useState(0);
 
-	const postMutation = useMutation(postData => sendPost('', postData));
-	const attachmentsMutation = useMutation(attachmentList => sendAttachments(attachmentList));
-	const reserveMutation = useMutation(() => reserveSpace());
+	const postMutation = usePostMutation('');
+	const attachmentsMutation = useAttachmentsMutation('');
+	const reserveMutation = useReserveMutation();
 
 	function MyCustomUploadAdapterPlugin(editor) {
 		// adapter for images
@@ -25,6 +29,7 @@ const PostForm = ({ post }) => {
 		if (!post) {
 			reserveMutation.mutate();
 			const { data } = reserveMutation;
+			setReservation(data.id);
 			id = data?.id;
 		}
 
@@ -44,7 +49,7 @@ const PostForm = ({ post }) => {
 
 		onSubmit: values => {
 			attachmentsMutation.mutate(attachments);
-			postMutation.mutate(values);
+			postMutation.mutate({ reservation, ...values });
 		},
 	});
 
