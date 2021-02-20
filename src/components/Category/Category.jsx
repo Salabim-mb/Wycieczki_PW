@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 
 import PostTile from 'components/PostTile'
 
-import categoryTemp from 'assets/categoryTemp.jpeg'
+import paths from 'constants/api'
 
 import Image from './components/Image'
 
 import logo from '../../logo.svg'
+
 
 const dummyData = [
     {
@@ -38,12 +39,13 @@ const StyledContainer = styled(Container)`
 `;
 
 const Category = () => {
-    const [categories, setCategories] = useState([])
+    const [category, setCategory] = useState([])
+    const [posts, setPosts] = useState([])
     const params = useParams();
 
-    const reciveData = () => {
+    const recivePosts = () => {
         console.log(params)
-        fetch('https://example.com/profile', {
+        fetch(`${paths.BLOG_POSTS}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,8 +54,27 @@ const Category = () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                setCategories(data)
-                console.log(categories)
+                setPosts(data)
+                console.log(posts)
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
+    const reciveCategory = () => {
+        console.log(params)
+        fetch(`${paths.BLOG_TOPIC}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                setCategory(data)
+                console.log(category)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -61,16 +82,16 @@ const Category = () => {
     }
 
     useEffect(() => {
-        reciveData()
-
+        reciveCategory()
+        recivePosts()
     }, [])
 
     return (
         <StyledContainer>
-            <Image imgSrc={categoryTemp} imgAlt="obrazek" />
+            <Image imgSrc={category.cover} imgAlt={category.title} />
 
             {dummyData.map((data) => (
-                <PostTile cover={data.cover} title={data.title} desc={data.desc} link={data.link} />
+                <PostTile cover={data.cover} title={data.title} desc={data.desc} link={`/liceum/${params.category}/${data.id}`} />
             ))}
 
         </StyledContainer>
