@@ -32,11 +32,11 @@ const StyledCardContent = styled(CardContent)`
     }
 `;
 
-const PostTile = ({ img, title, desc, link }) => (
+const PostTile = ({ cover, title, desc, link }) => (
     <Card >
         <StyledDiv>
             <StyledCardMedia
-                image={img}
+                image={cover}
                 title={title}
             />
             <CardActionArea component={Link} to={link}>
@@ -45,7 +45,7 @@ const PostTile = ({ img, title, desc, link }) => (
                     <Typography gutterBottom variant="h5" component="h2">
                         {title}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography noWrap variant="body2" color="textSecondary" component="p">
                         {desc}
                     </Typography>
                 </StyledCardContent>
