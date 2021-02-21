@@ -1,4 +1,3 @@
-import Category from 'components/Category'
 
 export const pathList = {
     DASHBOARD: {
@@ -16,9 +15,4 @@ export const pathList = {
     },
 }
 
-export default [
-    {
-        path: pathList.BLOG_CATEGORIES.path,
-        component: Category
-    }
-]
+export default []
