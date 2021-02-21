@@ -23,12 +23,13 @@ const CategoryCreator = () => {
             description: '',
             cover: ''
         },
-        onSubmit: () => {
+        onSubmit: (token = '') => {
             // console.log(isLoading, isError, error, data)
             fetch(`${paths.BLOG_TOPIC}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': token
                 },
                 body: formik.values,
             })
