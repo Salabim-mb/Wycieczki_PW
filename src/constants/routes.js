@@ -1,3 +1,5 @@
+import Post from 'views/Post'
+
 export const pathList = {
     DASHBOARD: {
         name: "Strona główna",
@@ -11,10 +13,12 @@ export const pathList = {
     BLOG_ENTRY: {
         name: "Wpis",
         path: "/blog/:category/:entry_id",
-        redirect: (category, entryId) => `/blog/${category}/${entryId}`,
     },
 }
 
 export default [
-
+    {
+        path: pathList.BLOG_ENTRY.path,
+        component: Post
+    }
 ]
