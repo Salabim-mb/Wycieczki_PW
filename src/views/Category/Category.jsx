@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import PostTile from 'components/PostTile'
 import paths from 'constants/api'
 import Image from './components/Image'
@@ -9,7 +9,6 @@ const Category = () => {
     const [category, setCategory] = useState([])
     const [posts, setPosts] = useState([])
     const params = useParams();
-    const location = useLocation()
 
     const recivePosts = () => {
         fetch(`${paths.BLOG_POSTS}`, {
@@ -20,7 +19,6 @@ const Category = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
                 setPosts(data)
             })
             .catch((error) => {
@@ -29,9 +27,7 @@ const Category = () => {
     }
 
     const reciveCategory = () => {
-        console.log(params)
-        // to z tym location to średnie rozwiązanie (poprawić)
-        fetch(`${paths.BLOG_TOPIC}/${location.categoryProps.id}`, {
+        fetch(`${paths.BLOG_TOPIC}/${params.category}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -54,10 +50,9 @@ const Category = () => {
 
     return (
         <StyledContainer>
-            <Image imgSrc={category.cover} imgAlt={category.title} />
-        dfaskl;fadsjkasdflaskdfjadsfljadsf;j
+            <Image imgSrc={category?.cover} imgAlt={category?.title} />
             {posts?.map((data) => (
-                <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} desc={data.summary} link={`/${params.category}/${data.id}`} />
+                <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
             ))}
         </StyledContainer>
     );

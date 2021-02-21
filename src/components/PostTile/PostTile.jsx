@@ -32,7 +32,7 @@ const StyledCardContent = styled(CardContent)`
     }
 `;
 
-const PostTile = ({ cover, title, desc, link }) => (
+const PostTile = ({ cover, title, summary, link }) => (
     <Card >
         <StyledDiv>
             <StyledCardMedia
@@ -46,7 +46,7 @@ const PostTile = ({ cover, title, desc, link }) => (
                         {title}
                     </Typography>
                     <Typography noWrap variant="body2" color="textSecondary" component="p">
-                        {desc}
+                        {summary}
                     </Typography>
                 </StyledCardContent>
             </CardActionArea>
