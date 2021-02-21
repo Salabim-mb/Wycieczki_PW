@@ -10,12 +10,13 @@ exports[`PostTile should match snapshot 1`] = `
     >
       <div
         class="MuiCardMedia-root sc-bdfBwQ EpHKn"
-        title="Tytuł"
+        style="background-image: url(logo.svg);"
+        title="Geometria przestrzenna"
       />
       <a
         aria-disabled="false"
         class="MuiButtonBase-root MuiCardActionArea-root"
-        href="/"
+        href="/liceum/kolorowanki/1"
         role="button"
         tabindex="0"
       >
@@ -25,13 +26,11 @@ exports[`PostTile should match snapshot 1`] = `
           <h2
             class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
           >
-            Tytuł
+            Geometria przestrzenna
           </h2>
           <p
             class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
-          >
-            Tu powinien być opis
-          </p>
+          />
         </div>
         <span
           class="MuiCardActionArea-focusHighlight"
@@ -47,7 +46,7 @@ exports[`PostTile should match snapshot 1`] = `
       <a
         aria-disabled="false"
         class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
-        href="/"
+        href="/liceum/kolorowanki/1"
         role="button"
         tabindex="0"
       >

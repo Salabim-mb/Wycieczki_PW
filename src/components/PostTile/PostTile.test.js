@@ -9,12 +9,11 @@ describe('PostTile', () => {
     let props;
     beforeEach(() => {
         props = {
-            data: {
-                title: 'Geometria przestrzenna',
-                cover: logo,
-                desc: 'Opis jakiś tam coś tam bla bla',
-                link: '/liceum/kolorowanki/1',
-            },
+
+            title: 'Geometria przestrzenna',
+            cover: logo,
+            desc: 'Opis jakiś tam coś tam bla bla',
+            link: '/liceum/kolorowanki/1',
         };
     });
     it('should match snapshot', () => {

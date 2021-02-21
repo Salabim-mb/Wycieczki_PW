@@ -33,7 +33,7 @@ const StyledCardContent = styled(CardContent)`
     }
 `;
 
-const PostTile = ({ cover, title, desc, link }) => (
+const PostTile = ({ cover, title, summary, link }) => (
     <Card >
         <StyledDiv>
             <StyledCardMedia
@@ -47,7 +47,7 @@ const PostTile = ({ cover, title, desc, link }) => (
                         {title}
                     </Typography>
                     <Typography noWrap variant="body2" color="textSecondary" component="p">
-                        {desc}
+                        {summary}
                     </Typography>
                 </StyledCardContent>
             </CardActionArea>
@@ -63,13 +63,6 @@ PostTile.propTypes = {
     desc: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
-}
-
-PostTile.defaultProps = {
-    title: 'Tytuł',
-    desc: "Tu powinien być opis",
-    link: '',
-    cover: '',
 }
 
 export default PostTile
