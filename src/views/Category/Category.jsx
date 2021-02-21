@@ -19,15 +19,16 @@ const Category = () => {
         })
             .then(response => response.json())
             .then(data => {
+                console.log('post:', data);
                 setPosts(data)
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('ErrorPSOT:', error);
             });
     }
 
     const reciveCategory = () => {
-        fetch(`${paths.BLOG_TOPIC}/${params.category}`, {
+        fetch(`${paths.BLOG_TOPIC}${params.category}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,11 +36,11 @@ const Category = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
+                console.log('CAt:', data);
                 setCategory(data)
             })
             .catch((error) => {
-                console.error('Error:', error);
+                console.error('ErrorCAT:', error);
             });
     }
 
@@ -50,8 +51,8 @@ const Category = () => {
 
     return (
         <StyledContainer>
-            <Image imgSrc={category?.cover} imgAlt={category?.title} />
-            {posts?.map((data) => (
+            <Image imgSrc={category?.cover_url} imgAlt={category?.title} />
+            {posts.results.map((data) => (
                 <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
             ))}
         </StyledContainer>
