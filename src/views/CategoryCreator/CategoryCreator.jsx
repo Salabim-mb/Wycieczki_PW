@@ -1,25 +1,30 @@
 import React from 'react'
+import styled from 'styled-components'
 import { useFormik } from 'formik';
-import { useQuery } from 'react-query';
+// import { useQuery } from 'react-query';
 import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import paths from 'constants/api';
 
+const StyledForm = styled.form`
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+`;
 
 const CategoryCreator = () => {
-    const { isLoading, isError, error, data } = useQuery('title');
+    // const { isLoading, isError, error, data } = useQuery('title', formik.onSubmit);
 
     const formik = useFormik({
         initialValues: {
             title: '',
+            description: '',
             cover: ''
         },
-        onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
-            console.log(isLoading, isError, error, data)
-
+        onSubmit: () => {
+            // console.log(isLoading, isError, error, data)
             fetch(`${paths.BLOG_TOPIC}`, {
                 method: 'POST',
                 headers: {
@@ -40,9 +45,12 @@ const CategoryCreator = () => {
     return (
         <Container>
             <h2>Dodaj kategorię</h2>
-            <form onSubmit={formik.handleSubmit}>
+            <StyledForm onSubmit={formik.handleSubmit}>
                 <TextField id="title" label="Tytuł" type="text" value={formik.values.title} onChange={event => {
                     formik.setFieldValue('title', event.target.value);
+                }} />
+                <TextField id="description" label="Opis" type="text" value={formik.values.description} onChange={event => {
+                    formik.setFieldValue('description', event.target.value);
                 }} />
                 <Input id="cover"
                     name="cover"
@@ -50,7 +58,9 @@ const CategoryCreator = () => {
                         formik.setFieldValue('cover', event.currentTarget.files[0]);
                     }} />
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
-            </form>
+            </StyledForm>
+            {/* <div>{isLoading} {isError} {error}</div> */}
+
         </Container>
     )
 }
