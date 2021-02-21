@@ -20,18 +20,22 @@ const CategoryCreator = () => {
     const formik = useFormik({
         initialValues: {
             title: '',
+            blog: 0,
             description: '',
             cover: ''
         },
-        onSubmit: (token = '') => {
+        onSubmit: () => {
             // console.log(isLoading, isError, error, data)
+            const formData = new FormData();
+            formData.append('cover', formik.cover);
+            formData.append('title', formik.title);
+            formData.append('blog', formik.blog);
+            formData.append('description', formik.description);
+            // formData.append('authorization', user.token);
             fetch(`${paths.BLOG_TOPIC}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': token
-                },
-                body: formik.values,
+
+                body: formData,
             })
                 .then(response => response.json())
                 .then(resp => {
@@ -53,6 +57,9 @@ const CategoryCreator = () => {
                 <TextField id="description" label="Opis" type="text" value={formik.values.description} onChange={event => {
                     formik.setFieldValue('description', event.target.value);
                 }} />
+                <TextField id="blog" label="id bloga (potem bedzie tu select)" type="number" value={formik.values.blog} onChange={event => {
+                    formik.setFieldValue('blog', event.target.value);
+                }} />
                 <Input id="cover"
                     name="cover"
                     type="file" onChange={event => {
@@ -60,7 +67,6 @@ const CategoryCreator = () => {
                     }} />
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>
-            {/* <div>{isLoading} {isError} {error}</div> */}
 
         </Container>
     )
