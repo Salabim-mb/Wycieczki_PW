@@ -22,15 +22,14 @@ const BlogSideBar = ({pathParams, featuredPosts, setRedirect}) => {
 				<Typography variant="h6" component="h6">
 					Nawigacja
 				</Typography>
-				<Breadcrumbs separator={<NavigateNextIcon fontsize="small" />} aria-label="breadcrumb">
+				<Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
 					{pathParams.map((item) => (
 						<Chip
-							label="Basic"
+							key={item.path}
+							label={item.name}
 							variant="outlined"
 							onClick={() => setRedirect({action: true, destination: item.path})}
-						>
-							{item.name}
-						</Chip>
+						/>
 					))}
 				</Breadcrumbs>
 			</Paper>

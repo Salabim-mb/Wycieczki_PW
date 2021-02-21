@@ -39,7 +39,9 @@ const getEntryContent = async (id) => {
 
 const mapEntry = (data) => ({
 	id: data.id,
-
+	date: (new Date()).toISOString(),
+	title: "Tytuł bloga",
+	content: "Lorem ipsum dolor sit amet"
 });
 
 const BlogEntry = () => {
