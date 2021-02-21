@@ -12,7 +12,7 @@ export const pathList = {
     },
     BLOG_ENTRY: {
         name: "Wpis",
-        path: "/blog/:category/:entry_id",
+        path: "/blog/:category/:id",
     },
 }
 

@@ -9,7 +9,7 @@ const Post = () => {
     const params = useParams();
 
     const getPost = () => {
-        fetch(`${paths.BLOG_POST}/${params.id}`, {
+        fetch(`${paths.BLOG_POST}${params.id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
