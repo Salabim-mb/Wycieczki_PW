@@ -22,12 +22,14 @@ const CategoryCreator = () => {
             title: '',
             blog: 0,
             description: '',
-            cover: ''
+            cover_image: '',
+            header_image: ''
         },
         onSubmit: () => {
             // console.log(isLoading, isError, error, data)
             const formData = new FormData();
-            formData.append('cover', formik.values.cover);
+            formData.append('cover_image', formik.values.cover_image);
+            formData.append('header_image', formik.values.header_image);
             formData.append('title', formik.values.title);
             formData.append('blog', formik.values.blog);
             formData.append('description', formik.values.description);
@@ -60,10 +62,16 @@ const CategoryCreator = () => {
                 <TextField id="blog" label="id bloga (potem bedzie tu select)" type="number" value={formik.values.blog} onChange={event => {
                     formik.setFieldValue('blog', event.target.value);
                 }} />
-                <Input id="cover"
-                    name="cover"
+                <Input id="cover_image"
+                    name="cover_image"
                     type="file" onChange={event => {
-                        formik.setFieldValue('cover', event.currentTarget.files[0]);
+                        formik.setFieldValue('cover_image', event.currentTarget.files[0]);
+                    }} />
+
+                <Input id="header_image"
+                    name="header_image"
+                    type="file" onChange={event => {
+                        formik.setFieldValue('header_image', event.currentTarget.files[0]);
                     }} />
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>
