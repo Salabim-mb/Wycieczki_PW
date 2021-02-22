@@ -27,10 +27,10 @@ const CategoryCreator = () => {
         onSubmit: () => {
             // console.log(isLoading, isError, error, data)
             const formData = new FormData();
-            formData.append('cover', formik.cover);
-            formData.append('title', formik.title);
-            formData.append('blog', formik.blog);
-            formData.append('description', formik.description);
+            formData.append('cover', formik.values.cover);
+            formData.append('title', formik.values.title);
+            formData.append('blog', formik.values.blog);
+            formData.append('description', formik.values.description);
             // formData.append('authorization', user.token);
             fetch(`${paths.BLOG_TOPIC}`, {
                 method: 'POST',
