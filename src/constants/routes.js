@@ -5,6 +5,10 @@ export const pathList = {
         name: "Strona główna",
         path: "/",
     },
+    BLOG: {
+        name: "Wpis",
+        path: "/:blog",
+    },
     BLOG_CATEGORIES: {
         name: "Kategorie",
         path: "/blog/:category",
@@ -18,7 +22,7 @@ export const pathList = {
 
 export default [
     {
-        path: pathList.BLOG_ENTRY.path,
+        path: pathList.BLOG.path,
         component: Post
     }
 ]

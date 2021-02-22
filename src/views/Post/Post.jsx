@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
 import paths from 'constants/api'
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-const Post = () => {
-    const [post, setPost] = useState()
-    const params = useParams();
+import CategoryTile from 'components/CategoryTile'
 
-    const getPost = () => {
-        fetch(`${paths.BLOG_POST}${params.id}`, {
+const Post = () => {
+    const [categories, setCategories] = useState()
+
+    const getCategories = () => {
+        fetch(`${paths.BLOG_TOPICS}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,7 +17,7 @@ const Post = () => {
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
-                setPost(data)
+                setCategories(data)
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -26,18 +25,14 @@ const Post = () => {
     }
 
     useEffect(() => {
-        getPost()
+        getCategories()
     }, [])
 
     return (
         <Container>
-            <img src={post?.cover} alt={post?.title} />
-
-            <Typography variant='h2'>{post?.title}</Typography>
-
-            <Typography variant='body1'>{post?.content}</Typography>
-
-
+            {categories?.map((category) => (
+                <CategoryTile title={category.title} cover={`https://wut-vtrips.herokuapp.com/${category.cover_url}`} desc={category.description} />
+            ))}
         </Container>
     );
 }
