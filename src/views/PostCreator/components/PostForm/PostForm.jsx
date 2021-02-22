@@ -4,38 +4,63 @@ import './ckeditor.css';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { TextField, Button, Box, FormControl, FormControlLabel, Checkbox } from '@material-ui/core';
+import { Alert } from '@material-ui/lab';
 import { useFormik } from 'formik';
 import { PhotoCamera, CloudUpload } from '@material-ui/icons';
+import { usePostMutation, useAttachmentsMutation } from 'views/PostCreator/PostCreator.hooks';
+import { reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { ImageAdapter, TopicSelector, AttachmentsList } from '..';
-import {
-	usePostMutation,
-	useAttachmentsMutation,
-	useReserveMutation,
-} from '../../PostCreator.hooks';
 
 /* eslint-disable no-param-reassign */
 
 const PostForm = ({ post }) => {
 	const [attachments, setAttachments] = useState([]);
-	const [reservation, setReservation] = useState(0);
-
+	const [reservation, setReservation] = useState(post?.reservation);
 	const postMutation = usePostMutation('');
 	const attachmentsMutation = useAttachmentsMutation('');
-	const reserveMutation = useReserveMutation();
 
 	function MyCustomUploadAdapterPlugin(editor) {
 		// adapter for images
-		let id = post?.reservation;
-		if (!post) {
-			reserveMutation.mutate();
-			const { data } = reserveMutation;
-			setReservation(data.id);
-			id = data?.id;
+		const getId = async () => {
+			let response;
+			if (!reservation) {
+				try {
+					response = await reserveSpace('');
+					setReservation(response.id);
+
+					/* eslint-disable arrow-body-style */
+
+					editor.plugins.get('FileRepository').createUploadAdapter = loader => {
+						return new ImageAdapter(loader, reservation || response.id, '');
+					};
+				} catch (err) {
+					console.log('');
+				}
+			}
+		};
+
+		getId();
+	}
+
+	const validate = values => {
+		const errors = {};
+
+		if (!values.cover) {
+			errors.cover = 'Cover zdjęcia (zdjęcie w kafelku) jest wymagany.';
+		}
+		if (!values.title) {
+			errors.title = 'Tytuł jest wymagany.';
+		}
+		if (values.topic === -1) {
+			errors.topic = 'Temat posta jest wymagany.';
 		}
 
-		editor.plugins.get('FileRepository').createUploadAdapter = loader =>
-			new ImageAdapter(loader, id);
-	}
+		if (!values.content) {
+			errors.content = 'Treść posta jest wymagana.';
+		}
+
+		return errors;
+	};
 
 	const formik = useFormik({
 		initialValues: {
@@ -46,7 +71,7 @@ const PostForm = ({ post }) => {
 			topic: post?.topic || -1,
 			showTitle: post?.show_title || true,
 		},
-
+		validate,
 		onSubmit: values => {
 			attachmentsMutation.mutate(attachments);
 			postMutation.mutate({ reservation, ...values });
@@ -69,6 +94,9 @@ const PostForm = ({ post }) => {
 						}}
 					/>
 				</Button>
+				{formik.touched.cover && formik.errors.cover && (
+					<Alert severity="error">{formik.errors.cover}</Alert>
+				)}
 				<Box my={2}>
 					<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
 						Prześlij nagłówek
@@ -90,6 +118,9 @@ const PostForm = ({ post }) => {
 						formik.setFieldValue('topic', event.target.value);
 					}}
 				/>
+				{formik.touched.topic && formik.errors.topic && (
+					<Alert severity="error">{formik.errors.topic}</Alert>
+				)}
 				<Box mt={2}>
 					<TextField
 						fullWidth
@@ -98,8 +129,12 @@ const PostForm = ({ post }) => {
 						label="Tytuł posta"
 						variant="outlined"
 						value={formik.values.title}
+						inputProps={{ minLength: 1, maxLength: 120 }}
 						onChange={formik.handleChange}
 					/>
+					{formik.touched.title && formik.errors.title && (
+						<Alert severity="error">{formik.errors.title}</Alert>
+					)}
 				</Box>
 				<FormControl>
 					<FormControlLabel
@@ -122,6 +157,9 @@ const PostForm = ({ post }) => {
 					editor={ClassicEditor}
 					data={formik.values.content}
 				/>
+				{formik.touched.content && formik.errors.content && (
+					<Alert severity="error">{formik.errors.content}</Alert>
+				)}
 				<Box my={2}>
 					<Button
 						variant="contained"

@@ -6,6 +6,7 @@ const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
 
 const paths = {
+	PLAIN: `${domain}`,
 	BLOG,
 	BLOGS: `${domain}/blogs/`,
 	BLOG_TOPIC,

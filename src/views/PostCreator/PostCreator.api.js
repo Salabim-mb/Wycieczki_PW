@@ -18,28 +18,13 @@ export const getPost = async (token, id) => {
 	return {};
 };
 
-export const sendPost = async (token, post, id) => {
-	const url = `${paths.BLOG_POST}${id ? `${id}/` : ''}`;
-
-	const headers = {
-		Authorization: `${token}`,
-	};
-
-	const method = id ? 'PATCH' : 'POST';
-	const expectedResponseStatus = id ? 200 : 201;
-
-	const response = await fetch(url, { headers, method });
-
-	if (response.status !== expectedResponseStatus) {
-		throw new Error('');
-	}
-};
-
-export const uploadPhoto = async (token, id, file, flag, attachment) => {
-	const url = `${paths.BLOG_RESERVATION}${id}/${attachment ? 'attachment' : 'image'}/`;
+export const uploadPhoto = async (token, id, file, signal, flag, attachment) => {
+	const url = `${attachment ? paths.BLOG_DOWNLOADABLE : paths.BLOG_IMAGE}`;
 
 	const formData = new FormData();
-	formData.append('file', file, file.name);
+	formData.append('reservation', id);
+	formData.append(attachment ? 'file' : 'image', file, file.name);
+
 	if (flag) {
 		formData.append(flag, true);
 	}
@@ -48,7 +33,7 @@ export const uploadPhoto = async (token, id, file, flag, attachment) => {
 		Authorization: `${token}`,
 	};
 
-	const response = await fetch(url, { headers, method: 'POST' });
+	const response = await fetch(url, { headers, method: 'POST', signal, body: formData });
 
 	if (response.status === 201) {
 		return response.json();
@@ -56,7 +41,44 @@ export const uploadPhoto = async (token, id, file, flag, attachment) => {
 	throw new Error('');
 };
 
-export const uploadAttachment = async (token, id, file) => uploadPhoto(token, id, file, null, true);
+export const sendPost = async (token, post, id) => {
+	const url = `${paths.BLOG_POST}${id ? `${id}/` : ''}`;
+
+	const headers = {
+		Authorization: `${token}`,
+		'Content-Type': 'application/json',
+	};
+
+	const postNew = { ...post };
+
+	if (post.cover) {
+		const cover = await uploadPhoto('', post.reservation, postNew.cover, null, 'is_cover', false);
+		postNew.cover = cover;
+	}
+	if (post.header) {
+		const header = await uploadPhoto(
+			'',
+			post.reservation,
+			postNew.header,
+			null,
+			'is_header',
+			false,
+		);
+		postNew.header = header;
+	}
+
+	const method = id ? 'PATCH' : 'POST';
+	const expectedResponseStatus = id ? 200 : 201;
+
+	const response = await fetch(url, { headers, method, body: JSON.stringify(postNew) });
+
+	if (response.status !== expectedResponseStatus) {
+		throw new Error('');
+	}
+};
+
+export const uploadAttachment = async (token, id, file) =>
+	uploadPhoto(token, id, file, null, null, true);
 
 export const sendAttachments = async (token, id, attachments) => {
 	const response = await Promise.all(
@@ -125,8 +147,9 @@ export const getTopics = async () => {
 
 	const response = await fetch(url, { headers, method: 'GET' });
 
-	if (response.status === 200) {
-		return response.json();
+	if (response.status !== 200) {
+		throw new Error('błąd');
 	}
-	throw new Error('');
+
+	return response.json();
 };

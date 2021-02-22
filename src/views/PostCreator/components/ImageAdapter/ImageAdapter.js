@@ -1,4 +1,5 @@
 import { uploadPhoto } from 'views/PostCreator/PostCreator.api';
+import paths from 'constants/api';
 
 const controller = new AbortController();
 const { signal } = controller;
@@ -28,8 +29,8 @@ class ImageAdapter {
 
 	_sendPhoto = async (file, resolve, reject) => {
 		try {
-			const response = await uploadPhoto(this.id, file, this.token, signal);
-			resolve({ default: `${response?.url}` });
+			const response = await uploadPhoto(this.token, this.id, file, signal, null, false);
+			resolve({ default: `${paths.PLAIN}${response?.image_url}` });
 		} catch (err) {
 			reject('Błąd przesłania zdjęcia: ', err);
 		}
