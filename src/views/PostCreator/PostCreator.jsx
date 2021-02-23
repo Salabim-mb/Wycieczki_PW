@@ -16,7 +16,7 @@ const PostCreator = () => {
 			<Card>
 				<CardHeader title="Stwórz wpis" />
 				<CardContent>
-					<PostForm post={data} />
+					<PostForm post={data} id={id} />
 					<AlertInfo isLoading={isLoading} isError={isError}>
 						{error?.message}
 					</AlertInfo>

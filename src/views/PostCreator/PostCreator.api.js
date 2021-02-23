@@ -51,11 +51,12 @@ export const sendPost = async (token, post, id) => {
 
 	const postNew = { ...post };
 
-	if (post.cover) {
+	if (post.cover && typeof post.cover !== 'string') {
 		const cover = await uploadPhoto('', post.reservation, postNew.cover, null, 'is_cover', false);
-		postNew.cover = cover;
+		postNew.cover = `${paths.PLAIN}${cover.image_url}`;
 	}
-	if (post.header) {
+
+	if (post.header && typeof post.header !== 'string') {
 		const header = await uploadPhoto(
 			'',
 			post.reservation,
@@ -64,7 +65,7 @@ export const sendPost = async (token, post, id) => {
 			'is_header',
 			false,
 		);
-		postNew.header = header;
+		postNew.header = `${paths.PLAIN}${header.image_url}`;
 	}
 
 	const method = id ? 'PATCH' : 'POST';
@@ -80,16 +81,11 @@ export const sendPost = async (token, post, id) => {
 export const uploadAttachment = async (token, id, file) =>
 	uploadPhoto(token, id, file, null, null, true);
 
-export const sendAttachments = async (token, id, attachments) => {
-	const response = await Promise.all(
-		attachments.map(({ file }) => uploadAttachment(token, id, file)),
+export const sendAttachments = async (token, attachmentsObject) => {
+	const { attachments, reservation } = attachmentsObject;
+	await Promise.all(
+		attachments?.map(({ file }) => file && uploadAttachment(token, reservation, file)),
 	);
-	const isFail = response.forEach(({ status }) => {
-		if (status !== 201) {
-			throw new Error('');
-		}
-	});
-	return isFail;
 };
 
 export const deleteAttachment = async (token, id, isImage) => {
@@ -102,10 +98,28 @@ export const deleteAttachment = async (token, id, isImage) => {
 
 	const response = await fetch(url, { headers, method: 'DELETE' });
 
-	if (response.status === 200) {
-		return response.json();
+	if (response.status !== 204) {
+		throw new Error('');
 	}
-	throw new Error('');
+	return response;
+};
+
+export const deleteAttachments = async (token, files) => {
+	const imagesToDelete = files?.images.filter(
+		({ image_url: imageUrl }) => !files.content.includes(imageUrl),
+	);
+
+	let attachmentsToDelete = [];
+
+	if (files.prevAttachments) {
+		attachmentsToDelete = files.prevAttachments.filter(
+			e => !files.attachments.some(item => item.id === e.id),
+		);
+	}
+
+	await Promise.all(imagesToDelete.map(({ id }) => deleteAttachment(token, id, true)));
+
+	await Promise.all(attachmentsToDelete.map(({ id }) => deleteAttachment(token, id, false)));
 };
 
 export const reserveSpace = async token => {
