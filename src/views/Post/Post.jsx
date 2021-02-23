@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom'
 import paths from 'constants/api'
 import Container from '@material-ui/core/Container';
 
@@ -6,9 +7,10 @@ import CategoryTile from 'components/CategoryTile'
 
 const Post = () => {
     const [categories, setCategories] = useState()
+    const params = useParams()
 
     const getCategories = () => {
-        fetch(`${paths.BLOG_TOPICS}`, {
+        fetch(`${paths.BLOG_TOPICS}?blog=${params.blog}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
