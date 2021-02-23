@@ -17,7 +17,15 @@ import {
 import paths from 'constants/api';
 import { reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { AlertInfo } from 'components';
-import { ImageAdapter, TopicSelector, AttachmentsList, PostTilePreview } from '..';
+import { isYoutubeLink } from 'utils/helpers';
+import {
+	ImageAdapter,
+	TopicSelector,
+	AttachmentsList,
+	PostTilePreview,
+	HeaderPreview,
+	HeaderInput,
+} from '..';
 
 /* eslint-disable no-param-reassign */
 
@@ -104,6 +112,9 @@ const PostForm = ({ post, id }) => {
 			errors.content = 'Treść posta jest wymagana.';
 		}
 
+		if (values.header && typeof values.header === 'string' && isYoutubeLink(values.header)) {
+			errors.header = 'Nieprawidłowy link yt';
+		}
 		return errors;
 	};
 
@@ -160,21 +171,16 @@ const PostForm = ({ post, id }) => {
 			{formik.touched.cover && formik.errors.cover && (
 				<Alert severity="error">{formik.errors.cover}</Alert>
 			)}
-			<Box my={2}>
-				<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
-					Prześlij nagłówek
-					<input
-						id="header"
-						name="header"
-						type="file"
-						accept="image/*"
-						hidden
-						onChange={event => {
-							formik.setFieldValue('header', event.currentTarget.files[0]);
-						}}
-					/>
-				</Button>
-			</Box>
+			<HeaderInput
+				handleChangeFile={event => {
+					formik.setFieldValue('header', event.currentTarget.files[0]);
+				}}
+				handleChangeLink={event => {
+					formik.setFieldValue('header', event.target.value);
+				}}
+				header={formik.values.header}
+				error={formik.touched.header && formik.errors.header ? formik.errors.header : ''}
+			/>
 			<TopicSelector
 				value={formik.values.topic}
 				handleChange={event => {
@@ -200,6 +206,7 @@ const PostForm = ({ post, id }) => {
 				)}
 			</Box>
 			<PostTilePreview />
+			<HeaderPreview header={formik.values.header} />
 			<CKEditor
 				config={{
 					language: 'pl',
