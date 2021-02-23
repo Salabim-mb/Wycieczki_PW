@@ -15,7 +15,7 @@ const Category = () => {
 
 
     const recivePosts = () => {
-        fetch(`${paths.BLOG_POSTS}`, {
+        fetch(`${paths.BLOG_POSTS}?topic=${params.category}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
