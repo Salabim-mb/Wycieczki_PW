@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -8,9 +9,9 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
 
-const CategoryTile = ({ title, desc, cover }) => (
+const CategoryTile = ({ title, desc, cover, link }) => (
     <Card >
-        <CardActionArea>
+        <CardActionArea component={Link} to={link}>
             <CardMedia
                 image={cover}
                 title={title}
@@ -25,7 +26,7 @@ const CategoryTile = ({ title, desc, cover }) => (
             </CardContent>
         </CardActionArea>
         <CardActions>
-            <Button size="small" color="primary">
+            <Button component={Link} to={link} size="small" color="primary">
                 Learn More
         </Button>
         </CardActions>
