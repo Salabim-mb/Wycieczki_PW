@@ -1,4 +1,4 @@
-import Post from 'views/Post'
+import Blog from 'views/Blog'
 
 export const pathList = {
     DASHBOARD: {
@@ -23,6 +23,6 @@ export const pathList = {
 export default [
     {
         path: pathList.BLOG.path,
-        component: Post
+        component: Blog
     }
 ]
