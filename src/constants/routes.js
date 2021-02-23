@@ -7,11 +7,11 @@ export const pathList = {
     },
     BLOG_CATEGORIES: {
         name: "Kategorie",
-        path: "/blog/:category",
+        path: "/:blog/:category",
     },
     BLOG_ENTRY: {
         name: "Wpis",
-        path: "/blog/:category/:entry_id",
+        path: "/:blog/:category/:entry_id",
         redirect: (category, entryId) => `/blog/${category}/${entryId}`,
     },
 }

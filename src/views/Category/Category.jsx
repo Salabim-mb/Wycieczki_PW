@@ -10,6 +10,7 @@ import StyledContainer from './Category.css'
 
 const Category = () => {
     const [category, setCategory] = useState([])
+    const [categoryErr, setCategoryErr] = useState([])
     const [posts, setPosts] = useState([])
     const params = useParams();
 
@@ -23,11 +24,10 @@ const Category = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('post:', data);
                 setPosts(data)
             })
             .catch((error) => {
-                console.error('ErrorPSOT:', error);
+                console.error('ErrorPOST:', error);
             });
     }
 
@@ -40,25 +40,27 @@ const Category = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('CAt:', data);
                 setCategory(data)
             })
             .catch((error) => {
-                console.error('ErrorCAT:', error);
+                setCategoryErr(error)
             });
     }
     const { isLoading } = useQuery('posts', () => recivePosts())
-
+    const { results } = posts
     useEffect(() => {
         reciveCategory()
-        // recivePosts()
     }, [])
+
 
     return (
         <StyledContainer>
-            <Image imgSrc={`${paths.PLAIN}${category?.cover_url}`} imgAlt={category?.title} />
-            <Typography variant="h2">{category?.title}</Typography>
-            {<div>{isLoading}</div> || posts?.results.map((data) => (
+            {categoryErr ? <div>Nie udało się pobrać kategorii</div> : <>
+                <Image imgSrc={`${paths.PLAIN}${category?.cover_url}`} imgAlt={category?.title} />
+                <Typography variant="h2">{category?.title}</Typography>
+            </>}
+
+            { isLoading ? <div> Ładowanie... </div> : results?.map((data) => (
                 <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
             ))}
         </StyledContainer>
