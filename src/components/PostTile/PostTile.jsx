@@ -60,7 +60,7 @@ const PostTile = ({ cover, title, summary, link }) => (
 
 PostTile.propTypes = {
     title: PropTypes.string.isRequired,
-    desc: PropTypes.string.isRequired,
+    summary: PropTypes.string.isRequired,
     link: PropTypes.string.isRequired,
     cover: PropTypes.string.isRequired,
 }
