@@ -6,10 +6,13 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import { AlertProvider } from '../../context/AlertContext';
 
+import GlobalStyle from 'style/GlobalStyle'
+
 const queryClient = new QueryClient();
 
 const App = () => (
 	<ThemeProvider theme={theme}>
+		<GlobalStyle />
 		<QueryClientProvider client={queryClient}>
 			<AlertProvider>
 				<BrowserRouter>

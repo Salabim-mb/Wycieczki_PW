@@ -8,7 +8,6 @@ export const pathList = {
 	BLOG_CATEGORIES: {
 		name: 'Kategorie',
 		path: '/blog/:category',
-		redirect: newCategory => `/blog/${newCategory}`,
 	},
 	BLOG_ENTRY: {
 		name: 'Wpis',
