@@ -4,15 +4,20 @@ import Router from 'root/Router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
+import GlobalStyle from 'style/GlobalStyle';
+import { AlertProvider } from 'context/AlertContext';
 
 const queryClient = new QueryClient();
 
 const App = () => (
 	<ThemeProvider theme={theme}>
+		<GlobalStyle />
 		<QueryClientProvider client={queryClient}>
-			<BrowserRouter>
-				<Router />
-			</BrowserRouter>
+			<AlertProvider>
+				<BrowserRouter>
+					<Router />
+				</BrowserRouter>
+			</AlertProvider>
 		</QueryClientProvider>
 	</ThemeProvider>
 );

@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import CategoryCreator from 'views/CategoryCreator/CategoryCreator';
+=======
+>>>>>>> master
 
 export const pathList = {
     DASHBOARD: {
@@ -8,7 +11,6 @@ export const pathList = {
     BLOG_CATEGORIES: {
         name: "Kategorie",
         path: "/blog/:category",
-        redirect: (newCategory) => `/blog/${newCategory}`,
     },
     BLOG_ENTRY: {
         name: "Wpis",
@@ -21,9 +23,13 @@ export const pathList = {
     }
 }
 
+<<<<<<< HEAD
 export default [
     {
         path: pathList.CREATOR_CATEGORY.path,
         component: CategoryCreator
     }
 ]
+=======
+export default []
+>>>>>>> master
