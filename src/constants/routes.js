@@ -19,6 +19,6 @@ export const pathList = {
 export default [
     {
         component: Category,
-        path: pathList.BLOG_CATEGORIES
+        path: pathList.BLOG_CATEGORIES.path
     }
 ]

@@ -46,7 +46,7 @@ const PostTile = ({ cover, title, summary, link }) => (
                     <Typography gutterBottom variant="h5" component="h2">
                         {title}
                     </Typography>
-                    <Typography noWrap variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p">
                         {summary}
                     </Typography>
                 </StyledCardContent>
