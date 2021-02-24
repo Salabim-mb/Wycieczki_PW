@@ -5,14 +5,18 @@ import { useQuery } from 'react-query';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
-import Container from '@material-ui/core/Container';
 import { Alert } from '@material-ui/lab';
 import paths from 'constants/api';
+import CenteredContainer from 'components/CenteredContainer'
 
 const StyledForm = styled.form`
     display:flex;
     flex-direction: column;
     justify-content: center;
+
+    @media (min-width: 1024px){
+        width: 50%;
+    }
 `;
 
 const CategoryCreator = () => {
@@ -81,7 +85,7 @@ const CategoryCreator = () => {
 
 
     return (
-        <Container>
+        <CenteredContainer>
             <h2>Dodaj kategorię</h2>
             <StyledForm onSubmit={formik.handleSubmit}>
                 <Input id="title" placeholder="Tytuł" type="text" value={formik.values.title} onChange={event => {
@@ -116,7 +120,7 @@ const CategoryCreator = () => {
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>
 
-        </Container>
+        </CenteredContainer>
     )
 }
 
