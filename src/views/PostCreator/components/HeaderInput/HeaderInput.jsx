@@ -28,7 +28,7 @@ const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 				label="Link do filmu yt"
 				variant="outlined"
 				value={typeof header === 'string' && !header?.includes(paths.PLAIN) ? header : FILE_LABEL}
-				inputProps={{ minLength: 1, maxLength: 120 }}
+				inputProps={{ minLength: 1, maxLength: 120, 'data-testid': 'test-id' }}
 				onChange={handleChangeLink}
 			/>
 			{error && <Alert severity="error">{error}</Alert>}
