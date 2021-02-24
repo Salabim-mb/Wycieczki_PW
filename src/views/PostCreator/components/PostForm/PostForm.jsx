@@ -12,14 +12,13 @@ import {
 	useImageDeletion,
 } from 'views/PostCreator/PostCreator.hooks';
 import paths from 'constants/api';
-import { Input } from 'components';
+import { Input, UploadButton } from 'components';
 import {
 	TopicSelector,
 	AttachmentsList,
 	PostTilePreview,
 	HeaderPreview,
 	HeaderInput,
-	UploadButton,
 	PostEditor,
 } from '..';
 import { validate } from './PostForm.utils';
@@ -50,7 +49,7 @@ const PostForm = ({ post, id }) => {
 	const imageDeletion = useImageDeletion('');
 
 	useEffect(() => {
-		if (post.reservation) {
+		if (post?.reservation) {
 			setAttachments(post?.downloadables);
 			setPrevAttachments(post?.downloadables);
 			setImages(
@@ -133,6 +132,7 @@ const PostForm = ({ post, id }) => {
 			<Box my={2}>
 				<Input
 					fullWidth
+					id="title"
 					inputProps={{ minLength: 1, maxLength: 120 }}
 					value={formik.values.title}
 					handleChange={e => formik.setFieldValue('title', e.target.value)}
@@ -212,7 +212,7 @@ PostForm.propTypes = {
 };
 
 PostForm.defaultProps = {
-	post: { reservation: 0, cover: '', title: '', content: '' },
+	post: null,
 	id: null,
 };
 

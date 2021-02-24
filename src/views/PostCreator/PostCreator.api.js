@@ -98,8 +98,6 @@ export const deleteAttachment = async (token, id, isImage) => {
 
 	const response = await fetch(url, { headers, method: 'DELETE' });
 
-	console.log(response);
-
 	if (response.status !== 204) {
 		throw new Error('');
 	}
@@ -118,8 +116,6 @@ export const deleteAttachments = async (token, files) => {
 			e => !files.attachments.some(item => item.id === e.id),
 		);
 	}
-
-	console.log(imagesToDelete, attachmentsToDelete);
 
 	await Promise.all(imagesToDelete.map(({ id }) => deleteAttachment(token, id, true)));
 
@@ -161,13 +157,9 @@ export const getReservation = async id => {
 export const getTopics = async () => {
 	const url = `${paths.BLOG_TOPICS}`;
 
-	console.log(url);
-
 	const headers = {};
 
 	const response = await fetch(url, { headers, method: 'GET' });
-
-	console.log(response);
 
 	if (response.status !== 200) {
 		throw new Error('błąd');

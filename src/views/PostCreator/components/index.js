@@ -5,5 +5,4 @@ export { default as AttachmentsList } from './AttachmentsList';
 export { default as PostTilePreview } from './PostTilePreview';
 export { default as HeaderPreview } from './HeaderPreview';
 export { default as HeaderInput } from './HeaderInput';
-export { default as UploadButton } from './UploadButton';
 export { default as PostEditor } from './PostEditor';
