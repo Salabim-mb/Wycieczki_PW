@@ -7,7 +7,7 @@ const BLOG_POST = `${BLOG}post/`;
 
 const paths = {
     BLOG,
-    BLOGS: `${domain}/blogs/`,
+    BLOGS: `${BLOG}blogs/`,
     BLOG_TOPIC,
     BLOG_TOPICS: `${BLOG}topics/`,
     BLOG_RESERVATION,

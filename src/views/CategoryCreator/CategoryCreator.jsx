@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik';
-// import { useQuery } from 'react-query';
-import TextField from '@material-ui/core/TextField';
+import { useQuery } from 'react-query';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
+import Select from '@material-ui/core/Select';
 import Container from '@material-ui/core/Container';
 import paths from 'constants/api';
 
@@ -16,6 +16,24 @@ const StyledForm = styled.form`
 
 const CategoryCreator = () => {
     // const { isLoading, isError, error, data } = useQuery('title', formik.onSubmit);
+
+    const getBlogs = async () => {
+        const url = `${paths.BLOGS}`;
+
+        const headers = {
+            'Content-Type': 'application/json',
+        };
+
+        const response = await fetch(url, { headers, method: 'GET' });
+
+        if (response.status !== 200) {
+            throw new Error('błąd');
+        }
+
+        return response.json();
+    }
+
+    const { data } = useQuery('blogs', getBlogs)
 
     const formik = useFormik({
         initialValues: {
@@ -49,19 +67,29 @@ const CategoryCreator = () => {
         },
     });
 
+
     return (
         <Container>
             <h2>Dodaj kategorię</h2>
             <StyledForm onSubmit={formik.handleSubmit}>
-                <TextField id="title" label="Tytuł" type="text" value={formik.values.title} onChange={event => {
+                <Input required id="title" placeholder="Tytuł" type="text" inputProps={{ maxLength: 100 }} value={formik.values.title} onChange={event => {
                     formik.setFieldValue('title', event.target.value);
                 }} />
-                <TextField id="description" label="Opis" type="text" value={formik.values.description} onChange={event => {
+                <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={event => {
                     formik.setFieldValue('description', event.target.value);
                 }} />
-                <TextField id="blog" label="id bloga (potem bedzie tu select)" type="number" value={formik.values.blog} onChange={event => {
+                {/* <Input required id="blog" placeholder="id bloga (potem bedzie tu select)" type="number" value={formik.values.blog} onChange={event => {
                     formik.setFieldValue('blog', event.target.value);
-                }} />
+                }} /> */}
+                <Select
+                    native
+                    value={formik.values.blog}
+                    onChange={event => { formik.setFieldValue('blog', event.target.value); }}
+                >
+                    {data?.map((blog) => (
+                        <option key={blog.id} value={blog.id}>{blog.title}</option>
+                    ))}
+                </Select>
                 <Input id="cover_image"
                     name="cover_image"
                     type="file" onChange={event => {
