@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import CategoryCreator from 'views/CategoryCreator/CategoryCreator';
-=======
->>>>>>> master
 
 export const pathList = {
     DASHBOARD: {
@@ -23,13 +20,9 @@ export const pathList = {
     }
 }
 
-<<<<<<< HEAD
 export default [
     {
         path: pathList.CREATOR_CATEGORY.path,
         component: CategoryCreator
     }
 ]
-=======
-export default []
->>>>>>> master
