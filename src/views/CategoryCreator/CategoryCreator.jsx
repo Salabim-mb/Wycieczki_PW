@@ -15,8 +15,6 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-    // const { isLoading, isError, error, data } = useQuery('title', formik.onSubmit);
-
     const getBlogs = async () => {
         const url = `${paths.BLOGS}`;
 
@@ -44,7 +42,6 @@ const CategoryCreator = () => {
             header_image: ''
         },
         onSubmit: () => {
-            // console.log(isLoading, isError, error, data)
             const formData = new FormData();
             formData.append('cover_image', formik.values.cover_image);
             formData.append('header_image', formik.values.header_image);
@@ -78,9 +75,6 @@ const CategoryCreator = () => {
                 <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={event => {
                     formik.setFieldValue('description', event.target.value);
                 }} />
-                {/* <Input required id="blog" placeholder="id bloga (potem bedzie tu select)" type="number" value={formik.values.blog} onChange={event => {
-                    formik.setFieldValue('blog', event.target.value);
-                }} /> */}
                 <Select
                     native
                     value={formik.values.blog}
