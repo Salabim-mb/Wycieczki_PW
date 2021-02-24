@@ -5,6 +5,7 @@ import {
 	getTopics,
 	deleteAttachments,
 	deleteAttachment,
+	getPost,
 } from 'views/PostCreator/PostCreator.api';
 
 export const usePostMutation = (token, prevId) =>
@@ -14,3 +15,4 @@ export const useAttachmentsMutation = token =>
 export const useTopicsQuery = () => useQuery('topics', getTopics);
 export const useFileDeletion = token => useMutation(data => deleteAttachments(token, data));
 export const useImageDeletion = token => useMutation(data => deleteAttachment(token, data, true));
+export const usePostQuery = id => useQuery('post', () => getPost('', id));

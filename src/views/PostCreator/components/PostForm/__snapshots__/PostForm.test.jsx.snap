@@ -1,0 +1,990 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostForm should match snapshot 1`] = `
+<div>
+  <form>
+    <label
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        <span
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="3.2"
+            />
+            <path
+              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+            />
+          </svg>
+        </span>
+        Prześlij cover
+        <input
+          accept="image/*"
+          hidden=""
+          id="cover"
+          name="cover"
+          type="file"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </label>
+    
+    <div
+      class="MuiFormGroup-root"
+      my="2"
+    >
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij nagłówek
+          <input
+            accept="image/*"
+            hidden=""
+            id="headerFile"
+            name="headerFile"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+        my="2"
+      >
+        lub
+      </p>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+          for="headerLink"
+          id="headerLink-label"
+        >
+          Link do filmu yt
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="test-id"
+            id="headerLink"
+            maxlength="120"
+            minlength="1"
+            name="headerLink"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-3"
+            >
+              <span>
+                Link do filmu yt
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      
+    </div>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="topicSelector select"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        id="select"
+        role="button"
+        tabindex="0"
+      >
+        Wybierz temat
+      </div>
+      <input
+        aria-hidden="true"
+        class="MuiSelect-nativeInput"
+        tabindex="-1"
+        value="-1"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-5"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Tytuł posta
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            maxlength="120"
+            minlength="1"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-3"
+            >
+              <span>
+                Tytuł posta
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      
+    </div>
+    <div
+      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-controls="panel1a-content"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root"
+        id="panel1a-header"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Podgląd kafelka posta
+          </p>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-hidden="true"
+          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-container MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              aria-labelledby="panel1a-header"
+              id="panel1a-content"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root"
+              >
+                <div
+                  class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+                >
+                  <div
+                    class="sc-gsTCUz gNcPtD"
+                  >
+                    
+                    <a
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiCardActionArea-root"
+                      href="/"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiCardContent-root sc-dlfnbm kNYplF"
+                      >
+                        <h2
+                          class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+                        />
+                        <p
+                          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+                        />
+                      </div>
+                      <span
+                        class="MuiCardActionArea-focusHighlight"
+                      />
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    class="MuiCardActions-root MuiCardActions-spacing"
+                  >
+                    <a
+                      aria-disabled="true"
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+                      href="/"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Czytaj dalej
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-controls="panel1a-content"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root"
+        id="panel1a-header"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Podgląd nagłówka posta
+          </p>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-hidden="true"
+          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-container MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              aria-labelledby="panel1a-header"
+              id="panel1a-content"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div />
+    <div
+      class="MuiBox-root MuiBox-root-6"
+    >
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"
+              />
+            </svg>
+          </span>
+          Dodaj załącznik do posta
+          <input
+            hidden=""
+            id="attachments"
+            name="attachments"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+    </div>
+    <ul
+      class="MuiList-root MuiList-padding"
+    />
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      tabindex="0"
+      type="submit"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Prześlij post
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </form>
+</div>
+`;
+
+exports[`PostForm should match snapshot 2`] = `
+<div>
+  <form>
+    <label
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        <span
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="3.2"
+            />
+            <path
+              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+            />
+          </svg>
+        </span>
+        Prześlij cover
+        <input
+          accept="image/*"
+          hidden=""
+          id="cover"
+          name="cover"
+          type="file"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </label>
+    
+    <div
+      class="MuiFormGroup-root"
+      my="2"
+    >
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij nagłówek
+          <input
+            accept="image/*"
+            hidden=""
+            id="headerFile"
+            name="headerFile"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+        my="2"
+      >
+        lub
+      </p>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+          for="headerLink"
+          id="headerLink-label"
+        >
+          Link do filmu yt
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="test-id"
+            id="headerLink"
+            maxlength="120"
+            minlength="1"
+            name="headerLink"
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-9"
+            >
+              <span>
+                Link do filmu yt
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      
+    </div>
+    <div
+      class="MuiInputBase-root MuiInput-root MuiInput-underline"
+    >
+      <div
+        aria-haspopup="listbox"
+        aria-labelledby="topicSelector select"
+        class="MuiSelect-root MuiSelect-select MuiSelect-selectMenu MuiInputBase-input MuiInput-input"
+        id="select"
+        role="button"
+        tabindex="0"
+      >
+        Wybierz temat
+      </div>
+      <input
+        aria-hidden="true"
+        class="MuiSelect-nativeInput"
+        tabindex="-1"
+        value="-1"
+      />
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root MuiSelect-icon"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M7 10l5 5 5-5z"
+        />
+      </svg>
+    </div>
+    <div
+      class="MuiBox-root MuiBox-root-11"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+          data-shrink="true"
+        >
+          Tytuł posta
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            maxlength="120"
+            minlength="1"
+            type="text"
+            value="Sport"
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-9 PrivateNotchedOutline-legendNotched-10"
+            >
+              <span>
+                Tytuł posta
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+      </div>
+      
+    </div>
+    <div
+      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-controls="panel1a-content"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root"
+        id="panel1a-header"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Podgląd kafelka posta
+          </p>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-hidden="true"
+          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-container MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              aria-labelledby="panel1a-header"
+              id="panel1a-content"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root"
+              >
+                <div
+                  class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+                >
+                  <div
+                    class="sc-gsTCUz gNcPtD"
+                  >
+                    <div
+                      class="MuiCardMedia-root sc-bdfBwQ ccOfbC"
+                      style="background-image: url(https://wut-vtrips.herokuapp.com);"
+                      title="Sport"
+                    />
+                    <a
+                      aria-disabled="false"
+                      class="MuiButtonBase-root MuiCardActionArea-root"
+                      href="/"
+                      role="button"
+                      tabindex="0"
+                    >
+                      <div
+                        class="MuiCardContent-root sc-dlfnbm kNYplF"
+                      >
+                        <h2
+                          class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+                        >
+                          Sport
+                        </h2>
+                        <p
+                          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+                        >
+                          aaa
+                        </p>
+                      </div>
+                      <span
+                        class="MuiCardActionArea-focusHighlight"
+                      />
+                      <span
+                        class="MuiTouchRipple-root"
+                      />
+                    </a>
+                  </div>
+                  <div
+                    class="MuiCardActions-root MuiCardActions-spacing"
+                  >
+                    <a
+                      aria-disabled="true"
+                      class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall Mui-disabled Mui-disabled"
+                      href="/"
+                      role="button"
+                      tabindex="-1"
+                    >
+                      <span
+                        class="MuiButton-label"
+                      >
+                        Czytaj dalej
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        aria-controls="panel1a-content"
+        aria-disabled="false"
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root"
+        id="panel1a-header"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1"
+          >
+            Podgląd nagłówka posta
+          </p>
+        </div>
+        <div
+          aria-disabled="false"
+          aria-hidden="true"
+          class="MuiButtonBase-root MuiIconButton-root MuiAccordionSummary-expandIcon MuiIconButton-edgeEnd"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-container MuiCollapse-hidden"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner"
+          >
+            <div
+              aria-labelledby="panel1a-header"
+              id="panel1a-content"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div />
+    <div
+      class="MuiBox-root MuiBox-root-12"
+    >
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"
+              />
+            </svg>
+          </span>
+          Dodaj załącznik do posta
+          <input
+            hidden=""
+            id="attachments"
+            name="attachments"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+    </div>
+    <ul
+      class="MuiList-root MuiList-padding"
+    >
+      <li
+        class="MuiListItem-container"
+      >
+        <div
+          class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+        >
+          <div
+            class="MuiListItemAvatar-root"
+          >
+            <div
+              class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M2 12.5C2 9.46 4.46 7 7.5 7H18c2.21 0 4 1.79 4 4s-1.79 4-4 4H9.5C8.12 15 7 13.88 7 12.5S8.12 10 9.5 10H17v2H9.41c-.55 0-.55 1 0 1H18c1.1 0 2-.9 2-2s-.9-2-2-2H7.5C5.57 9 4 10.57 4 12.5S5.57 16 7.5 16H17v2H7.5C4.46 18 2 15.54 2 12.5z"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="MuiListItemText-root"
+          >
+            <span
+              class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+            >
+              <a
+                href="https://wut-vtrips.herokuapp.comxd"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Załącznik 1
+              </a>
+            </span>
+          </div>
+        </div>
+        <div
+          class="MuiListItemSecondaryAction-root"
+          data-testid="deleteIcon31"
+        >
+          <button
+            aria-label="delete"
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+      </li>
+    </ul>
+    <button
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+      tabindex="0"
+      type="submit"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        Prześlij post
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </form>
+</div>
+`;

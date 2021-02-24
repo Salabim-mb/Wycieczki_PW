@@ -1,15 +1,15 @@
 import React from 'react';
-import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import { AlertInfo } from 'components';
 import { Container, Card, CardHeader, CardContent } from '@material-ui/core';
-import { getPost } from './PostCreator.api';
+
 import { PostForm } from './components';
+import { usePostQuery } from './PostCreator.hooks';
 
 const PostCreator = () => {
 	const { id } = useParams();
 
-	const { isLoading, isError, error, data } = useQuery('post', () => getPost('', id));
+	const { isLoading, isError, error, data } = usePostQuery(id);
 
 	return (
 		<Container>
