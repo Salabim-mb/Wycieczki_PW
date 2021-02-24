@@ -1,5 +1,6 @@
 import Blog from 'views/Blog'
 
+
 export const pathList = {
     DASHBOARD: {
         name: "Strona główna",
@@ -12,7 +13,6 @@ export const pathList = {
     BLOG_CATEGORIES: {
         name: "Kategorie",
         path: "/blog/:category",
-        redirect: (newCategory) => `/blog/${newCategory}`,
     },
     BLOG_ENTRY: {
         name: "Wpis",
@@ -26,3 +26,4 @@ export default [
         component: Blog
     }
 ]
+
