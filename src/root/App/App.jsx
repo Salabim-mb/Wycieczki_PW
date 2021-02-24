@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Link } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Router from 'root/Router';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
@@ -16,12 +16,6 @@ const App = () => (
 			<AlertProvider>
 				<BrowserRouter>
 					<Router />
-
-					<Link to={{
-						pathname: '/blog/liceum',
-						categoryProps: { id: 1 }
-					}}>XDDDDD</Link>
-
 				</BrowserRouter>
 			</AlertProvider>
 		</QueryClientProvider>
