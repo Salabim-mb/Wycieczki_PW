@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostTile should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="sc-gsTCUz bYlABT"
+    >
+      <div
+        class="MuiCardMedia-root sc-bdfBwQ EpHKn"
+        style="background-image: url(logo.svg);"
+        title="Geometria przestrzenna"
+      />
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiCardActionArea-root"
+        href="/liceum/kolorowanki/1"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiCardContent-root sc-dlfnbm CbfuR"
+        >
+          <h2
+            class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+          >
+            Geometria przestrzenna
+          </h2>
+          <p
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          />
+        </div>
+        <span
+          class="MuiCardActionArea-focusHighlight"
+        />
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+    </div>
+    <div
+      class="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+        href="/liceum/kolorowanki/1"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Czytaj dalej
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
