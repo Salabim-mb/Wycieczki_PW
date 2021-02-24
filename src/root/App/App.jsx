@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import GlobalStyle from 'style/GlobalStyle';
-
 import { AlertProvider } from 'context/AlertContext';
 
 const queryClient = new QueryClient();

@@ -112,7 +112,12 @@ const PostForm = ({ post, id }) => {
 			errors.content = 'Treść posta jest wymagana.';
 		}
 
-		if (values.header && typeof values.header === 'string' && isYoutubeLink(values.header)) {
+		if (
+			values.header &&
+			typeof values.header === 'string' &&
+			!values.header.includes(paths.PLAIN) &&
+			!isYoutubeLink(values.header)
+		) {
 			errors.header = 'Nieprawidłowy link yt';
 		}
 		return errors;
@@ -145,13 +150,12 @@ const PostForm = ({ post, id }) => {
 
 			await attachmentsMutation.mutateAsync({ attachments, reservation });
 
-			await postMutation.mutateAsync({ reservation, ...values });
+			await postMutation.mutateAsync(
+				{ reservation, ...values },
+				{ onSuccess: () => history.push(`/blog/${formik.values.topic}/${reservation}`) },
+			);
 		},
 	});
-
-	if (postMutation.isSuccess && fileDeletion.isSuccess && attachmentsMutation.isSuccess) {
-		history.push(`/blog/${formik.values.topic}/${reservation}`);
-	}
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
@@ -205,7 +209,11 @@ const PostForm = ({ post, id }) => {
 					<Alert severity="error">{formik.errors.title}</Alert>
 				)}
 			</Box>
-			<PostTilePreview />
+			<PostTilePreview
+				cover={formik.values.cover}
+				title={formik.values.title}
+				summary={formik.values.content.substring(0, 100)}
+			/>
 			<HeaderPreview header={formik.values.header} />
 			<CKEditor
 				config={{
