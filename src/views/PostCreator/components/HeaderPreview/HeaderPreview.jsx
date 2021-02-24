@@ -11,14 +11,14 @@ const HeaderPreview = ({ header }) => {
 		if (header) {
 			if (typeof header === 'string') {
 				if (header.includes(paths.PLAIN)) {
-					return <StyledImage src={header} />;
+					return <StyledImage data-testid="header" src={header} />;
 				}
 				if (isYoutubeLink(header)) {
 					return header;
 				}
 				return null;
 			}
-			return <StyledImage src={URL.createObjectURL(header)} />;
+			return <StyledImage data-testid="header" src={URL.createObjectURL(header)} />;
 		}
 		return null;
 	}, [header]);

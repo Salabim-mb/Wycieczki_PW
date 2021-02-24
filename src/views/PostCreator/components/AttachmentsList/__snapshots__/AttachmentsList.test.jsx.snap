@@ -41,7 +41,7 @@ exports[`AttachmentsList should match snapshot 1`] = `
       </div>
       <div
         class="MuiListItemSecondaryAction-root"
-        data-testid="deleteIcon0"
+        data-testid="deleteIconabc"
       >
         <button
           aria-label="delete"

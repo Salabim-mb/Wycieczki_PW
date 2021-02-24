@@ -14,14 +14,10 @@ import paths from 'constants/api';
 
 const AttachmentsList = ({ attachments, setAttachments }) => {
 	const handleDeleteItem = id => {
-		let newAttachments = [...attachments];
+		const newAttachments = [...attachments];
 
 		const index = newAttachments.findIndex(attachment => attachment.id === id);
 		newAttachments.splice(index, 1);
-		newAttachments = newAttachments.map(attachment => ({
-			...attachment,
-			id: attachment.file_url ? attachment.id : Math.random().toString(36).substr(2, 9),
-		}));
 		setAttachments(newAttachments);
 	};
 

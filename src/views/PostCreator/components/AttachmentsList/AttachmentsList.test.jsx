@@ -7,7 +7,7 @@ describe('AttachmentsList', () => {
 
 	beforeEach(() => {
 		props = {
-			attachments: [{ id: 0, file: { name: 'attachment.jpg' } }],
+			attachments: [{ id: 'abc', file: { name: 'attachment.jpg' } }],
 			setAttachments: jest.fn(),
 		};
 	});
@@ -20,17 +20,19 @@ describe('AttachmentsList', () => {
 
 	it('should delete item', () => {
 		props.attachments = [
-			{ id: 0, file: { name: 'attachment.jpg' } },
-			{ id: 1, file: { name: 'attachment2.jpg' } },
-			{ id: 2, file: { name: 'attachment3.jpg' } },
+			{ id: 'a', file: { name: 'attachment.jpg' } },
+			{ id: 'b', file: { name: 'attachment2.jpg' } },
+			{ id: 'c', file: { name: 'attachment3.jpg' } },
+			{ id: 3, file_url: '/link', reservation: 1 },
 		];
 		const { getByTestId } = render(<AttachmentsList {...props} />);
 
-		fireEvent.click(getByTestId('deleteIcon1'));
+		fireEvent.click(getByTestId('deleteIconb'));
 
 		expect(props.setAttachments).toHaveBeenCalledWith([
-			{ id: 0, file: { name: 'attachment.jpg' } },
-			{ id: 1, file: { name: 'attachment3.jpg' } },
+			{ id: 'a', file: { name: 'attachment.jpg' } },
+			{ id: 'c', file: { name: 'attachment3.jpg' } },
+			{ id: 3, file_url: '/link', reservation: 1 },
 		]);
 	});
 });
