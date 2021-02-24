@@ -17,7 +17,6 @@ import {
 import paths from 'constants/api';
 import { reserveSpace } from 'views/PostCreator/PostCreator.api';
 import { AlertInfo } from 'components';
-import { isYoutubeLink } from 'utils/helpers';
 import {
 	ImageAdapter,
 	TopicSelector,
@@ -25,7 +24,9 @@ import {
 	PostTilePreview,
 	HeaderPreview,
 	HeaderInput,
+	UploadButton,
 } from '..';
+import { validate } from './PostForm.utils';
 
 /* eslint-disable no-param-reassign */
 
@@ -95,34 +96,6 @@ const PostForm = ({ post, id }) => {
 		getId();
 	}
 
-	const validate = values => {
-		const errors = {};
-
-		if (!values.cover) {
-			errors.cover = 'Cover zdjęcia (zdjęcie w kafelku) jest wymagany.';
-		}
-		if (!values.title) {
-			errors.title = 'Tytuł jest wymagany.';
-		}
-		if (values.topic === -1) {
-			errors.topic = 'Temat posta jest wymagany.';
-		}
-
-		if (!values.content) {
-			errors.content = 'Treść posta jest wymagana.';
-		}
-
-		if (
-			values.header &&
-			typeof values.header === 'string' &&
-			!values.header.includes(paths.PLAIN) &&
-			!isYoutubeLink(values.header)
-		) {
-			errors.header = 'Nieprawidłowy link yt';
-		}
-		return errors;
-	};
-
 	const formik = useFormik({
 		initialValues: {
 			header: post?.header || null,
@@ -159,22 +132,16 @@ const PostForm = ({ post, id }) => {
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
-			<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
-				Prześlij cover
-				<input
-					id="cover"
-					name="cover"
-					type="file"
-					accept="image/*"
-					hidden
-					onChange={event => {
-						formik.setFieldValue('cover', event.currentTarget.files[0]);
-					}}
-				/>
-			</Button>
-			{formik.touched.cover && formik.errors.cover && (
-				<Alert severity="error">{formik.errors.cover}</Alert>
-			)}
+			<UploadButton
+				header="Prześlij cover"
+				id="cover"
+				accept="image/*"
+				icon={<PhotoCamera />}
+				handleChange={event => {
+					formik.setFieldValue('cover', event.currentTarget.files[0]);
+				}}
+				error={formik.touched.cover && formik.errors.cover ? formik.errors.cover : ''}
+			/>
 			<HeaderInput
 				handleChangeFile={event => {
 					formik.setFieldValue('header', event.currentTarget.files[0]);
@@ -230,30 +197,20 @@ const PostForm = ({ post, id }) => {
 				<Alert severity="error">{formik.errors.content}</Alert>
 			)}
 			<Box my={2}>
-				<Button
-					variant="contained"
-					my={2}
-					component="label"
-					color="default"
-					startIcon={<CloudUpload />}
-				>
-					Dodaj załącznik do posta
-					<input
-						id="header"
-						name="header"
-						type="file"
-						hidden
-						onChange={event => {
-							setAttachments(prevAttachmentsArr => [
-								...prevAttachmentsArr,
-								{
-									id: Math.random().toString(36).substr(2, 9),
-									file: event.currentTarget.files[0],
-								},
-							]);
-						}}
-					/>
-				</Button>
+				<UploadButton
+					header="Dodaj załącznik do posta"
+					id="attachments"
+					icon={<CloudUpload />}
+					handleChange={event => {
+						setAttachments(prevAttachmentsArr => [
+							...prevAttachmentsArr,
+							{
+								id: Math.random().toString(36).substr(2, 9),
+								file: event.currentTarget.files[0],
+							},
+						]);
+					}}
+				/>
 			</Box>
 			<AttachmentsList attachments={attachments} setAttachments={setAttachments} />
 			<AlertInfo isError={error} isLoading={loading} error={error} />
