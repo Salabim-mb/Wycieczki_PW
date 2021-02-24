@@ -6,6 +6,7 @@ import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import Container from '@material-ui/core/Container';
+import { Alert } from '@material-ui/lab';
 import paths from 'constants/api';
 
 const StyledForm = styled.form`
@@ -31,7 +32,7 @@ const CategoryCreator = () => {
         return response.json();
     }
 
-    const { data } = useQuery('blogs', getBlogs)
+    const { data, isError } = useQuery('blogs', getBlogs)
 
     const formik = useFormik({
         initialValues: {
@@ -62,6 +63,20 @@ const CategoryCreator = () => {
                     console.error('Error:', err);
                 });
         },
+        validate: (values) => {
+            const errors = {};
+
+            if (!values.title) {
+                errors.title = 'Required';
+            } else if (values.title.length > 100) {
+                errors.title = 'Too long';
+            }
+            if (!values.blog) {
+                errors.blog = 'Required';
+            }
+
+            return errors;
+        }
     });
 
 
@@ -69,9 +84,10 @@ const CategoryCreator = () => {
         <Container>
             <h2>Dodaj kategorię</h2>
             <StyledForm onSubmit={formik.handleSubmit}>
-                <Input required id="title" placeholder="Tytuł" type="text" inputProps={{ maxLength: 100 }} value={formik.values.title} onChange={event => {
+                <Input id="title" placeholder="Tytuł" type="text" value={formik.values.title} onChange={event => {
                     formik.setFieldValue('title', event.target.value);
                 }} />
+                {formik.touched.title && formik.errors.title && (<Alert severity="error">Nie może być puste i dłuższe niż 100 znaków</Alert>)}
                 <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={event => {
                     formik.setFieldValue('description', event.target.value);
                 }} />
@@ -80,10 +96,12 @@ const CategoryCreator = () => {
                     value={formik.values.blog}
                     onChange={event => { formik.setFieldValue('blog', event.target.value); }}
                 >
-                    {data?.map((blog) => (
+                    <option value="" selected>-----------</option>
+                    {isError ? <option value="">Nie udało się pobrać blogów</option> : data?.map((blog) => (
                         <option key={blog.id} value={blog.id}>{blog.title}</option>
                     ))}
                 </Select>
+                {formik.touched.blog && formik.errors.blog && (<Alert severity="error">Nie może być puste.</Alert>)}
                 <Input id="cover_image"
                     name="cover_image"
                     type="file" onChange={event => {
