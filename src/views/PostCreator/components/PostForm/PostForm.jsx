@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './ckeditor.css';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { useHistory } from 'react-router-dom';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { TextField, Button, Box } from '@material-ui/core';
+import { Button, Box } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { useFormik } from 'formik';
 import { PhotoCamera, CloudUpload } from '@material-ui/icons';
@@ -15,16 +12,15 @@ import {
 	useImageDeletion,
 } from 'views/PostCreator/PostCreator.hooks';
 import paths from 'constants/api';
-import { reserveSpace } from 'views/PostCreator/PostCreator.api';
-import { AlertInfo } from 'components';
+import { Input } from 'components';
 import {
-	ImageAdapter,
 	TopicSelector,
 	AttachmentsList,
 	PostTilePreview,
 	HeaderPreview,
 	HeaderInput,
 	UploadButton,
+	PostEditor,
 } from '..';
 import { validate } from './PostForm.utils';
 
@@ -45,9 +41,6 @@ const PostForm = ({ post, id }) => {
 	const [prevCover, setPrevCover] = useState(undefined);
 	const [prevHeader, setPrevHeader] = useState(undefined);
 	const [prevAttachments, setPrevAttachments] = useState([]);
-
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState(false);
 
 	const history = useHistory();
 
@@ -71,30 +64,6 @@ const PostForm = ({ post, id }) => {
 			setPrevCover(post?.images?.find(cover => cover.is_cover));
 		}
 	}, [post]);
-
-	function MyCustomUploadAdapterPlugin(editor) {
-		// adapter for images
-		const getId = async () => {
-			let response;
-			if (!reservation) {
-				setLoading(true);
-				try {
-					response = await reserveSpace('');
-					setReservation(response.id);
-
-					/* eslint-disable arrow-body-style */
-				} catch (err) {
-					setError(err.message);
-				}
-				setLoading(false);
-			}
-			editor.plugins.get('FileRepository').createUploadAdapter = loader => {
-				return new ImageAdapter(loader, reservation || response.id, '', setImages);
-			};
-		};
-
-		getId();
-	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -162,19 +131,14 @@ const PostForm = ({ post, id }) => {
 				<Alert severity="error">{formik.errors.topic}</Alert>
 			)}
 			<Box my={2}>
-				<TextField
+				<Input
 					fullWidth
-					id="title"
-					name="title"
-					label="Tytuł posta"
-					variant="outlined"
-					value={formik.values.title}
 					inputProps={{ minLength: 1, maxLength: 120 }}
-					onChange={formik.handleChange}
+					value={formik.values.title}
+					handleChange={e => formik.setFieldValue('title', e.target.value)}
+					label="Tytuł posta"
+					error={formik.touched?.title && formik.error?.title ? formik.error.title : ''}
 				/>
-				{formik.touched.title && formik.errors.title && (
-					<Alert severity="error">{formik.errors.title}</Alert>
-				)}
 			</Box>
 			<PostTilePreview
 				cover={formik.values.cover}
@@ -182,20 +146,18 @@ const PostForm = ({ post, id }) => {
 				summary={formik.values.content.substring(0, 100)}
 			/>
 			<HeaderPreview header={formik.values.header} />
-			<CKEditor
-				config={{
-					language: 'pl',
-					extraPlugins: [MyCustomUploadAdapterPlugin],
-				}}
-				onChange={(e, editor) => {
+			<PostEditor
+				setReservation={setReservation}
+				handleChange={(e, editor) => {
 					formik.setFieldValue('content', editor.getData());
 				}}
-				editor={ClassicEditor}
-				data={formik.values.content}
+				setImages={setImages}
+				reservation={reservation}
+				content={formik.values.content}
+				errorValidaiton={
+					formik.touched?.content && formik.error?.content ? formik.error?.content : ''
+				}
 			/>
-			{formik.touched.content && formik.errors.content && (
-				<Alert severity="error">{formik.errors.content}</Alert>
-			)}
 			<Box my={2}>
 				<UploadButton
 					header="Dodaj załącznik do posta"
@@ -213,7 +175,6 @@ const PostForm = ({ post, id }) => {
 				/>
 			</Box>
 			<AttachmentsList attachments={attachments} setAttachments={setAttachments} />
-			<AlertInfo isError={error} isLoading={loading} error={error} />
 			<Button type="submit" variant="contained" color="primary">
 				Prześlij post
 			</Button>
