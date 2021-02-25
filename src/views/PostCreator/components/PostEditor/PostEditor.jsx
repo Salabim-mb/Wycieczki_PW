@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ImageAdapter } from 'views/PostCreator/components';
@@ -59,4 +60,19 @@ const PostEditor = ({
 		</>
 	);
 };
+
+PostEditor.propTypes = {
+	setReservation: PropTypes.func.isRequired,
+	reservation: PropTypes.number,
+	setImages: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	content: PropTypes.string.isRequired,
+	errorValidation: PropTypes.string,
+};
+
+PostEditor.defaultProps = {
+	reservation: null,
+	errorValidation: null,
+};
+
 export default PostEditor;
