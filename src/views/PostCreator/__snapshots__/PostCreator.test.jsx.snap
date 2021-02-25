@@ -32,3 +32,36 @@ exports[`PostCreator should match snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`PostCreator should work withoud data 1`] = `
+<div>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiCardHeader-root"
+      >
+        <div
+          class="MuiCardHeader-content"
+        >
+          <span
+            class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+          >
+            Stwórz wpis
+          </span>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root"
+      >
+        <div>
+          formularz cały
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -172,6 +172,7 @@ exports[`PostForm should match snapshot 1`] = `
     >
       <div
         class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
@@ -187,6 +188,8 @@ exports[`PostForm should match snapshot 1`] = `
             class="MuiInputBase-input MuiOutlinedInput-input"
             maxlength="120"
             minlength="1"
+            name="title"
+            placeholder=""
             type="text"
             value=""
           />
@@ -203,8 +206,8 @@ exports[`PostForm should match snapshot 1`] = `
             </legend>
           </fieldset>
         </div>
+        
       </div>
-      
     </div>
     <div
       class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"
@@ -627,6 +630,7 @@ exports[`PostForm should match snapshot 2`] = `
     >
       <div
         class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
@@ -642,6 +646,8 @@ exports[`PostForm should match snapshot 2`] = `
             class="MuiInputBase-input MuiOutlinedInput-input"
             maxlength="120"
             minlength="1"
+            name="title"
+            placeholder=""
             type="text"
             value="Sport"
           />
@@ -658,8 +664,8 @@ exports[`PostForm should match snapshot 2`] = `
             </legend>
           </fieldset>
         </div>
+        
       </div>
-      
     </div>
     <div
       class="MuiPaper-root MuiAccordion-root MuiAccordion-rounded MuiPaper-elevation1 MuiPaper-rounded"

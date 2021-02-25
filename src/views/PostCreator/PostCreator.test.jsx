@@ -23,8 +23,10 @@ jest.mock('react-router-dom', () => ({
 describe('PostCreator', () => {
 	beforeEach(() => {
 		jest.clearAllMocks();
+	});
 
-		usePostQuery.mockImplementation(() => ({
+	it('should match snapshot', async () => {
+		usePostQuery.mockImplementationOnce(() => ({
 			isSuccess: true,
 			data: {
 				content: 'aaa',
@@ -39,9 +41,22 @@ describe('PostCreator', () => {
 			isError: false,
 			isLoading: false,
 		}));
+		const { container } = render(
+			<MemoryRouter>
+				<PostCreator />
+			</MemoryRouter>,
+		);
+
+		expect(container).toMatchSnapshot();
 	});
 
-	it('should match snapshot', async () => {
+	it('should work withoud data', async () => {
+		usePostQuery.mockImplementationOnce(() => ({
+			isSuccess: true,
+			data: {},
+			isError: false,
+			isLoading: false,
+		}));
 		const { container } = render(
 			<MemoryRouter>
 				<PostCreator />

@@ -12,7 +12,8 @@ export const usePostMutation = (token, prevId) =>
 	useMutation(postData => sendPost(token, postData, prevId));
 export const useAttachmentsMutation = token =>
 	useMutation(attachmentList => sendAttachments(token, attachmentList));
-export const useTopicsQuery = () => useQuery('topics', getTopics);
+export const useTopicsQuery = () => useQuery('topics', getTopics, { retry: false });
 export const useFileDeletion = token => useMutation(data => deleteAttachments(token, data));
-export const useImageDeletion = token => useMutation(data => deleteAttachment(token, data, true));
-export const usePostQuery = id => useQuery('post', () => getPost('', id));
+export const useImageDeletion = token =>
+	useMutation(data => deleteAttachment(token, data, true), { retry: false });
+export const usePostQuery = id => useQuery('post', () => getPost('', id), { retry: false });
