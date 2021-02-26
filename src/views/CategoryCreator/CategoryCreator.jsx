@@ -47,6 +47,10 @@ const CategoryCreator = () => {
 
                 body: formData,
             })
+                .then(response => response.json())
+                .then(resp => {
+                    console.log('Success:', resp);
+                })
                 .catch((err) => {
                     console.error('Error:', err);
                 });
