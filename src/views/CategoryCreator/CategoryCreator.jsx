@@ -9,10 +9,14 @@ import { Alert } from '@material-ui/lab';
 import paths from 'constants/api';
 import CenteredContainer from 'components/CenteredContainer'
 
+import { getBlogs } from './CategoryCreator.api'
+
 const StyledForm = styled.form`
     display:flex;
     flex-direction: column;
     justify-content: center;
+    background-color: white;
+    padding: ${({ theme }) => theme.margin.l};
 
     @media (min-width: 1024px){
         width: 50%;
@@ -20,22 +24,6 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-    const getBlogs = async () => {
-        const url = `${paths.BLOGS}`;
-
-        const headers = {
-            'Content-Type': 'application/json',
-        };
-
-        const response = await fetch(url, { headers, method: 'GET' });
-
-        if (response.status !== 200) {
-            throw new Error('błąd');
-        }
-
-        return response.json();
-    }
-
     const { data, isError } = useQuery('blogs', getBlogs)
 
     const formik = useFormik({
@@ -59,24 +47,21 @@ const CategoryCreator = () => {
 
                 body: formData,
             })
-                .then(response => response.json())
-                .then(resp => {
-                    console.log('Success:', resp);
-                })
                 .catch((err) => {
                     console.error('Error:', err);
                 });
+
         },
         validate: (values) => {
             const errors = {};
 
             if (!values.title) {
-                errors.title = 'Required';
+                errors.title = 'Pole wymagane';
             } else if (values.title.length > 100) {
-                errors.title = 'Too long';
+                errors.title = 'Za długie';
             }
             if (!values.blog) {
-                errors.blog = 'Required';
+                errors.blog = 'Pole wymagane';
             }
 
             return errors;
@@ -88,17 +73,14 @@ const CategoryCreator = () => {
         <CenteredContainer>
             <h2>Dodaj kategorię</h2>
             <StyledForm onSubmit={formik.handleSubmit}>
-                <Input id="title" placeholder="Tytuł" type="text" value={formik.values.title} onChange={event => {
-                    formik.setFieldValue('title', event.target.value);
-                }} />
+                <Input id="title" placeholder="Tytuł" type="text" value={formik.values.title} onChange={formik.handleChange} />
                 {formik.touched.title && formik.errors.title && (<Alert severity="error">Nie może być puste i dłuższe niż 100 znaków</Alert>)}
-                <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={event => {
-                    formik.setFieldValue('description', event.target.value);
-                }} />
+                <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={formik.handleChange} />
                 <Select
+                    id="blog"
                     native
                     value={formik.values.blog}
-                    onChange={event => { formik.setFieldValue('blog', event.target.value); }}
+                    onChange={formik.handleChange}
                 >
                     <option value="" selected>-----------</option>
                     {isError ? <option value="">Nie udało się pobrać blogów</option> : data?.map((blog) => (
