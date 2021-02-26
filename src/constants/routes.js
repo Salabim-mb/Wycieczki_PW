@@ -7,7 +7,7 @@ export const pathList = {
         path: "/",
     },
     BLOG: {
-        name: "Wpis",
+        name: "Blog",
         path: "/:blog",
     },
     BLOG_CATEGORIES: {

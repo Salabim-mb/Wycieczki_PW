@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -32,5 +33,17 @@ const CategoryTile = ({ title, desc, cover, link }) => (
         </CardActions>
     </Card>
 );
+
+CategoryTile.propTypes = {
+    title: PropTypes.string.isRequired,
+    desc: PropTypes.string,
+    link: PropTypes.string.isRequired,
+    cover: PropTypes.string,
+}
+
+CategoryTile.defaultProps = {
+    desc: '',
+    cover: '',
+}
 
 export default CategoryTile

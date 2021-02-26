@@ -4,8 +4,10 @@ const BLOG = `${domain}/blog/`;
 const BLOG_TOPIC = `${BLOG}topic/`;
 const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
+const PLAIN = `${domain}`
 
 const paths = {
+	PLAIN,
 	BLOG,
 	BLOGS: `${domain}/blogs/`,
 	BLOG_TOPIC,

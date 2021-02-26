@@ -1,61 +1,33 @@
 import React from 'react';
 import { useQuery } from 'react-query'
-import { useParams } from 'react-router-dom'
+import { useParams, Redirect } from 'react-router-dom'
 import paths from 'constants/api'
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
-
+import Skeleton from '@material-ui/lab/Skeleton';
 import CategoryTile from 'components/CategoryTile'
+import { getBlog, getCategories } from './Blog.api'
 
 const Post = () => {
-    // const [categories, setCategories] = useState()
-    // const [blog, setBlog] = useState()
     const params = useParams()
 
-    const getCategories = async () => {
-        const url = `${paths.BLOG_TOPICS}?blog=${params.blog}`;
-
-        const headers = {
-            'Content-Type': 'application/json',
-        };
-
-        const response = await fetch(url, { headers, method: 'GET' });
-
-        if (response.status !== 200) {
-            throw new Error('błąd');
-        }
-
-        return response.json();
-    };
-
-    const getBlog = async () => {
-        const url = `${paths.BLOG}${params.blog}/`;
-
-        const headers = {
-            'Content-Type': 'application/json',
-        };
-
-        const response = await fetch(url, { headers, method: 'GET' });
-
-        if (response.status !== 200) {
-            throw new Error('błąd');
-        }
-
-        return response.json();
-    };
-
-
-    const categories = useQuery('categories', getCategories)
-    const blog = useQuery('blog', getBlog)
+    const categories = useQuery('categories', () => getCategories(params), { retry: 1 })
+    const blog = useQuery('blog', () => getBlog(params), { retry: 1 })
 
     return (
         <Container>
-            {blog.isError ? <div>Nie można wczytać blogów</div> : <>
+            {blog.isLoading ? (
+                <Skeleton variant="rect" width={210} height={118} />
+            ) : null}
+            {blog.isError ? <Redirect to="/error" /> : <>
                 <img src={blog?.data?.image_url} alt={blog?.data?.title} />
-                <Typography variant='h2'>{blog?.data?.title}</Typography>
+                <Typography variant='h3'>{blog?.data?.title}</Typography>
             </>}
+            {categories.isLoading ? (
+                <Skeleton animation="wave" variant="circle" width={40} height={40} />
+            ) : null}
             {categories.isError ? <div>Nie można załadować kategorii</div> : categories.data?.map((category) => (
-                <CategoryTile key={category.id} title={category.title} cover={`https://wut-vtrips.herokuapp.com${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
+                <CategoryTile key={category.id} title={category.title} cover={`${paths.PLAIN}${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
             ))}
         </Container>
     );
