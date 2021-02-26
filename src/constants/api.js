@@ -1,13 +1,13 @@
 const domain = process.env.REACT_APP_BACKEND_PATH;
 
-const BLOG = `${domain}/blog/`;
+const BLOG = `${domain}blog/`;
 const BLOG_TOPIC = `${BLOG}topic/`;
 const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
 
-const paths = {
+const api = {
 	BLOG,
-	BLOGS: `${domain}/blogs/`,
+	BLOGS: `${BLOG}blogs/`,
 	BLOG_TOPIC,
 	BLOG_TOPICS: `${BLOG}topics/`,
 	BLOG_RESERVATION,
@@ -19,4 +19,4 @@ const paths = {
 	BLOG_DOWNLOADABLE: `${BLOG}downloadable-attachment/`,
 };
 
-export default paths;
+export default api;

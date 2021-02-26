@@ -10,8 +10,10 @@ import { Checkbox, FormControlLabel, TextField } from '@material-ui/core';
 import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import toBase64 from 'utils/fileToBase64';
 import {paths} from 'constants/paths';
+import api from 'constants/api';
 import {Redirect} from "react-router-dom";
 import { AlertContext } from 'context/AlertContext';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -30,10 +32,27 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-const addBlogTile = (token, data) => {
-	console.log(`token: ${token}`)
-	console.log(data)
-	throw new Error("Nie ma backendu!");
+const addBlogTile = async (token, data) => {
+	const url = api.BLOG;
+	const res = await fetch(url, {
+		headers: {
+			"Content-Type": "multipart/form-data"
+		},
+		method: "POST",
+		body: (() => {
+			const fd = new FormData();
+			Object.keys(data).forEach((item) => {
+				fd.append(item, data[item])
+			});
+			return fd;
+		})()
+	});
+
+	if (res.status === 201) {
+		const parsedRes = await res.json();
+		return parsedRes;
+	}
+	throw new Error(await res.json());
 }
 
 const NewBlogModal = ({open, setOpen}) => {
@@ -140,7 +159,6 @@ const NewBlogModal = ({open, setOpen}) => {
 							disabled
 							variant="outlined"
 							name="photo.title"
-							label="Nazwa pliku"
 							value={photo?.title}
 							placeholder="Wybierz plik przyciskiem powyżej."
 							className={classes.formInput}
@@ -171,6 +189,11 @@ const NewBlogModal = ({open, setOpen}) => {
 			{redirect?.action && <Redirect to={paths.BLOG_CATEGORIES.redirect(redirect?.destination)} />}
 		</>
 	);
+}
+
+NewBlogModal.propTypes = {
+	open: PropTypes.bool.isRequired,
+	setOpen: PropTypes.func.isRequired
 }
 
 export default NewBlogModal;
