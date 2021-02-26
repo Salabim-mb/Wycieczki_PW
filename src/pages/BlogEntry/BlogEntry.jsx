@@ -3,7 +3,8 @@ import {Redirect, useParams} from 'react-router-dom';
 import { Backdrop, CircularProgress, CssBaseline, Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { AlertContext } from 'context/AlertContext';
 import { makeStyles } from '@material-ui/core/styles';
-import { pathList } from 'constants/routes';
+import paths from 'constants/paths';
+import api from 'constants/api';
 import BlogSideBar from './components/BlogSideBar';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const getEntryContent = async (id) => {
-	const url = `/${id}/`;
+	const url = `${api.BLOG_POST}${id}/`;
 	const headers = {
 		"Content-Type": "application/json"
 	}
@@ -42,9 +43,8 @@ const getEntryContent = async (id) => {
 
 	if (res.status === 200) {
 		return await res.json();
-	} else {
-		throw await res.json();
 	}
+	throw new Error(await res.json());
 };
 
 const mapEntry = (data) => ({
@@ -113,9 +113,9 @@ const BlogEntry = () => {
 							featuredPosts={[]}
 							setRedirect={setRedirect}
 							pathParams={[
-								{name: "Strona główna", path: pathList.DASHBOARD.path},
-								{name: category, path: pathList.BLOG_CATEGORIES.redirect(category)},
-								{name: entryData.title, path: pathList.BLOG_ENTRY.redirect(category, entryId)}
+								{name: "Strona główna", path: paths.DASHBOARD.path},
+								{name: category, path: paths.BLOG_CATEGORIES.redirect(category)},
+								{name: entryData.title, path: paths.BLOG_ENTRY.redirect(category, entryId)}
 							]}
 						/>
 					</Grid>
