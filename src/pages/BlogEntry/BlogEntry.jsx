@@ -8,8 +8,14 @@ import api from 'constants/api';
 import BlogSideBar from './components/BlogSideBar';
 
 const useStyles = makeStyles((theme) => ({
+	root: {
+		'& > *': {
+			margin: theme.spacing(1),
+		},
+	},
 	mainGrid: {
-		marginTop: theme.spacing(3),
+		// marginTop: theme.spacing(3),
+		padding: theme.spacing(3, 4, 3, 4)
 	},
 	entryBody: {
 		...theme.typography.body2,
@@ -28,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
+	},
+	divider: {
+		width: "100%"
 	},
 }));
 
@@ -50,8 +59,8 @@ const getEntryContent = async (id) => {
 const mapEntry = (data) => ({
 	id: data.id,
 	date: (new Date()).toISOString(),
-	title: "Tytuł bloga",
-	content: "Lorem ipsum dolor sit amet",
+	title: data.title,
+	content: data.content,
 	mainPhoto: data?.img || null
 });
 
@@ -67,6 +76,7 @@ const BlogEntry = () => {
 			setLoading(true);
 			try {
 				const res = await getEntryContent(entryId);
+				console.log(res);
 				setEntryData(mapEntry(res));
 			} catch(ex) {
 				alertC.current.showAlert(ex.message || "Coś poszło nie tak przy próbie pobierania posta.")
@@ -75,11 +85,11 @@ const BlogEntry = () => {
 			}
 		};
 		loadPost();
-	});
+	}, []);
 
 	const mapDate = (date) => {
 		const d = new Date(date);
-		return `${d.getDate()} - ${d.getMonth() + 1} - ${d.getFullYear()}`;
+		return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
 	}
 
 	const classes = useStyles();
@@ -96,18 +106,16 @@ const BlogEntry = () => {
 					<Paper className={classes.mainPhoto} style={{ backgroundImage: `url(${entryData.img})`}}>
 						<img style={{ display: 'none' }} src={entryData.img} alt={entryData.title} />
 					</Paper>
-					<Grid container spacing={5} className={classes.mainGrid}>
+					<Grid container className={classes.mainGrid}>
 						<Grid item xs={12} md={8}>
-							<Typography variant="h6" gutterBottom>
-								Utworzono: {entryData.title}
+							<Typography variant="h4" component="h6" gutterBottom>
+								{entryData.title || "Tytuł"}
 							</Typography>
 							<Typography variant="caption" gutterBottom>
-								{mapDate(entryData.date)}
+								 Utworzono: {mapDate(entryData.date)}
 							</Typography>
-							<Divider />
-							<div className={classes.entryBody}>
-								{entryData.content}
-							</div>
+							<Divider className={classes.divider}/>
+							<div className={classes.entryBody} dangerouslySetInnerHTML={{__html: entryData.content}}/>
 						</Grid>
 						<BlogSideBar
 							featuredPosts={[]}

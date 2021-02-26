@@ -6,6 +6,7 @@ const paths = {
 	BLOG_CATEGORIES: {
 		name: "Kategorie",
 		path: "/blog/:category",
+		redirect: (category) => `/blog/${category}`
 	},
 	BLOG_ENTRY: {
 		name: "Wpis",

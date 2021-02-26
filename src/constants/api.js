@@ -1,6 +1,6 @@
 const domain = process.env.REACT_APP_BACKEND_PATH;
 
-const BLOG = `${domain}/blog/`;
+const BLOG = `${domain}blog/`;
 const BLOG_TOPIC = `${BLOG}topic/`;
 const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
