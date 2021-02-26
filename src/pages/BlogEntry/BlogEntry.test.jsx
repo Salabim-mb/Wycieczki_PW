@@ -2,10 +2,10 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import {MemoryRouter} from 'react-router-dom';
 import { AlertProvider } from 'context/AlertContext';
-import BlogSideBar from './components/BlogSideBar';
+import BlogSideBar from './components';
 import BlogEntry from './BlogEntry';
 
-jest.mock("src/pages/BlogEntry/components");
+jest.mock("./components");
 
 describe("BlogEntry", () => {
 	let apiFail;
@@ -14,7 +14,7 @@ describe("BlogEntry", () => {
 	
 	beforeAll(() => {
 		BlogSideBar.mockImplementation(() => <div>BlogSideBar</div>);
-		global.fetch = jest.fn().mockImplementation(() => new Promise((resolve) => {
+		window.fetch = jest.fn().mockImplementation(() => new Promise((resolve) => {
 				if (apiFail) {
 					resolve({status: 500, json: () => Promise.resolve({message: "not ok"})});
 				} else {
@@ -38,14 +38,16 @@ describe("BlogEntry", () => {
 	});
 
 	it("should match snapshot", async () => {
-		const {container, getByText} = render(
+		const {container} = render(
 			<AlertProvider>
 				<MemoryRouter>
 					<BlogEntry />
 				</MemoryRouter>
 			</AlertProvider>
 		);
-		await waitFor(() => getByText(entryData.title));
+		await waitFor(() => expect(fetch).toHaveBeenCalled(), {
+			timeout: 5000
+		});
 
 		expect(container).toMatchSnapshot();
 

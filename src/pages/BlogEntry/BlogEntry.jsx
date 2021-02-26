@@ -18,6 +18,16 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: theme.zIndex.drawer + 1,
 		color: '#fff',
 	},
+	mainFeaturedPost: {
+		position: 'relative',
+		backgroundColor: theme.palette.grey[800],
+		color: theme.palette.common.white,
+		marginBottom: theme.spacing(4),
+		backgroundImage: 'url(https://source.unsplash.com/random)',
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center',
+	},
 }));
 
 const getEntryContent = async (id) => {
@@ -41,7 +51,8 @@ const mapEntry = (data) => ({
 	id: data.id,
 	date: (new Date()).toISOString(),
 	title: "Tytuł bloga",
-	content: "Lorem ipsum dolor sit amet"
+	content: "Lorem ipsum dolor sit amet",
+	mainPhoto: data?.img || null
 });
 
 const BlogEntry = () => {
@@ -82,6 +93,9 @@ const BlogEntry = () => {
 			) : (
 				<>
 					<CssBaseline />
+					<Paper className={classes.mainPhoto} style={{ backgroundImage: `url(${entryData.img})`}}>
+						<img style={{ display: 'none' }} src={entryData.img} alt={entryData.title} />
+					</Paper>
 					<Grid container spacing={5} className={classes.mainGrid}>
 						<Grid item xs={12} md={8}>
 							<Typography variant="h6" gutterBottom>
