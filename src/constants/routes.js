@@ -23,7 +23,8 @@ export const pathList = {
 export default [
     {
         path: pathList.BLOG.path,
-        component: Blog
+        component: Blog,
+        exact: true
     }
 ]
 

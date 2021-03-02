@@ -25,6 +25,8 @@ export const getBlog = async (params) => {
 
     const response = await fetch(url, { headers, method: 'GET' });
 
+    console.log(response)
+
     if (response.status !== 200) {
         throw new Error('błąd');
     }

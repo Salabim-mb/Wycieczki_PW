@@ -28,7 +28,7 @@ const CategoryTile = ({ title, desc, cover, link }) => (
         </CardActionArea>
         <CardActions>
             <Button component={Link} to={link} size="small" color="primary">
-                Learn More
+                Czytaj dalej
         </Button>
         </CardActions>
     </Card>

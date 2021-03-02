@@ -1,18 +1,18 @@
 import React from 'react';
-import { useQuery } from 'react-query'
 import { useParams, Redirect } from 'react-router-dom'
 import paths from 'constants/api'
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Skeleton from '@material-ui/lab/Skeleton';
 import CategoryTile from 'components/CategoryTile'
-import { getBlog, getCategories } from './Blog.api'
+import { useQueryBlog, useQueryCategories } from './Blog.hooks'
+
 
 const Post = () => {
     const params = useParams()
 
-    const categories = useQuery('categories', () => getCategories(params), { retry: 1 })
-    const blog = useQuery('blog', () => getBlog(params), { retry: 1 })
+    const blog = useQueryBlog(params)
+    const categories = useQueryCategories(params)
 
     return (
         <Container>
