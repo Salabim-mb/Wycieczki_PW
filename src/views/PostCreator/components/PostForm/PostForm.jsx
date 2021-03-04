@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import { Button, Box } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import { AlertContext } from 'context';
 import { useFormik } from 'formik';
 import { PhotoCamera, CloudUpload } from '@material-ui/icons';
 import {
@@ -48,6 +49,8 @@ const PostForm = ({ post, id }) => {
 	const fileDeletion = useFileDeletion('');
 	const imageDeletion = useImageDeletion('');
 
+	const alertC = useRef(useContext(AlertContext));
+
 	useEffect(() => {
 		if (post?.reservation) {
 			setAttachments(post?.downloadables);
@@ -76,24 +79,41 @@ const PostForm = ({ post, id }) => {
 		validate,
 		onSubmit: async values => {
 			if (prevHeader && `${paths.PLAIN}${prevHeader.image_url}` !== values.header) {
-				await imageDeletion.mutateAsync(prevHeader.id);
+				await imageDeletion.mutateAsync(prevHeader.id, {
+					onError: error => alertC.current.showAlert(error?.message),
+				});
 			}
 
 			if (prevCover && `${paths.PLAIN}${prevCover.image_url}` !== values.cover) {
-				await imageDeletion.mutateAsync(prevCover.id);
+				await imageDeletion.mutateAsync(prevCover.id, {
+					onError: error => alertC.current.showAlert(error?.message),
+				});
 			}
-			await fileDeletion.mutateAsync({
-				images,
-				attachments,
-				prevAttachments,
-				content: values.content,
-			});
+			await fileDeletion.mutateAsync(
+				{
+					images,
+					attachments,
+					prevAttachments,
+					content: values.content,
+				},
+				{
+					onError: error => alertC.current.showAlert(error?.message),
+				},
+			);
 
-			await attachmentsMutation.mutateAsync({ attachments, reservation });
+			await attachmentsMutation.mutateAsync(
+				{ attachments, reservation },
+				{
+					onError: error => alertC.current.showAlert(error?.message),
+				},
+			);
 
 			await postMutation.mutateAsync(
 				{ reservation, ...values },
-				{ onSuccess: () => history.push(`/blog/${formik.values.topic}/${reservation}`) },
+				{
+					onSuccess: () => history.push(`/blog/${formik.values.topic}/${reservation}`),
+					onError: error => alertC.current.showAlert(error?.message),
+				},
 			);
 		},
 	});
@@ -137,7 +157,7 @@ const PostForm = ({ post, id }) => {
 					value={formik.values.title}
 					handleChange={e => formik.setFieldValue('title', e.target.value)}
 					label="Tytuł posta"
-					error={formik.touched?.title && formik.error?.title ? formik.error.title : ''}
+					error={formik.touched?.title && formik.errors?.title ? formik.errors.title : ''}
 				/>
 			</Box>
 			<PostTilePreview
@@ -154,8 +174,8 @@ const PostForm = ({ post, id }) => {
 				setImages={setImages}
 				reservation={reservation}
 				content={formik.values.content}
-				errorValidaiton={
-					formik.touched?.content && formik.error?.content ? formik.error?.content : ''
+				errorValidation={
+					formik.touched?.content && formik.errors?.content ? formik.errors?.content : ''
 				}
 			/>
 			<Box my={2}>
