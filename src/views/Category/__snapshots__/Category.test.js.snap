@@ -36,8 +36,16 @@ exports[`Category should match snapshot - isLoading 1`] = `
   <div
     class="MuiContainer-root sc-eCssSg cnnlHQ MuiContainer-maxWidthLg"
   >
+    <span
+      class="MuiSkeleton-root MuiSkeleton-rect MuiSkeleton-pulse"
+      style="width: 210px; height: 118px;"
+    />
     <h3
       class="MuiTypography-root MuiTypography-h3"
+    />
+    <span
+      class="MuiSkeleton-root MuiSkeleton-circle MuiSkeleton-pulse"
+      style="width: 40px; height: 40px;"
     />
   </div>
 </div>
