@@ -1,19 +1,17 @@
 import React from 'react';
-import { useQuery } from 'react-query'
 import { useParams, Redirect } from "react-router-dom";
 import PostTile from 'components/PostTile'
 import paths from 'constants/api'
 import Typography from '@material-ui/core/Typography';
 import Image from './components/Image'
 import StyledContainer from './Category.css'
-
-import { getCategory, getPosts } from './Category.api'
+import { useQueryCategory, useQueryPosts } from './Category.hooks'
 
 const Category = () => {
     const params = useParams();
 
-    const posts = useQuery('posts', () => getPosts(params), { retry: 1 })
-    const category = useQuery('category', () => getCategory(params), { retry: 1 })
+    const category = useQueryCategory(params)
+    const posts = useQueryPosts(params)
 
     return (
         <StyledContainer>

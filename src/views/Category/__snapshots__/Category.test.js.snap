@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Category should match snapshot - data 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-eCssSg cnnlHQ MuiContainer-maxWidthLg"
+  >
+    <img
+      alt="abc"
+      class="sc-hKgILt gikrGG"
+      src="https://wut-vtrips.herokuapp.com/link"
+    />
+    <h3
+      class="MuiTypography-root MuiTypography-h3"
+    >
+      abc
+    </h3>
+  </div>
+</div>
+`;
+
+exports[`Category should match snapshot - isError 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-eCssSg cnnlHQ MuiContainer-maxWidthLg"
+  >
+    <div>
+       Nie udało się pobrać postu 
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Category should match snapshot - isLoading 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-eCssSg cnnlHQ MuiContainer-maxWidthLg"
+  >
+    <h3
+      class="MuiTypography-root MuiTypography-h3"
+    />
+  </div>
+</div>
+`;

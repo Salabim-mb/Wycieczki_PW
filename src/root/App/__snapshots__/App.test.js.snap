@@ -1,11 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should match snapshot 1`] = `
-<div>
-  <a
-    href="/blog/liceum"
-  >
-    XDDDDD
-  </a>
-</div>
-`;
+exports[`should match snapshot 1`] = `<div />`;

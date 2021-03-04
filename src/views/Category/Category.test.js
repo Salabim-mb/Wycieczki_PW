@@ -1,77 +1,114 @@
 import React from 'react';
-import Category from './Category'
-import { BrowserRouter } from 'react-router-dom';
-import { render, waitForElement } from '@testing-library/react';
-// import logo from '../../logo.svg'
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
+import paths from 'constants/api';
+import Category from './Category';
+import { useQueryCategory, useQueryPosts } from './Category.hooks';
 
+jest.mock('views/Category/Category.hooks', () => ({
+    useQueryPosts: jest.fn(),
+    useQueryCategory: jest.fn(),
+}));
 
-// jest.mock('../../components/PostTile', () => ({
-//     PostTile: ({ cover, title, summary, link }) => <div><img src={cover} /><h2>{title}</h2><p>{summary}</p><a href={link} /></div>,
-// }));
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useParams: () => ({
+        id: 'abc',
+    }),
+}));
 
-
-// jest.mock('./components/Image', () => ({
-//     Image: ({ imgSrc, imgAlt }) => <img src={imgSrc} alt={imgAlt} />,
-// }));
-
-describe('Category - dashboard', () => {
-    let failFetch = false;
-    const data = [
-        {
-            id: 0,
-            title: 'Matematyka',
-            summary:
-                'Proin ullamcorper vitae lorem eget tristique. Mauris urna nibh, vestibulum eget dolor ut, ornare scelerisque mauris. Sed semper hendrerit facilisis. ',
-            link: '/blog/liceum/1',
-            cover: '../../logo.svg',
-        },
-    ];
-
-    beforeAll(() => {
-        global.fetch = jest.fn().mockImplementation(() => {
-            return new Promise((resolve) => {
-                if (failFetch) {
-                    resolve({ status: 500 });
-                }
-                resolve({
-                    status: 200,
-                    json: () => Promise.resolve(data),
-                });
-            });
-        });
-    });
-
+describe('Category', () => {
     beforeEach(() => {
-        failFetch = false;
         jest.clearAllMocks();
     });
 
-    it('should match snapshot', async () => {
-        const { container, getByText } = render(
-            <BrowserRouter>
+    it('should match snapshot - data', async () => {
+        useQueryPosts.mockImplementation(() => ({
+            isSuccess: true,
+            data: [{
+                count: 1,
+                next: 'aa',
+                previous: 'bb',
+                results: {
+                    reservation: 1,
+                    header: 1,
+                    topic: 1,
+                    content: 'aaa',
+                    title: 'bbb',
+                    date_created: '21.10.2020',
+                    summary: 'ccc'
+                }
+            }],
+            isError: false,
+            isLoading: false,
+        }));
+        useQueryCategory.mockImplementationOnce(() => ({
+            isSuccess: true,
+            data: {
+                title: 'abc',
+                id: 1,
+                index: 1,
+                header_url: '/link',
+                cover_url: '/link1',
+                blog: 1,
+                show_title: true,
+                description: 'aaaaaa'
+            },
+            isError: false,
+            isLoading: false,
+        }));
+        const { container } = render(
+            <MemoryRouter>
                 <Category />
-            </BrowserRouter>
-,
+            </MemoryRouter>,
         );
-
-        expect(window.fetch).toHaveBeenCalledTimes(1);
-        await waitForElement(() => getByText('Matematyka'));
 
         expect(container).toMatchSnapshot();
     });
 
-    // it('should show error message if fetch fails', async () => {
-    //     failFetch = true;
+    it('should match snapshot - isError', async () => {
+        useQueryPosts.mockImplementation(() => ({
+            isSuccess: true,
+            data: [],
+            error: 'błąd',
+            isError: true,
+            isLoading: false,
+        }));
+        useQueryCategory.mockImplementationOnce(() => ({
+            isSuccess: true,
+            data: {},
+            error: 'błąd',
+            isError: true,
+            isLoading: false,
+        }));
+        const { container } = render(
+            <MemoryRouter>
+                <Category />
+            </MemoryRouter>,
+        );
 
-    //     const { container, getByText } = render(
-    //         <BrowserRouter>
-    //             <Category />
-    //         </BrowserRouter>,
-    //     );
+        expect(container).toMatchSnapshot();
+    });
 
-    //     expect(window.fetch).toHaveBeenCalledTimes(1);
-    //     await waitForElement(() => getByText('Nie udało się pobrać postów.', { exact: false }));
+    it('should match snapshot - isLoading', async () => {
+        useQueryPosts.mockImplementation(() => ({
+            isSuccess: true,
+            data: [],
+            isError: false,
+            isLoading: true,
+        }));
+        useQueryCategory.mockImplementationOnce(() => ({
+            isSuccess: true,
+            data: {},
+            isError: false,
+            isLoading: true,
+        }));
+        const { container } = render(
+            <MemoryRouter>
+                <Category />
+            </MemoryRouter>,
+        );
 
-    //     expect(container).toMatchSnapshot();
-    // });
+        expect(container).toMatchSnapshot();
+    });
 });

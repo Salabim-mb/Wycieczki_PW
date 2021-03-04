@@ -8,6 +8,8 @@ export const getPosts = async (params) => {
         'Content-Type': 'application/json',
     };
 
+    console.log(`${paths.BLOG_POSTS}?topic=1`)
+
     const response = await fetch(url, { headers, method: 'GET' });
 
     if (response.status !== 200) {

@@ -29,7 +29,7 @@ exports[`PostTile should match snapshot 1`] = `
             Geometria przestrzenna
           </h2>
           <p
-            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+            class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
           />
         </div>
         <span
