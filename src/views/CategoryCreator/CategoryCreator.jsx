@@ -2,7 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik';
 import { useQuery } from 'react-query';
-import Input from '@material-ui/core/Input';
+import { UploadButton, AlertInfo, Input } from 'components';
+import { PhotoCamera } from '@material-ui/icons';
+// import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
@@ -24,7 +26,7 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-    const { data, isError } = useQuery('blogs', getBlogs)
+    const { data, isError, isLoading, error } = useQuery('blogs', getBlogs)
 
     const formik = useFormik({
         initialValues: {
@@ -77,9 +79,26 @@ const CategoryCreator = () => {
         <CenteredContainer>
             <h2>Dodaj kategorię</h2>
             <StyledForm onSubmit={formik.handleSubmit}>
-                <Input id="title" placeholder="Tytuł" type="text" value={formik.values.title} onChange={formik.handleChange} />
+                <Input
+                    fullWidth
+                    id="title"
+                    name="title"
+                    label="Tytuł"
+                    variant="outlined"
+                    value={formik.values.title}
+                    inputProps={{ minLength: 1, maxLength: 100, 'data-testid': 'test-id' }}
+                    handleChange={formik.handleChange}
+                />
                 {formik.touched.title && formik.errors.title && (<Alert severity="error">Nie może być puste i dłuższe niż 100 znaków</Alert>)}
-                <Input id="description" placeholder="Opis" type="text" value={formik.values.description} onChange={formik.handleChange} />
+                <Input
+                    fullWidth
+                    id="description"
+                    name="description"
+                    label="Opis"
+                    variant="outlined"
+                    value={formik.values.description}
+                    handleChange={formik.handleChange}
+                />
                 <Select
                     id="blog"
                     native
@@ -91,18 +110,46 @@ const CategoryCreator = () => {
                         <option key={blog.id} value={blog.id}>{blog.title}</option>
                     ))}
                 </Select>
+                <AlertInfo isLoading={isLoading} isError={isError}>
+                    {error?.message}
+                </AlertInfo>
+
                 {formik.touched.blog && formik.errors.blog && (<Alert severity="error">Nie może być puste.</Alert>)}
-                <Input id="cover_image"
+
+                <UploadButton
+                    header="Prześlij cover"
+                    accept="image/*"
+                    icon={<PhotoCamera />}
+                    id="cover_image"
+                    name="cover_image"
+                    handleChange={event => {
+                        formik.setFieldValue('cover_image', event.currentTarget.files[0]);
+                    }}
+                    error={formik.touched.cover && formik.errors.cover ? formik.errors.cover : ''}
+                />
+                {/* <Input id="cover_image"
                     name="cover_image"
                     type="file" onChange={event => {
                         formik.setFieldValue('cover_image', event.currentTarget.files[0]);
-                    }} />
+                    }} /> */}
 
-                <Input id="header_image"
+                <UploadButton
+                    header="Prześlij cover"
+                    accept="image/*"
+                    icon={<PhotoCamera />}
+                    id="header_image"
+                    name="header_image"
+                    handleChange={event => {
+                        formik.setFieldValue('header_image', event.currentTarget.files[0]);
+                    }}
+                    error={formik.touched.cover && formik.errors.cover ? formik.errors.cover : ''}
+                />
+
+                {/* <Input id="header_image"
                     name="header_image"
                     type="file" onChange={event => {
                         formik.setFieldValue('header_image', event.currentTarget.files[0]);
-                    }} />
+                    }} /> */}
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>
 
