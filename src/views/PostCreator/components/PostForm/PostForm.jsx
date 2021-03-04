@@ -194,7 +194,9 @@ const PostForm = ({ post, id }) => {
 					}}
 				/>
 			</Box>
-			<AttachmentsList attachments={attachments} setAttachments={setAttachments} />
+			{attachments.length ? (
+				<AttachmentsList attachments={attachments} setAttachments={setAttachments} />
+			) : null}
 			<Button type="submit" variant="contained" color="primary">
 				Prześlij post
 			</Button>

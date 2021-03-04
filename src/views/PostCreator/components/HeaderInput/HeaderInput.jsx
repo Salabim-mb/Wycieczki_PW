@@ -1,27 +1,23 @@
 import React from 'react';
-import { Button, FormGroup, TextField, Typography } from '@material-ui/core';
+import { FormGroup, Typography } from '@material-ui/core';
 import { PhotoCamera } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import { Alert } from '@material-ui/lab';
 import paths from 'constants/api';
+import { Input, UploadButton } from 'components';
 
 const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 	const FILE_LABEL = '';
 	return (
-		<FormGroup my={2}>
-			<Button variant="contained" component="label" color="default" startIcon={<PhotoCamera />}>
-				Prześlij nagłówek
-				<input
-					id="headerFile"
-					name="headerFile"
-					type="file"
-					accept="image/*"
-					hidden
-					onChange={handleChangeFile}
-				/>
-			</Button>
-			<Typography my={2}>lub</Typography>
-			<TextField
+		<FormGroup>
+			<UploadButton
+				handleChange={handleChangeFile}
+				header="Prześlij nagłówek"
+				id="header"
+				accept="image/*"
+				icon={<PhotoCamera />}
+			/>
+			<Typography>lub</Typography>
+			<Input
 				fullWidth
 				id="headerLink"
 				name="headerLink"
@@ -29,9 +25,9 @@ const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 				variant="outlined"
 				value={typeof header === 'string' && !header?.includes(paths.PLAIN) ? header : FILE_LABEL}
 				inputProps={{ minLength: 1, maxLength: 120, 'data-testid': 'test-id' }}
-				onChange={handleChangeLink}
+				handleChange={handleChangeLink}
+				error={error}
 			/>
-			{error && <Alert severity="error">{error}</Alert>}
 		</FormGroup>
 	);
 };

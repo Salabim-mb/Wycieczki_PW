@@ -37,7 +37,7 @@ const PostTile = ({ cover, title, summary, link }) => (
 	<Card>
 		<StyledDiv>
 			{cover && <StyledCardMedia image={cover} title={title} />}
-			<CardActionArea component={Link} to={link}>
+			<CardActionArea component={Link} to={link} disabled={!link}>
 				<StyledCardContent>
 					<Typography gutterBottom variant="h5" component="h2">
 						{title}
