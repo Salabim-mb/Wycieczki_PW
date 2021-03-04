@@ -1,5 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import paths from 'constants/api';
+import { QCProvider as wrapper } from 'components';
 import {
 	useTopicsQuery,
 	useFileDeletion,
@@ -8,7 +9,6 @@ import {
 	usePostMutation,
 	usePostQuery,
 } from './PostCreator.hooks';
-import { QCProvider as wrapper } from 'components';
 
 describe('PostCreator - hooks', () => {
 	let fail;

@@ -63,7 +63,7 @@ const PostEditor = ({
 
 PostEditor.propTypes = {
 	setReservation: PropTypes.func.isRequired,
-	reservation: PropTypes.number,
+	reservation: PropTypes.string,
 	setImages: PropTypes.func.isRequired,
 	handleChange: PropTypes.func.isRequired,
 	content: PropTypes.string.isRequired,
