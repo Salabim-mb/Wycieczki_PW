@@ -1,17 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useFormik } from 'formik';
-import { useQuery } from 'react-query';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
 // import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
-import paths from 'constants/api';
 import CenteredContainer from 'components/CenteredContainer'
-
-import { getBlogs } from './CategoryCreator.api'
+import { useQueryBlogs } from './CategoryCreator.hooks'
+import { sendCategory } from './CategoryCreator.api'
 
 const StyledForm = styled.form`
     display:flex;
@@ -26,7 +24,8 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-    const { data, isError, isLoading, error } = useQuery('blogs', getBlogs)
+
+    const { data, isError, isLoading, error } = useQueryBlogs()
 
     const formik = useFormik({
         initialValues: {
@@ -44,18 +43,7 @@ const CategoryCreator = () => {
             formData.append('blog', formik.values.blog);
             formData.append('description', formik.values.description);
             // formData.append('authorization', user.token);
-            fetch(`${paths.BLOG_TOPIC}`, {
-                method: 'POST',
-
-                body: formData,
-            })
-                .then(response => response.json())
-                .then(resp => {
-                    console.log('Success:', resp);
-                })
-                .catch((err) => {
-                    console.error('Error:', err);
-                });
+            sendCategory(formData)
 
         },
         validate: (values) => {

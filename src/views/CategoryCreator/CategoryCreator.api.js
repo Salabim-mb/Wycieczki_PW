@@ -15,3 +15,18 @@ export const getBlogs = async () => {
 
     return response.json();
 }
+
+export const sendCategory = (formData) => {
+    fetch(`${paths.BLOG_TOPIC}`, {
+        method: 'POST',
+
+        body: formData,
+    })
+        .then(response => response.json())
+        .then(resp => {
+            console.log('Success:', resp);
+        })
+        .catch((err) => {
+            console.error('Error:', err);
+        });
+}
