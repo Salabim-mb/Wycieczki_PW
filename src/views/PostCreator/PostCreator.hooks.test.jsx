@@ -1,6 +1,4 @@
-import React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import paths from 'constants/api';
 import {
 	useTopicsQuery,
@@ -10,6 +8,7 @@ import {
 	usePostMutation,
 	usePostQuery,
 } from './PostCreator.hooks';
+import { QCProvider as wrapper } from 'components';
 
 describe('PostCreator - hooks', () => {
 	let fail;
@@ -40,6 +39,7 @@ describe('PostCreator - hooks', () => {
 						json: () => Promise.resolve(topics),
 					});
 				}
+
 				return Promise.resolve({
 					status: 200,
 					ok: true,
@@ -82,11 +82,6 @@ describe('PostCreator - hooks', () => {
 
 	describe('useTopicsQuery', () => {
 		it('should fetch topics', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 			const { result, waitFor } = renderHook(() => useTopicsQuery(), { wrapper });
 			await waitFor(() => result.current.isSuccess);
 
@@ -95,25 +90,16 @@ describe('PostCreator - hooks', () => {
 
 		it('should not fetch topics if fail', async () => {
 			fail = true;
-			const queryClient = new QueryClient();
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 
 			const { result, waitFor } = renderHook(() => useTopicsQuery(), { wrapper });
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('błąd');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 	});
 
 	describe('useFileDeletion', () => {
 		it('should delete file', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 			const data = { images: [], attachments: [], prevAttachments: [{ id: 1 }] };
 			const { result, waitFor } = renderHook(() => useFileDeletion(''), { wrapper });
 
@@ -127,11 +113,6 @@ describe('PostCreator - hooks', () => {
 		it('should fail while delete file', async () => {
 			fail = true;
 
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 			const data = { images: [], attachments: [], prevAttachments: [{ id: 1 }] };
 			const { result, waitFor } = renderHook(() => useFileDeletion(''), { wrapper });
 
@@ -141,17 +122,12 @@ describe('PostCreator - hooks', () => {
 
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 	});
 
 	describe('useImageDeletion', () => {
 		it('should delete image', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 			const data = 1;
 			const { result, waitFor } = renderHook(() => useImageDeletion(''), { wrapper });
 
@@ -165,11 +141,6 @@ describe('PostCreator - hooks', () => {
 		it('should fail while delete image', async () => {
 			fail = true;
 
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 			const data = 1;
 			const { result, waitFor } = renderHook(() => useImageDeletion(''), { wrapper });
 
@@ -178,7 +149,7 @@ describe('PostCreator - hooks', () => {
 			});
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 	});
 
@@ -197,12 +168,6 @@ describe('PostCreator - hooks', () => {
 		};
 
 		it('should send attachments', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
-
 			const { result, waitFor } = renderHook(() => useAttachmentsMutation(''), { wrapper });
 
 			act(() => {
@@ -215,12 +180,6 @@ describe('PostCreator - hooks', () => {
 		it('should fail while sending attachments', async () => {
 			fail = true;
 
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
-
 			const { result, waitFor } = renderHook(() => useImageDeletion(''), { wrapper });
 
 			act(() => {
@@ -228,18 +187,12 @@ describe('PostCreator - hooks', () => {
 			});
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 	});
 
 	describe('usePostMutation', () => {
 		it('should send attachments', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
-
 			const { result, waitFor } = renderHook(() => usePostMutation(''), { wrapper });
 
 			act(() => {
@@ -252,12 +205,6 @@ describe('PostCreator - hooks', () => {
 		it('should fail while sending attachments', async () => {
 			fail = true;
 
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
-
 			const { result, waitFor } = renderHook(() => usePostMutation(''), { wrapper });
 
 			act(() => {
@@ -265,42 +212,29 @@ describe('PostCreator - hooks', () => {
 			});
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 	});
 
 	describe('usePostQuery', () => {
-		it('should fetch topics', async () => {
-			const queryClient = new QueryClient();
-
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
+		it('should fetch post', async () => {
 			const { result, waitFor } = renderHook(() => usePostQuery(1), { wrapper });
 			await waitFor(() => result.current.isSuccess);
 
 			expect(result.current.data).toEqual(post);
 		});
 
-		it('should not fetch topics if fail', async () => {
+		it('should not fetch post if fail', async () => {
 			fail = true;
-			const queryClient = new QueryClient();
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 
 			const { result, waitFor } = renderHook(() => usePostQuery(1), { wrapper });
 			await waitFor(() => result.current.isError);
 
-			expect(result.current.error.message).toEqual('');
+			expect(result.current.error.message).toEqual('message: błąd');
 		});
 
 		it('should success without id', async () => {
 			fail = true;
-			const queryClient = new QueryClient();
-			const wrapper = ({ children }) => (
-				<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			);
 
 			const { result, waitFor } = renderHook(() => usePostQuery(), { wrapper });
 			await waitFor(() => result.current.isSuccess);

@@ -47,7 +47,6 @@ exports[`PostForm should match snapshot 1`] = `
     
     <div
       class="MuiFormGroup-root"
-      my="2"
     >
       <label
         aria-disabled="false"
@@ -81,8 +80,8 @@ exports[`PostForm should match snapshot 1`] = `
           <input
             accept="image/*"
             hidden=""
-            id="headerFile"
-            name="headerFile"
+            id="header"
+            name="header"
             type="file"
           />
         </span>
@@ -90,20 +89,19 @@ exports[`PostForm should match snapshot 1`] = `
           class="MuiTouchRipple-root"
         />
       </label>
+      
       <p
         class="MuiTypography-root MuiTypography-body1"
-        my="2"
       >
         lub
       </p>
       <div
         class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
           data-shrink="false"
-          for="headerLink"
-          id="headerLink-label"
         >
           Link do filmu yt
         </label>
@@ -114,10 +112,10 @@ exports[`PostForm should match snapshot 1`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             data-testid="test-id"
-            id="headerLink"
             maxlength="120"
             minlength="1"
             name="headerLink"
+            placeholder=""
             type="text"
             value=""
           />
@@ -134,8 +132,8 @@ exports[`PostForm should match snapshot 1`] = `
             </legend>
           </fieldset>
         </div>
+        
       </div>
-      
     </div>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline"
@@ -280,11 +278,11 @@ exports[`PostForm should match snapshot 1`] = `
                   >
                     
                     <a
-                      aria-disabled="false"
-                      class="MuiButtonBase-root MuiCardActionArea-root"
+                      aria-disabled="true"
+                      class="MuiButtonBase-root MuiCardActionArea-root Mui-disabled"
                       href="/"
                       role="button"
-                      tabindex="0"
+                      tabindex="-1"
                     >
                       <div
                         class="MuiCardContent-root sc-dlfnbm kNYplF"
@@ -298,9 +296,6 @@ exports[`PostForm should match snapshot 1`] = `
                       </div>
                       <span
                         class="MuiCardActionArea-focusHighlight"
-                      />
-                      <span
-                        class="MuiTouchRipple-root"
                       />
                     </a>
                   </div>
@@ -397,6 +392,7 @@ exports[`PostForm should match snapshot 1`] = `
       </div>
     </div>
     <div />
+    
     <div
       class="MuiBox-root MuiBox-root-6"
     >
@@ -437,9 +433,6 @@ exports[`PostForm should match snapshot 1`] = `
       </label>
       
     </div>
-    <ul
-      class="MuiList-root MuiList-padding"
-    />
     <button
       class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
       tabindex="0"
@@ -505,7 +498,6 @@ exports[`PostForm should match snapshot 2`] = `
     
     <div
       class="MuiFormGroup-root"
-      my="2"
     >
       <label
         aria-disabled="false"
@@ -539,8 +531,8 @@ exports[`PostForm should match snapshot 2`] = `
           <input
             accept="image/*"
             hidden=""
-            id="headerFile"
-            name="headerFile"
+            id="header"
+            name="header"
             type="file"
           />
         </span>
@@ -548,20 +540,19 @@ exports[`PostForm should match snapshot 2`] = `
           class="MuiTouchRipple-root"
         />
       </label>
+      
       <p
         class="MuiTypography-root MuiTypography-body1"
-        my="2"
       >
         lub
       </p>
       <div
         class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
       >
         <label
           class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
           data-shrink="false"
-          for="headerLink"
-          id="headerLink-label"
         >
           Link do filmu yt
         </label>
@@ -572,10 +563,10 @@ exports[`PostForm should match snapshot 2`] = `
             aria-invalid="false"
             class="MuiInputBase-input MuiOutlinedInput-input"
             data-testid="test-id"
-            id="headerLink"
             maxlength="120"
             minlength="1"
             name="headerLink"
+            placeholder=""
             type="text"
             value=""
           />
@@ -592,8 +583,8 @@ exports[`PostForm should match snapshot 2`] = `
             </legend>
           </fieldset>
         </div>
+        
       </div>
-      
     </div>
     <div
       class="MuiInputBase-root MuiInput-root MuiInput-underline"
@@ -742,11 +733,11 @@ exports[`PostForm should match snapshot 2`] = `
                       title="Sport"
                     />
                     <a
-                      aria-disabled="false"
-                      class="MuiButtonBase-root MuiCardActionArea-root"
+                      aria-disabled="true"
+                      class="MuiButtonBase-root MuiCardActionArea-root Mui-disabled"
                       href="/"
                       role="button"
-                      tabindex="0"
+                      tabindex="-1"
                     >
                       <div
                         class="MuiCardContent-root sc-dlfnbm kNYplF"
@@ -764,9 +755,6 @@ exports[`PostForm should match snapshot 2`] = `
                       </div>
                       <span
                         class="MuiCardActionArea-focusHighlight"
-                      />
-                      <span
-                        class="MuiTouchRipple-root"
                       />
                     </a>
                   </div>
@@ -863,6 +851,7 @@ exports[`PostForm should match snapshot 2`] = `
       </div>
     </div>
     <div />
+    
     <div
       class="MuiBox-root MuiBox-root-12"
     >

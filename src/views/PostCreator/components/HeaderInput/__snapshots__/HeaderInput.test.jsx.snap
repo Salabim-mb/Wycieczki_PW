@@ -4,7 +4,6 @@ exports[`HeaderInput should display error message  1`] = `
 <div>
   <div
     class="MuiFormGroup-root"
-    my="2"
   >
     <label
       aria-disabled="false"
@@ -38,8 +37,8 @@ exports[`HeaderInput should display error message  1`] = `
         <input
           accept="image/*"
           hidden=""
-          id="headerFile"
-          name="headerFile"
+          id="header"
+          name="header"
           type="file"
         />
       </span>
@@ -47,34 +46,33 @@ exports[`HeaderInput should display error message  1`] = `
         class="MuiTouchRipple-root"
       />
     </label>
+    
     <p
       class="MuiTypography-root MuiTypography-body1"
-      my="2"
     >
       lub
     </p>
     <div
       class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      rest="[object Object]"
     >
       <label
-        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-error Mui-error MuiFormLabel-filled"
         data-shrink="true"
-        for="headerLink"
-        id="headerLink-label"
       >
         Link do filmu yt
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-fullWidth MuiInputBase-formControl"
       >
         <input
-          aria-invalid="false"
+          aria-invalid="true"
           class="MuiInputBase-input MuiOutlinedInput-input"
           data-testid="test-id"
-          id="headerLink"
           maxlength="120"
           minlength="1"
           name="headerLink"
+          placeholder=""
           type="text"
           value="Nagłówek"
         />
@@ -91,30 +89,11 @@ exports[`HeaderInput should display error message  1`] = `
           </legend>
         </fieldset>
       </div>
-    </div>
-    <div
-      class="MuiPaper-root MuiAlert-root MuiAlert-standardError MuiPaper-elevation0"
-      role="alert"
-    >
-      <div
-        class="MuiAlert-icon"
-      >
-        <svg
-          aria-hidden="true"
-          class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
-          focusable="false"
-          viewBox="0 0 24 24"
-        >
-          <path
-            d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-          />
-        </svg>
-      </div>
-      <div
-        class="MuiAlert-message"
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled"
       >
         błąd
-      </div>
+      </p>
     </div>
   </div>
 </div>
@@ -124,7 +103,6 @@ exports[`HeaderInput should match snapshot 1`] = `
 <div>
   <div
     class="MuiFormGroup-root"
-    my="2"
   >
     <label
       aria-disabled="false"
@@ -158,8 +136,8 @@ exports[`HeaderInput should match snapshot 1`] = `
         <input
           accept="image/*"
           hidden=""
-          id="headerFile"
-          name="headerFile"
+          id="header"
+          name="header"
           type="file"
         />
       </span>
@@ -167,20 +145,19 @@ exports[`HeaderInput should match snapshot 1`] = `
         class="MuiTouchRipple-root"
       />
     </label>
+    
     <p
       class="MuiTypography-root MuiTypography-body1"
-      my="2"
     >
       lub
     </p>
     <div
       class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      rest="[object Object]"
     >
       <label
         class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
         data-shrink="true"
-        for="headerLink"
-        id="headerLink-label"
       >
         Link do filmu yt
       </label>
@@ -191,10 +168,10 @@ exports[`HeaderInput should match snapshot 1`] = `
           aria-invalid="false"
           class="MuiInputBase-input MuiOutlinedInput-input"
           data-testid="test-id"
-          id="headerLink"
           maxlength="120"
           minlength="1"
           name="headerLink"
+          placeholder=""
           type="text"
           value="Nagłówek"
         />
@@ -211,8 +188,8 @@ exports[`HeaderInput should match snapshot 1`] = `
           </legend>
         </fieldset>
       </div>
+      
     </div>
-    
   </div>
 </div>
 `;
