@@ -38,3 +38,5 @@ PostTilePreview.defaultProps = {
 };
 
 export default PostTilePreview;
+
+/* eslint-enable */

@@ -1,6 +1,8 @@
 import paths from 'constants/api';
+import { errorMessage, errorMessageText } from 'constants/errorHandler';
 
-export const getPost = async (token, id) => {
+export const getPost = async id => {
+	console.log('xdaa', id);
 	if (id) {
 		// fetch post
 		const url = `${paths.BLOG_POST}${id}/`;
@@ -12,7 +14,7 @@ export const getPost = async (token, id) => {
 		if (response.status === 200) {
 			return response.json();
 		}
-		throw new Error('');
+		throw new Error(await errorMessage(response));
 	}
 	// return empty if id is not provided
 	return {};
@@ -38,7 +40,7 @@ export const uploadPhoto = async (token, id, file, signal, flag, attachment) => 
 	if (response.status === 201) {
 		return response.json();
 	}
-	throw new Error('');
+	throw new Error(await errorMessage(response));
 };
 
 export const sendPost = async (token, post, id) => {
@@ -74,7 +76,7 @@ export const sendPost = async (token, post, id) => {
 	const response = await fetch(url, { headers, method, body: JSON.stringify(postNew) });
 
 	if (response.status !== expectedResponseStatus) {
-		throw new Error('');
+		throw new Error(await errorMessage(response));
 	}
 };
 
@@ -99,7 +101,7 @@ export const deleteAttachment = async (token, id, isImage) => {
 	const response = await fetch(url, { headers, method: 'DELETE' });
 
 	if (response.status !== 204) {
-		throw new Error('');
+		throw new Error(await errorMessageText(response));
 	}
 	return response;
 };
@@ -137,23 +139,6 @@ export const reserveSpace = async token => {
 	throw new Error('');
 };
 
-export const getReservation = async id => {
-	if (id) {
-		const url = `${paths.BLOG_RESERVATION}${id}/`;
-
-		const headers = {};
-
-		const response = await fetch(url, { headers, method: 'GET' });
-
-		if (response.status === 200) {
-			return response.json();
-		}
-		throw new Error('');
-	}
-	// return empty if id is not provided
-	return {};
-};
-
 export const getTopics = async () => {
 	const url = `${paths.BLOG_TOPICS}`;
 
@@ -162,7 +147,7 @@ export const getTopics = async () => {
 	const response = await fetch(url, { headers, method: 'GET' });
 
 	if (response.status !== 200) {
-		throw new Error('błąd');
+		throw new Error(await errorMessageText(response));
 	}
 
 	return response.json();
