@@ -1,5 +1,6 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import PropTypes from 'prop-types';
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -17,5 +18,9 @@ const QCProvider = ({ children, ...rest }) => (
 		{children}
 	</QueryClientProvider>
 );
+
+QCProvider.propTypes = {
+	children: PropTypes.element.isRequired,
+};
 
 export default QCProvider;
