@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import Card from '@material-ui/core/Card';
@@ -9,9 +10,17 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+const StyledCard = styled(Card)`
+    width: 100%;
+
+    @media (min-width: 1024px){
+        width: 50%;
+    }
+
+`;
 
 const CategoryTile = ({ title, desc, cover, link }) => (
-    <Card >
+    <StyledCard >
         <CardActionArea component={Link} to={link}>
             <CardMedia
                 image={cover}
@@ -31,7 +40,7 @@ const CategoryTile = ({ title, desc, cover, link }) => (
                 Czytaj dalej
         </Button>
         </CardActions>
-    </Card>
+    </StyledCard>
 );
 
 CategoryTile.propTypes = {

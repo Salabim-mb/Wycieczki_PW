@@ -3,7 +3,7 @@
 exports[`CategoryTile should match snapshot 1`] = `
 <div>
   <div
-    class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    class="MuiPaper-root MuiCard-root sc-bdfBwQ jPbSpN MuiPaper-elevation1 MuiPaper-rounded"
   >
     <a
       aria-disabled="false"
@@ -51,7 +51,7 @@ exports[`CategoryTile should match snapshot 1`] = `
         <span
           class="MuiButton-label"
         >
-          Learn More
+          Czytaj dalej
         </span>
         <span
           class="MuiTouchRipple-root"
