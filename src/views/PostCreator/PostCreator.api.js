@@ -2,7 +2,6 @@ import paths from 'constants/api';
 import { errorMessage, errorMessageText } from 'constants/errorHandler';
 
 export const getPost = async id => {
-	console.log('xdaa', id);
 	if (id) {
 		// fetch post
 		const url = `${paths.BLOG_POST}${id}/`;
