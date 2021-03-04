@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
 		backgroundPosition: 'center',
 	},
 	divider: {
-		width: "100%"
+		width: "95%"
 	},
 }));
 
@@ -53,7 +53,7 @@ const getEntryContent = async (id) => {
 	if (res.status === 200) {
 		return await res.json();
 	}
-	throw new Error(await res.json());
+	throw new Error((await res.json()).detail);
 };
 
 const mapEntry = (data) => ({
@@ -76,7 +76,6 @@ const BlogEntry = () => {
 			setLoading(true);
 			try {
 				const res = await getEntryContent(entryId);
-				console.log(res);
 				setEntryData(mapEntry(res));
 			} catch(ex) {
 				alertC.current.showAlert(ex.message || "Coś poszło nie tak przy próbie pobierania posta.")

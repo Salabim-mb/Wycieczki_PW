@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import GlobalStyle from 'style/GlobalStyle';
 import { AlertProvider } from 'context/AlertContext';
+import { AlertPopup } from '../../components';
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ const App = () => (
 				<BrowserRouter>
 					<Router />
 				</BrowserRouter>
+				<AlertPopup />
 			</AlertProvider>
 		</QueryClientProvider>
 	</ThemeProvider>

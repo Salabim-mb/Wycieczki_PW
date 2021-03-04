@@ -1,15 +1,14 @@
 import React from 'react';
-import { variants } from 'constants/materialConstants';
+import alertStyle from 'constants/alertOptions';
 import { Alert } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 
-const { INFO, ERROR } = variants;
 
 const AlertInfo = ({ isLoading, isError, children }) =>
 	isLoading ? (
-		<Alert color={INFO}>Ładowanie...</Alert>
+		<Alert color={alertStyle.INFO}>Ładowanie...</Alert>
 	) : isError ? (
-		<Alert color={ERROR}>{children}</Alert>
+		<Alert color={alertStyle.ERROR}>{children}</Alert>
 	) : null;
 
 AlertInfo.propTypes = {
