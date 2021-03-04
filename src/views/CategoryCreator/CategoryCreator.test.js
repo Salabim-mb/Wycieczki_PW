@@ -4,10 +4,11 @@ import { MemoryRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import CategoryCreator from './CategoryCreator';
-import { useQueryBlogs } from './CategoryCreator.hooks';
+import { useQueryBlogs, useMutationCategory } from './CategoryCreator.hooks';
 
 jest.mock('views/CategoryCreator/CategoryCreator.hooks', () => ({
     useQueryBlogs: jest.fn(),
+    useMutationCategory: jest.fn(),
 }));
 
 jest.mock('react-router-dom', () => ({

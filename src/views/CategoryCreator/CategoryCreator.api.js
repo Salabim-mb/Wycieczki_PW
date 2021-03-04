@@ -16,17 +16,38 @@ export const getBlogs = async () => {
     return response.json();
 }
 
+// export const sendCategory = async (formData) => {
+//     const url = `${paths.BLOG_TOPIC}`;
+
+//     const headers = {
+//         'Content-Type': 'multipart/form-data',
+//     };
+
+//     const response = await fetch(url, { headers, method: 'POST', body: formData });
+
+//     console.log(response)
+
+//     if (response.status !== 200) {
+//         throw new Error('błąd');
+//     }
+
+//     return response.json();
+// }
+
 export const sendCategory = (formData) => {
     fetch(`${paths.BLOG_TOPIC}`, {
         method: 'POST',
 
         body: formData,
     })
-        .then(response => response.json())
-        .then(resp => {
-            console.log('Success:', resp);
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Something went wrong');
+
         })
         .catch((err) => {
-            console.error('Error:', err);
+            throw new Error('błąd', err)
         });
 }

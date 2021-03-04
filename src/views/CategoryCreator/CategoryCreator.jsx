@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { useFormik } from 'formik';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
-// import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
@@ -24,8 +23,9 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-
     const { data, isError, isLoading, error } = useQueryBlogs()
+    // const mutation = useMutationCategory()
+
 
     const formik = useFormik({
         initialValues: {
@@ -35,7 +35,7 @@ const CategoryCreator = () => {
             cover_image: '',
             header_image: ''
         },
-        onSubmit: () => {
+        onSubmit: async () => {
             const formData = new FormData();
             formData.append('cover_image', formik.values.cover_image);
             formData.append('header_image', formik.values.header_image);
@@ -44,7 +44,14 @@ const CategoryCreator = () => {
             formData.append('description', formik.values.description);
             // formData.append('authorization', user.token);
             sendCategory(formData)
-
+            // try {
+            //     const todo = await mutation.mutateAsync(formData)
+            //     console.log(todo)
+            // } catch (err) {
+            //     console.error(err)
+            // } finally {
+            //     console.log('done')
+            // }
         },
         validate: (values) => {
             const errors = {};
