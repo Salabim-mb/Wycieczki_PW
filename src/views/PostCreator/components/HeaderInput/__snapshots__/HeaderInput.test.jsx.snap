@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderInput should display error message  1`] = `
+<div>
+  <div
+    class="MuiFormGroup-root sc-hKgILt cObqrR"
+  >
+    <label
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        <span
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="3.2"
+            />
+            <path
+              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+            />
+          </svg>
+        </span>
+        Prześlij nagłówek
+        <input
+          accept="image/*"
+          hidden=""
+          id="header"
+          name="header"
+          type="file"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </label>
+    
+    <p
+      class="MuiTypography-root sc-eCssSg iZeaEh MuiTypography-body1"
+    >
+      lub
+    </p>
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-jSgupP bbdpWM"
+      rest="[object Object]"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined Mui-error Mui-error MuiFormLabel-filled"
+        data-shrink="true"
+      >
+        Link do filmu yt
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
+      >
+        <input
+          aria-invalid="true"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="test-id"
+          maxlength="120"
+          minlength="1"
+          name="headerLink"
+          placeholder=""
+          type="text"
+          value="Nagłówek"
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-7 PrivateNotchedOutline-legendNotched-8"
+          >
+            <span>
+              Link do filmu yt
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      <p
+        class="MuiFormHelperText-root MuiFormHelperText-contained Mui-error MuiFormHelperText-filled"
+      >
+        błąd
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`HeaderInput should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiFormGroup-root sc-hKgILt cObqrR"
+  >
+    <label
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+      role="button"
+      tabindex="0"
+    >
+      <span
+        class="MuiButton-label"
+      >
+        <span
+          class="MuiButton-startIcon MuiButton-iconSizeMedium"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="3.2"
+            />
+            <path
+              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+            />
+          </svg>
+        </span>
+        Prześlij nagłówek
+        <input
+          accept="image/*"
+          hidden=""
+          id="header"
+          name="header"
+          type="file"
+        />
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </label>
+    
+    <p
+      class="MuiTypography-root sc-eCssSg iZeaEh MuiTypography-body1"
+    >
+      lub
+    </p>
+    <div
+      class="MuiFormControl-root MuiTextField-root sc-jSgupP bbdpWM"
+      rest="[object Object]"
+    >
+      <label
+        class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-shrink MuiInputLabel-outlined MuiFormLabel-filled"
+        data-shrink="true"
+      >
+        Link do filmu yt
+      </label>
+      <div
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input MuiOutlinedInput-input"
+          data-testid="test-id"
+          maxlength="120"
+          minlength="1"
+          name="headerLink"
+          placeholder=""
+          type="text"
+          value="Nagłówek"
+        />
+        <fieldset
+          aria-hidden="true"
+          class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+        >
+          <legend
+            class="PrivateNotchedOutline-legendLabelled-3 PrivateNotchedOutline-legendNotched-4"
+          >
+            <span>
+              Link do filmu yt
+            </span>
+          </legend>
+        </fieldset>
+      </div>
+      
+    </div>
+  </div>
+</div>
+`;
