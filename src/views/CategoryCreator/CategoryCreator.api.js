@@ -45,9 +45,7 @@ export const sendCategory = (formData) => {
                 return response.json();
             }
             throw new Error('Something went wrong');
-
         })
-        .catch((err) => {
-            throw new Error('błąd', err)
-        });
+        .then(data => data)
+        .catch(err => err.message)
 }
