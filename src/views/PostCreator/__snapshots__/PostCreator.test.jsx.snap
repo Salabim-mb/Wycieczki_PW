@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PostCreator should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiCardHeader-root"
+      >
+        <div
+          class="MuiCardHeader-content"
+        >
+          <span
+            class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+          >
+            <h1
+              class="sc-hKgILt hMUzAK"
+            >
+              Stwórz wpis
+            </h1>
+          </span>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root"
+      >
+        <div>
+          formularz cały
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`PostCreator should work withoud data 1`] = `
+<div>
+  <div
+    class="MuiContainer-root MuiContainer-maxWidthLg"
+  >
+    <div
+      class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
+    >
+      <div
+        class="MuiCardHeader-root"
+      >
+        <div
+          class="MuiCardHeader-content"
+        >
+          <span
+            class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+          >
+            <h1
+              class="sc-hKgILt hMUzAK"
+            >
+              Stwórz wpis
+            </h1>
+          </span>
+        </div>
+      </div>
+      <div
+        class="MuiCardContent-root"
+      >
+        <div>
+          formularz cały
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

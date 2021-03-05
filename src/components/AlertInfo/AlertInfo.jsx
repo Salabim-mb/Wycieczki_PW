@@ -1,9 +1,9 @@
 import React from 'react';
-import { variants } from 'constants/materialConstants';
+import variants from 'constants/alertOptions';
 import { Alert } from '@material-ui/lab';
 import PropTypes from 'prop-types';
 
-const { INFO, ERROR } = variants;
+const { ERROR, INFO } = variants;
 
 /* eslint-disable no-nested-ternary */
 

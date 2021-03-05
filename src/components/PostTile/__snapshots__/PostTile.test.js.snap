@@ -6,10 +6,10 @@ exports[`PostTile should match snapshot 1`] = `
     class="MuiPaper-root MuiCard-root MuiPaper-elevation1 MuiPaper-rounded"
   >
     <div
-      class="sc-gsTCUz bYlABT"
+      class="sc-gsTCUz gNcPtD"
     >
       <div
-        class="MuiCardMedia-root sc-bdfBwQ EpHKn"
+        class="MuiCardMedia-root sc-bdfBwQ ccOfbC"
         style="background-image: url(logo.svg);"
         title="Geometria przestrzenna"
       />
@@ -21,7 +21,7 @@ exports[`PostTile should match snapshot 1`] = `
         tabindex="0"
       >
         <div
-          class="MuiCardContent-root sc-dlfnbm CbfuR"
+          class="MuiCardContent-root sc-dlfnbm kNYplF"
         >
           <h2
             class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"

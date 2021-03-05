@@ -5,7 +5,7 @@ import paths from 'constants/api'
 import Typography from '@material-ui/core/Typography';
 import { AlertInfo } from 'components';
 import Image from './components/Image'
-import StyledContainer from './Category.css'
+import { StyledContainer, StyledPostDisplay } from './Category.css'
 import { useQueryCategory, useQueryPosts } from './Category.hooks'
 
 
@@ -27,13 +27,17 @@ const Category = () => {
                 <Typography variant="h3">{category?.data?.title}</Typography>
             </>}
 
-            <AlertInfo isLoading={posts.isLoading} isError={posts.isError}>
-                {posts.error?.message}
-            </AlertInfo>
+            <StyledPostDisplay>
 
-            { posts.isError ? <div> Nie udało się pobrać postu </div> : posts?.data?.results?.map((data) => (
-                <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
-            ))}
+                <AlertInfo isLoading={posts.isLoading} isError={posts.isError}>
+                    {posts.error?.message}
+                </AlertInfo>
+
+                {posts.isError ? <div> Nie udało się pobrać postu </div> : posts?.data?.results?.map((data) => (
+                    <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
+                ))}
+
+            </StyledPostDisplay>
 
         </StyledContainer>
     );
