@@ -36,7 +36,7 @@ const Category = () => {
                 </AlertInfo>
 
                 {posts.isError ? <div> Nie udało się pobrać postu </div> : posts?.data?.results?.map((data) => (
-                    <PostTile key={data.reservation} id={data.reservation} cover={data.cover} title={data.title} summary={data.summary} link={`${params.blog}/${params.category}/${data.reservation}`} />
+                    <PostTile key={data.reservation} id={data.reservation} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${params.category}/${data.reservation}`} />
                 ))}
 
             </StyledPostDisplay>
