@@ -3,7 +3,7 @@
 exports[`HeaderInput should display error message  1`] = `
 <div>
   <div
-    class="MuiFormGroup-root"
+    class="MuiFormGroup-root sc-hKgILt cObqrR"
   >
     <label
       aria-disabled="false"
@@ -48,12 +48,12 @@ exports[`HeaderInput should display error message  1`] = `
     </label>
     
     <p
-      class="MuiTypography-root MuiTypography-body1"
+      class="MuiTypography-root sc-eCssSg iZeaEh MuiTypography-body1"
     >
       lub
     </p>
     <div
-      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      class="MuiFormControl-root MuiTextField-root sc-jSgupP bbdpWM"
       rest="[object Object]"
     >
       <label
@@ -63,7 +63,7 @@ exports[`HeaderInput should display error message  1`] = `
         Link do filmu yt
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-fullWidth MuiInputBase-formControl"
+        class="MuiInputBase-root MuiOutlinedInput-root Mui-error Mui-error MuiInputBase-formControl"
       >
         <input
           aria-invalid="true"
@@ -102,7 +102,7 @@ exports[`HeaderInput should display error message  1`] = `
 exports[`HeaderInput should match snapshot 1`] = `
 <div>
   <div
-    class="MuiFormGroup-root"
+    class="MuiFormGroup-root sc-hKgILt cObqrR"
   >
     <label
       aria-disabled="false"
@@ -147,12 +147,12 @@ exports[`HeaderInput should match snapshot 1`] = `
     </label>
     
     <p
-      class="MuiTypography-root MuiTypography-body1"
+      class="MuiTypography-root sc-eCssSg iZeaEh MuiTypography-body1"
     >
       lub
     </p>
     <div
-      class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+      class="MuiFormControl-root MuiTextField-root sc-jSgupP bbdpWM"
       rest="[object Object]"
     >
       <label
@@ -162,7 +162,7 @@ exports[`HeaderInput should match snapshot 1`] = `
         Link do filmu yt
       </label>
       <div
-        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
       >
         <input
           aria-invalid="false"

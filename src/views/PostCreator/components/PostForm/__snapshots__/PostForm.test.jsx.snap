@@ -3,50 +3,8 @@
 exports[`PostForm should match snapshot 1`] = `
 <div>
   <form>
-    <label
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
-      role="button"
-      tabindex="0"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        <span
-          class="MuiButton-startIcon MuiButton-iconSizeMedium"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="3.2"
-            />
-            <path
-              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
-            />
-          </svg>
-        </span>
-        Prześlij cover
-        <input
-          accept="image/*"
-          hidden=""
-          id="cover"
-          name="cover"
-          type="file"
-        />
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </label>
-    
     <div
-      class="MuiFormGroup-root"
+      class="sc-iBPRYJ gBTZRf"
     >
       <label
         aria-disabled="false"
@@ -76,12 +34,12 @@ exports[`PostForm should match snapshot 1`] = `
               />
             </svg>
           </span>
-          Prześlij nagłówek
+          Prześlij cover
           <input
             accept="image/*"
             hidden=""
-            id="header"
-            name="header"
+            id="cover"
+            name="cover"
             type="file"
           />
         </span>
@@ -90,49 +48,95 @@ exports[`PostForm should match snapshot 1`] = `
         />
       </label>
       
-      <p
-        class="MuiTypography-root MuiTypography-body1"
-      >
-        lub
-      </p>
       <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-        rest="[object Object]"
+        class="MuiFormGroup-root sc-eCssSg gjaSlC"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink="false"
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+          role="button"
+          tabindex="0"
         >
-          Link do filmu yt
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input"
-            data-testid="test-id"
-            maxlength="120"
-            minlength="1"
-            name="headerLink"
-            placeholder=""
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          <span
+            class="MuiButton-label"
           >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-3"
+            <span
+              class="MuiButton-startIcon MuiButton-iconSizeMedium"
             >
-              <span>
-                Link do filmu yt
-              </span>
-            </legend>
-          </fieldset>
-        </div>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3.2"
+                />
+                <path
+                  d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+                />
+              </svg>
+            </span>
+            Prześlij nagłówek
+            <input
+              accept="image/*"
+              hidden=""
+              id="header"
+              name="header"
+              type="file"
+            />
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </label>
         
+        <p
+          class="MuiTypography-root sc-jSgupP jWgRpQ MuiTypography-body1"
+        >
+          lub
+        </p>
+        <div
+          class="MuiFormControl-root MuiTextField-root sc-gKsewC gzKfOJ"
+          rest="[object Object]"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink="false"
+          >
+            Link do filmu yt
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="test-id"
+              maxlength="120"
+              minlength="1"
+              name="headerLink"
+              placeholder=""
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="PrivateNotchedOutline-legendLabelled-3"
+              >
+                <span>
+                  Link do filmu yt
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
       </div>
     </div>
     <div
@@ -454,50 +458,8 @@ exports[`PostForm should match snapshot 1`] = `
 exports[`PostForm should match snapshot 2`] = `
 <div>
   <form>
-    <label
-      aria-disabled="false"
-      class="MuiButtonBase-root MuiButton-root MuiButton-contained"
-      role="button"
-      tabindex="0"
-    >
-      <span
-        class="MuiButton-label"
-      >
-        <span
-          class="MuiButton-startIcon MuiButton-iconSizeMedium"
-        >
-          <svg
-            aria-hidden="true"
-            class="MuiSvgIcon-root"
-            focusable="false"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              cx="12"
-              cy="12"
-              r="3.2"
-            />
-            <path
-              d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
-            />
-          </svg>
-        </span>
-        Prześlij cover
-        <input
-          accept="image/*"
-          hidden=""
-          id="cover"
-          name="cover"
-          type="file"
-        />
-      </span>
-      <span
-        class="MuiTouchRipple-root"
-      />
-    </label>
-    
     <div
-      class="MuiFormGroup-root"
+      class="sc-iBPRYJ gBTZRf"
     >
       <label
         aria-disabled="false"
@@ -527,12 +489,12 @@ exports[`PostForm should match snapshot 2`] = `
               />
             </svg>
           </span>
-          Prześlij nagłówek
+          Prześlij cover
           <input
             accept="image/*"
             hidden=""
-            id="header"
-            name="header"
+            id="cover"
+            name="cover"
             type="file"
           />
         </span>
@@ -541,49 +503,95 @@ exports[`PostForm should match snapshot 2`] = `
         />
       </label>
       
-      <p
-        class="MuiTypography-root MuiTypography-body1"
-      >
-        lub
-      </p>
       <div
-        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
-        rest="[object Object]"
+        class="MuiFormGroup-root sc-eCssSg gjaSlC"
       >
         <label
-          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
-          data-shrink="false"
+          aria-disabled="false"
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+          role="button"
+          tabindex="0"
         >
-          Link do filmu yt
-        </label>
-        <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
-        >
-          <input
-            aria-invalid="false"
-            class="MuiInputBase-input MuiOutlinedInput-input"
-            data-testid="test-id"
-            maxlength="120"
-            minlength="1"
-            name="headerLink"
-            placeholder=""
-            type="text"
-            value=""
-          />
-          <fieldset
-            aria-hidden="true"
-            class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+          <span
+            class="MuiButton-label"
           >
-            <legend
-              class="PrivateNotchedOutline-legendLabelled-9"
+            <span
+              class="MuiButton-startIcon MuiButton-iconSizeMedium"
             >
-              <span>
-                Link do filmu yt
-              </span>
-            </legend>
-          </fieldset>
-        </div>
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3.2"
+                />
+                <path
+                  d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+                />
+              </svg>
+            </span>
+            Prześlij nagłówek
+            <input
+              accept="image/*"
+              hidden=""
+              id="header"
+              name="header"
+              type="file"
+            />
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </label>
         
+        <p
+          class="MuiTypography-root sc-jSgupP jWgRpQ MuiTypography-body1"
+        >
+          lub
+        </p>
+        <div
+          class="MuiFormControl-root MuiTextField-root sc-gKsewC gzKfOJ"
+          rest="[object Object]"
+        >
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+            data-shrink="false"
+          >
+            Link do filmu yt
+          </label>
+          <div
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-formControl"
+          >
+            <input
+              aria-invalid="false"
+              class="MuiInputBase-input MuiOutlinedInput-input"
+              data-testid="test-id"
+              maxlength="120"
+              minlength="1"
+              name="headerLink"
+              placeholder=""
+              type="text"
+              value=""
+            />
+            <fieldset
+              aria-hidden="true"
+              class="PrivateNotchedOutline-root-7 MuiOutlinedInput-notchedOutline"
+            >
+              <legend
+                class="PrivateNotchedOutline-legendLabelled-9"
+              >
+                <span>
+                  Link do filmu yt
+                </span>
+              </legend>
+            </fieldset>
+          </div>
+          
+        </div>
       </div>
     </div>
     <div

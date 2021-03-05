@@ -9,6 +9,8 @@ import {
 	useTopicsQuery,
 } from 'views/PostCreator/PostCreator.hooks';
 import paths from 'constants/api';
+import { ThemeProvider } from 'styled-components';
+import theme from 'constants/theme';
 import PostForm from './PostForm';
 
 // jest.mock('..', () => ({
@@ -86,9 +88,11 @@ describe('PostForm', () => {
 
 	it('should match snapshot', async () => {
 		const { container } = render(
-			<MemoryRouter>
-				<PostForm />
-			</MemoryRouter>,
+			<ThemeProvider theme={theme}>
+				<MemoryRouter>
+					<PostForm />
+				</MemoryRouter>
+			</ThemeProvider>,
 		);
 
 		expect(container).toMatchSnapshot();
@@ -96,9 +100,11 @@ describe('PostForm', () => {
 
 	it('should match snapshot', async () => {
 		const { getByText, container } = render(
-			<MemoryRouter>
-				<PostForm post={post} id="100" />
-			</MemoryRouter>,
+			<ThemeProvider theme={theme}>
+				<MemoryRouter>
+					<PostForm post={post} id="100" />
+				</MemoryRouter>
+			</ThemeProvider>,
 		);
 
 		fireEvent.click(getByText('Prześlij post'));
