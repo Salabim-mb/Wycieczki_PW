@@ -15,6 +15,8 @@ const Category = () => {
     const category = useQueryCategory(params)
     const posts = useQueryPosts(params)
 
+    console.log(params)
+
     return (
         <StyledContainer>
 
@@ -34,7 +36,7 @@ const Category = () => {
                 </AlertInfo>
 
                 {posts.isError ? <div> Nie udało się pobrać postu </div> : posts?.data?.results?.map((data) => (
-                    <PostTile key={data.id} id={data.id} cover={data.cover} title={data.title} summary={data.summary} link={`/${params.category}/${data.id}`} />
+                    <PostTile key={data.reservation} id={data.reservation} cover={data.cover} title={data.title} summary={data.summary} link={`${params.blog}/${params.category}/${data.reservation}`} />
                 ))}
 
             </StyledPostDisplay>

@@ -24,7 +24,8 @@ export const pathList = {
 export default [
 	{
 		component: Category,
-		path: pathList.BLOG_CATEGORIES.path
+		path: pathList.BLOG_CATEGORIES.path,
+		exact: true
 	},
 	{
 		path: pathList.POST_CREATOR.path,
