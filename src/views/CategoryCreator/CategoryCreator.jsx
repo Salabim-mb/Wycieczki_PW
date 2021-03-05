@@ -8,8 +8,8 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
 import CenteredContainer from 'components/CenteredContainer'
-import { useQueryBlogs } from './CategoryCreator.hooks'
-import { sendCategory } from './CategoryCreator.api';
+import { useQueryBlogs, useMutationCategory } from './CategoryCreator.hooks'
+// import { sendCategory } from './CategoryCreator.api';
 
 const StyledForm = styled.form`
     display:flex;
@@ -25,7 +25,7 @@ const StyledForm = styled.form`
 
 const CategoryCreator = () => {
     const { data, isError, isLoading, error } = useQueryBlogs()
-    // const mutation = useMutationCategory()
+    const mutation = useMutationCategory()
     // const history = useHistory()
 
     const formik = useFormik({
@@ -45,12 +45,12 @@ const CategoryCreator = () => {
             formData.append('description', formik.values.description);
 
             // formData.append('authorization', user.token);
-            sendCategory(formData)
-            // try {
-            //     await mutation.mutateAsync(formData)
-            // } catch (err) {
-
-            // }
+            // sendCategory(formData)
+            try {
+                await mutation.mutateAsync(formData)
+            } catch (err) {
+                console.log(err)
+            }
             // console.log(sendCategory(formData))
 
             // history.push("/cośtam")
