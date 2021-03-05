@@ -9,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
 import CenteredContainer from 'components/CenteredContainer'
 import { useQueryBlogs } from './CategoryCreator.hooks'
-// import { sendCategory } from './CategoryCreator.api';
+import { sendCategory } from './CategoryCreator.api';
 
 const StyledForm = styled.form`
     display:flex;
@@ -45,7 +45,7 @@ const CategoryCreator = () => {
             formData.append('description', formik.values.description);
 
             // formData.append('authorization', user.token);
-            // sendCategory(formData)
+            sendCategory(formData)
             // try {
             //     await mutation.mutateAsync(formData)
             // } catch (err) {
