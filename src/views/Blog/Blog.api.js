@@ -1,7 +1,7 @@
 import paths from 'constants/api';
 
-export const getPosts = async params => {
-	const url = `${paths.BLOG_POSTS}?topic=${params.category}`;
+export const getCategories = async params => {
+	const url = `${paths.BLOG_TOPICS}?blog=${params.blog}`;
 
 	const headers = {
 		'Content-Type': 'application/json',
@@ -16,8 +16,8 @@ export const getPosts = async params => {
 	return response.json();
 };
 
-export const getCategory = async params => {
-	const url = `${paths.BLOG_TOPIC}${params.category}/`;
+export const getBlog = async params => {
+	const url = `${paths.BLOG}${params.blog}/`;
 
 	const headers = {
 		'Content-Type': 'application/json',
