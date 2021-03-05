@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+// import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
@@ -8,7 +9,7 @@ import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
 import CenteredContainer from 'components/CenteredContainer'
 import { useQueryBlogs } from './CategoryCreator.hooks'
-import { sendCategory } from './CategoryCreator.api';
+// import { sendCategory } from './CategoryCreator.api';
 
 const StyledForm = styled.form`
     display:flex;
@@ -25,7 +26,7 @@ const StyledForm = styled.form`
 const CategoryCreator = () => {
     const { data, isError, isLoading, error } = useQueryBlogs()
     // const mutation = useMutationCategory()
-
+    // const history = useHistory()
 
     const formik = useFormik({
         initialValues: {
@@ -50,7 +51,9 @@ const CategoryCreator = () => {
             // } catch (err) {
 
             // }
-            console.log(sendCategory(formData))
+            // console.log(sendCategory(formData))
+
+            // history.push("/cośtam")
         },
         validate: (values) => {
             const errors = {};
