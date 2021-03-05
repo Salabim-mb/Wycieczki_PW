@@ -1,14 +1,14 @@
 import React from 'react';
-import { FormGroup, Typography } from '@material-ui/core';
 import { PhotoCamera } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import paths from 'constants/api';
-import { Input, UploadButton } from 'components';
+import { UploadButton } from 'components';
+import { StyledFormGroup, StyledTypography, StyledInput } from './HeaderInput.css';
 
 const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 	const FILE_LABEL = '';
 	return (
-		<FormGroup>
+		<StyledFormGroup>
 			<UploadButton
 				handleChange={handleChangeFile}
 				header="Prześlij nagłówek"
@@ -16,9 +16,8 @@ const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 				accept="image/*"
 				icon={<PhotoCamera />}
 			/>
-			<Typography>lub</Typography>
-			<Input
-				fullWidth
+			<StyledTypography>lub</StyledTypography>
+			<StyledInput
 				id="headerLink"
 				name="headerLink"
 				label="Link do filmu yt"
@@ -28,7 +27,7 @@ const HeaderInput = ({ handleChangeFile, header, handleChangeLink, error }) => {
 				handleChange={handleChangeLink}
 				error={error}
 			/>
-		</FormGroup>
+		</StyledFormGroup>
 	);
 };
 

@@ -23,6 +23,7 @@ import {
 	PostEditor,
 } from '..';
 import { validate } from './PostForm.utils';
+import { StyledUploadWrapper } from './PostForm.css';
 
 /* eslint-disable no-param-reassign */
 
@@ -120,26 +121,28 @@ const PostForm = ({ post, id }) => {
 
 	return (
 		<form onSubmit={formik.handleSubmit}>
-			<UploadButton
-				header="Prześlij cover"
-				id="cover"
-				accept="image/*"
-				icon={<PhotoCamera />}
-				handleChange={event => {
-					formik.setFieldValue('cover', event.currentTarget.files[0]);
-				}}
-				error={formik.touched.cover && formik.errors.cover ? formik.errors.cover : ''}
-			/>
-			<HeaderInput
-				handleChangeFile={event => {
-					formik.setFieldValue('header', event.currentTarget.files[0]);
-				}}
-				handleChangeLink={event => {
-					formik.setFieldValue('header', event.target.value);
-				}}
-				header={formik.values.header}
-				error={formik.touched.header && formik.errors.header ? formik.errors.header : ''}
-			/>
+			<StyledUploadWrapper>
+				<UploadButton
+					header="Prześlij cover"
+					id="cover"
+					accept="image/*"
+					icon={<PhotoCamera />}
+					handleChange={event => {
+						formik.setFieldValue('cover', event.currentTarget.files[0]);
+					}}
+					error={formik.touched.cover && formik.errors.cover ? formik.errors.cover : ''}
+				/>
+				<HeaderInput
+					handleChangeFile={event => {
+						formik.setFieldValue('header', event.currentTarget.files[0]);
+					}}
+					handleChangeLink={event => {
+						formik.setFieldValue('header', event.target.value);
+					}}
+					header={formik.values.header}
+					error={formik.touched.header && formik.errors.header ? formik.errors.header : ''}
+				/>
+			</StyledUploadWrapper>
 			<TopicSelector
 				value={formik.values.topic}
 				handleChange={event => {
