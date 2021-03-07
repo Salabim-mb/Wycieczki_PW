@@ -13,6 +13,10 @@ const paths = {
 		path: "/blog/:category/:entryId",
 		redirect: (category, entryId) => `/blog/${category}/${entryId}`,
 	},
+	ERROR: {
+		name: "Strona 404",
+		path: "/error"
+	}
 }
 
 export default paths;

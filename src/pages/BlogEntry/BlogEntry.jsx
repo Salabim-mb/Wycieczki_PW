@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import paths from 'constants/paths';
 import api from 'constants/api';
 import BlogSideBar from './components/BlogSideBar';
+import AttachmentContainer from './components/AttachmentContainer';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -30,13 +31,13 @@ const useStyles = makeStyles((theme) => ({
 		backgroundColor: theme.palette.grey[800],
 		color: theme.palette.common.white,
 		marginBottom: theme.spacing(4),
-		backgroundImage: 'url(https://source.unsplash.com/random)',
 		backgroundSize: 'cover',
 		backgroundRepeat: 'no-repeat',
 		backgroundPosition: 'center',
 	},
 	divider: {
-		width: "95%"
+		width: "95%",
+		marginBottom: theme.spacing(2)
 	},
 }));
 
@@ -53,7 +54,11 @@ const getEntryContent = async (id) => {
 	if (res.status === 200) {
 		return await res.json();
 	}
-	throw new Error((await res.json()).detail);
+	// eslint-disable-next-line no-throw-literal
+	throw {
+		status: res.status,
+		content: new Error((await res.json()).detail),
+	};
 };
 
 const mapEntry = (data) => ({
@@ -61,12 +66,16 @@ const mapEntry = (data) => ({
 	date: (new Date()).toISOString(),
 	title: data.title,
 	content: data.content,
-	mainPhoto: data?.img || null
+	mainPhoto: data.header || null,
+	attachments: data.downloadables || [],
 });
 
 const BlogEntry = () => {
 	const {category, entryId} = useParams();
-	const [redirect, setRedirect] = useState(false);
+	const [redirect, setRedirect] = useState({
+		action: false,
+		destination: null
+	});
 	const [entryData, setEntryData] = useState({});
 	const [loading, setLoading] = useState(false);
 	const alertC = useRef(useContext(AlertContext));
@@ -78,7 +87,14 @@ const BlogEntry = () => {
 				const res = await getEntryContent(entryId);
 				setEntryData(mapEntry(res));
 			} catch(ex) {
-				alertC.current.showAlert(ex.message || "Coś poszło nie tak przy próbie pobierania posta.")
+				if (ex.status === 404) {
+					setRedirect({
+						destination: paths.ERROR,
+						action: true
+					})
+				} else {
+					alertC.current.showAlert(ex.message?.content || "Coś poszło nie tak przy próbie pobierania posta.")
+				}
 			} finally {
 				setLoading(false);
 			}
@@ -88,7 +104,7 @@ const BlogEntry = () => {
 
 	const mapDate = (date) => {
 		const d = new Date(date);
-		return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
+		return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`;
 	}
 
 	const classes = useStyles();
@@ -102,8 +118,8 @@ const BlogEntry = () => {
 			) : (
 				<>
 					<CssBaseline />
-					<Paper className={classes.mainPhoto} style={{ backgroundImage: `url(${entryData.img})`}}>
-						<img style={{ display: 'none' }} src={entryData.img} alt={entryData.title} />
+					<Paper className={classes.mainPhoto} style={{ backgroundImage: `url(${entryData.mainPhoto})`}}>
+						<img style={{ display: 'none' }} src={entryData.mainPhoto} alt={entryData.title} />
 					</Paper>
 					<Grid container className={classes.mainGrid}>
 						<Grid item xs={12} md={8}>
@@ -115,6 +131,13 @@ const BlogEntry = () => {
 							</Typography>
 							<Divider className={classes.divider}/>
 							<div className={classes.entryBody} dangerouslySetInnerHTML={{__html: entryData.content}}/>
+							<Divider className={classes.divider}/>
+							<Typography variant="h5" component="h6">
+								Materiały do pobrania
+							</Typography>
+							{entryData?.attachments?.map((item) => (
+								<AttachmentContainer key={item.id} fileUrl={item.file_url} filename="Nazwa pliku" />
+							))}
 						</Grid>
 						<BlogSideBar
 							featuredPosts={[]}
