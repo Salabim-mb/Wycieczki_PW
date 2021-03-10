@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryTile should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiPaper-root MuiCard-root sc-bdfBwQ jPbSpN MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <a
+      aria-disabled="false"
+      class="MuiButtonBase-root MuiCardActionArea-root"
+      href="/liceum/kolorowanki/1"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="MuiCardMedia-root"
+        style="background-image: url(logo.svg);"
+        title="Geometria przestrzenna"
+      />
+      <div
+        class="MuiCardContent-root"
+      >
+        <h2
+          class="MuiTypography-root MuiTypography-h5 MuiTypography-gutterBottom"
+        >
+          Geometria przestrzenna
+        </h2>
+        <p
+          class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextSecondary"
+        >
+          Opis jakiś tam coś tam bla bla
+        </p>
+      </div>
+      <span
+        class="MuiCardActionArea-focusHighlight"
+      />
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </a>
+    <div
+      class="MuiCardActions-root MuiCardActions-spacing"
+    >
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeSmall MuiButton-sizeSmall"
+        href="/liceum/kolorowanki/1"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Czytaj dalej
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;
