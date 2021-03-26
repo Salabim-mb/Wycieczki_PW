@@ -105,6 +105,7 @@ const CategoryCreator = () => {
                 {formik.touched.title && formik.errors.title && (<Alert severity="error">Nie może być puste i dłuższe niż 100 znaków</Alert>)}
                 <Input
                     fullWidth
+                    multiline
                     id="description"
                     name="description"
                     label="Opis"
