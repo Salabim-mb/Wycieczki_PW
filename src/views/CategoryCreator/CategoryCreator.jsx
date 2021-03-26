@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+// import paths from 'constants/api'
 // import { useHistory } from 'react-router-dom'
 import { useFormik } from 'formik';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
 import CenteredContainer from 'components/CenteredContainer'
+import CategoryTile from 'components/CategoryTile'
 import { useQueryBlogs, useMutationCategory } from './CategoryCreator.hooks'
 // import { sendCategory } from './CategoryCreator.api';
 
 const StyledForm = styled.form`
+    width: 100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
     background-color: white;
     padding: ${({ theme }) => theme.margin.l};
+    color: black;
 
     @media (min-width: 1024px){
-        width: 50%;
+        /* width: 50%; */
     }
 `;
 
 const CategoryCreator = () => {
+    const [coverImageUrl, setCoverImageUrl] = useState('')
     const { data, isError, isLoading, error } = useQueryBlogs()
     const mutation = useMutationCategory()
     // const history = useHistory()
@@ -70,6 +76,16 @@ const CategoryCreator = () => {
             return errors;
         }
     });
+
+    useEffect(() => {
+        if (formik.values.cover_image !== '') {
+            // ('xd')
+            setCoverImageUrl(URL.createObjectURL(formik.values.cover_image))
+            console.log(coverImageUrl)
+        }
+
+
+    }, [formik.values.cover_image])
 
 
     return (
@@ -148,6 +164,8 @@ const CategoryCreator = () => {
                         formik.setFieldValue('header_image', event.currentTarget.files[0]);
                     }} /> */}
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
+                <Typography variant="p">Podgląd kafelka:</Typography>
+                <CategoryTile title={formik.values.title} desc={formik.values.description} cover={coverImageUrl} />
             </StyledForm>
 
         </CenteredContainer>
