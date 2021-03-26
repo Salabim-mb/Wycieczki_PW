@@ -51,13 +51,14 @@ const CategoryTile = ({ title, desc, cover, link }) => (
 CategoryTile.propTypes = {
     title: PropTypes.string.isRequired,
     desc: PropTypes.string,
-    link: PropTypes.string.isRequired,
+    link: PropTypes.string,
     cover: PropTypes.string,
 }
 
 CategoryTile.defaultProps = {
     desc: '',
     cover: '',
+    link: '',
 }
 
 export default CategoryTile

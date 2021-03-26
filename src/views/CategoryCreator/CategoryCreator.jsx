@@ -164,9 +164,11 @@ const CategoryCreator = () => {
                     type="file" onChange={event => {
                         formik.setFieldValue('header_image', event.currentTarget.files[0]);
                     }} /> */}
-                <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
-                <Typography variant="p">Podgląd kafelka:</Typography>
+
+                <Typography variant="body1">Podgląd kafelka:</Typography>
                 <CategoryTile title={formik.values.title} desc={formik.values.description} cover={coverImageUrl} />
+
+                <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>
 
         </CenteredContainer>
