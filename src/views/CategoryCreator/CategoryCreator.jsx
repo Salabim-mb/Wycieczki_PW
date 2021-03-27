@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 // import paths from 'constants/api'
-// import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useFormik } from 'formik';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
@@ -11,8 +11,8 @@ import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
 import CenteredContainer from 'components/CenteredContainer'
 import CategoryTile from 'components/CategoryTile'
-import { useQueryBlogs, useMutationCategory } from './CategoryCreator.hooks'
-// import { sendCategory } from './CategoryCreator.api';
+import { useQueryBlogs, useMutationCategory, useQueryCategory } from './CategoryCreator.hooks'
+// import { getCategory } from './CategoryCreator.api';
 
 const StyledForm = styled.form`
     width: 100%;
@@ -29,18 +29,28 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
+    // let datka
+    const params = useParams()
     const [coverImageUrl, setCoverImageUrl] = useState('')
-    const { data, isError, isLoading, error } = useQueryBlogs()
+    const blogs = useQueryBlogs()
+    const category = useQueryCategory(params.id)
     const mutation = useMutationCategory()
+
+
     // const history = useHistory()
 
     const formik = useFormik({
         initialValues: {
-            title: '',
-            blog: 0,
-            description: '',
-            cover_image: '',
-            header_image: ''
+            // title: '',
+            // blog: 0,
+            // description: '',
+            // cover_image: '',
+            // header_image: ''
+            title: category.data?.title || '',
+            blog: category.data?.blog || 0,
+            description: category.data?.description || '',
+            cover_image: category.data?.cover_image || '',
+            header_image: category.data?.header_image || '',
         },
         onSubmit: async () => {
             const formData = new FormData();
@@ -53,7 +63,7 @@ const CategoryCreator = () => {
             // formData.append('authorization', user.token);
             // sendCategory(formData)
             try {
-                await mutation.mutateAsync(formData)
+                await mutation.mutateAsync(formData, params.id)
             } catch (err) {
                 console.log(err)
             }
@@ -77,15 +87,15 @@ const CategoryCreator = () => {
         }
     });
 
+
     useEffect(() => {
         if (formik.values.cover_image !== '') {
-            // ('xd')
             setCoverImageUrl(URL.createObjectURL(formik.values.cover_image))
             console.log(coverImageUrl)
         }
 
 
-    }, [formik.values.cover_image])
+    }, [formik.values.cover_image, category.data])
 
 
     return (
@@ -120,12 +130,12 @@ const CategoryCreator = () => {
                     onChange={formik.handleChange}
                 >
                     <option value="" selected>-----------</option>
-                    {isError ? <option value="">Nie udało się pobrać blogów</option> : data?.map((blog) => (
-                        <option key={blog.id} value={blog.id}>{blog.title}</option>
+                    {blogs.isError ? <option value="">Nie udało się pobrać blogów</option> : blogs.data?.map((blogMap) => (
+                        <option key={blogMap.id} value={blogMap.id}>{blogMap.title}</option>
                     ))}
                 </Select>
-                <AlertInfo isLoading={isLoading} isError={isError}>
-                    {error?.message}
+                <AlertInfo isLoading={blogs.isLoading} isError={blogs.isError}>
+                    {blogs.error?.message}
                 </AlertInfo>
 
                 {formik.touched.blog && formik.errors.blog && (<Alert severity="error">Nie może być puste.</Alert>)}
@@ -166,7 +176,7 @@ const CategoryCreator = () => {
                     }} /> */}
 
                 <Typography variant="body1">Podgląd kafelka:</Typography>
-                <CategoryTile title={formik.values.title} desc={formik.values.description} cover={coverImageUrl} />
+                <CategoryTile title={formik.values.title} desc={formik.values.description} cover={coverImageUrl} post={category?.data} />
 
                 <Button type="submit" onSubmit={formik.handleSubmit}>Zatwierdź</Button>
             </StyledForm>

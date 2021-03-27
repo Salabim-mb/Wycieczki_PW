@@ -26,7 +26,7 @@ export const pathList = {
 	},
 	CREATOR_CATEGORY: {
 		name: "Krator kategorii",
-		path: "/blog/category-creator",
+		path: "/blog/category-creator/:id?",
 	}
 };
 
