@@ -34,7 +34,7 @@ const CategoryCreator = () => {
     const [coverImageUrl, setCoverImageUrl] = useState('')
     const blogs = useQueryBlogs()
     const category = useQueryCategory(params.id)
-    const mutation = useMutationCategory()
+    const mutation = useMutationCategory(params.id)
 
 
     // const history = useHistory()
@@ -52,6 +52,8 @@ const CategoryCreator = () => {
             cover_image: category.data?.cover_image || '',
             header_image: category.data?.header_image || '',
         },
+        enableReinitialize: true,
+
         onSubmit: async () => {
             const formData = new FormData();
             formData.append('cover_image', formik.values.cover_image);
@@ -63,7 +65,7 @@ const CategoryCreator = () => {
             // formData.append('authorization', user.token);
             // sendCategory(formData)
             try {
-                await mutation.mutateAsync(formData, params.id)
+                await mutation.mutateAsync(formData)
             } catch (err) {
                 console.log(err)
             }

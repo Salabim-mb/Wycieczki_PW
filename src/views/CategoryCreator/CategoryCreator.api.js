@@ -17,7 +17,10 @@ export const getBlogs = async () => {
     return response.json();
 }
 
+
 export const getCategory = async (id) => {
+    if (!id) return null
+
     const url = `${paths.BLOG_TOPIC}${id}`;
 
     const headers = {
@@ -53,14 +56,16 @@ export const getCategory = async (id) => {
 
 export const sendCategory = (formData, id) => {
     let methodType = 'POST'
+    let url = `${paths.BLOG_TOPIC}`
 
     if (id) {
         methodType = 'PATCH'
+        url = `${paths.BLOG_TOPIC}${id}/`
     }
 
     console.log(methodType, id)
 
-    fetch(`${paths.BLOG_TOPIC}`, {
+    fetch(url, {
         method: methodType,
 
         body: formData,
