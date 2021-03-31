@@ -1,4 +1,5 @@
 import paths from 'constants/api';
+// import { errorMessage } from 'constants/errorHandler';
 
 
 export const getBlogs = async () => {
@@ -63,20 +64,22 @@ export const sendCategory = (formData, id) => {
         url = `${paths.BLOG_TOPIC}${id}/`
     }
 
-    console.log(methodType, id)
-
-    fetch(url, {
+    return fetch(url, {
         method: methodType,
 
         body: formData,
     })
         .then((response) => {
-            if (response.ok) {
+            if (response.status === 200 || response.status === 201) {
+                console.log("taki zeby byl")
+
                 return response.json();
             }
-            throw new Error('Something went wrong');
+            // throw new Error(errorMessage(response));
+            throw new Error("Wystąpił błąd");
+
 
         })
         // .then(res => console.log(res))
-        .catch(err => err.message)
+        .catch(err => { throw new Error(err.message) })
 }

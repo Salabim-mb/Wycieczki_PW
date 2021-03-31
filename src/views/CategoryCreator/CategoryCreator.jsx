@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useContext } from 'react'
 import styled from 'styled-components'
 // import paths from 'constants/api'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { useFormik } from 'formik';
 import { UploadButton, AlertInfo, Input } from 'components';
 import { PhotoCamera } from '@material-ui/icons';
@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Select from '@material-ui/core/Select';
 import { Alert } from '@material-ui/lab';
+import { AlertContext } from 'context';
 import CenteredContainer from 'components/CenteredContainer'
 import CategoryTile from 'components/CategoryTile'
 import { useQueryBlogs, useMutationCategory, useQueryCategory } from './CategoryCreator.hooks'
@@ -29,15 +30,13 @@ const StyledForm = styled.form`
 `;
 
 const CategoryCreator = () => {
-    // let datka
     const params = useParams()
     const [coverImageUrl, setCoverImageUrl] = useState('')
     const blogs = useQueryBlogs()
     const category = useQueryCategory(params.id)
     const mutation = useMutationCategory(params.id)
-
-
-    // const history = useHistory()
+    const alertC = useRef(useContext(AlertContext));
+    const history = useHistory()
 
     const formik = useFormik({
         initialValues: {
@@ -65,9 +64,17 @@ const CategoryCreator = () => {
             // formData.append('authorization', user.token);
             // sendCategory(formData)
             try {
-                await mutation.mutateAsync(formData)
+                await mutation.mutateAsync(formData,
+                    {
+                        onSuccess: res => history.push(`/${formik.values.blog}/${res.id}/`),
+                        // onSuccess: res => console.log(res, 'RESIDUUM'),
+                        // onError: error => console.log(error, " XDDD"),
+
+                        onError: error => alertC.current.showAlert(error?.message),
+
+                    })
             } catch (err) {
-                console.log(err)
+                alertC.current.showAlert(err?.message)
             }
             // console.log(sendCategory(formData))
 
