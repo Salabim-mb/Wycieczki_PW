@@ -33,3 +33,15 @@ export const getBlog = async (params) => {
 
     return response.json();
 };
+
+export const deleteCategory = (id) => {
+    console.log(id)
+    fetch(`${paths.BLOG_TOPIC}${id}/`, {
+        method: 'DELETE', // or 'PUT'
+    })
+        .then(response => response.json())
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+}

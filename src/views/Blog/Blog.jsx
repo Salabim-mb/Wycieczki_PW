@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components'
 import { useParams, Redirect } from 'react-router-dom'
+import { QueryClient } from 'react-query'
 import paths from 'constants/api'
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { AlertInfo } from 'components';
 import CategoryTile from 'components/CategoryTile'
-import { useQueryBlog, useQueryCategories } from './Blog.hooks'
+import { useQueryBlog, useQueryCategories, useMutationDeleteCategory } from './Blog.hooks'
 
 const StyledContainer = styled(Container)`
     display:flex!important;
@@ -17,9 +18,27 @@ const StyledContainer = styled(Container)`
 
 const Post = () => {
     const params = useParams()
-
+    const queryClient = new QueryClient({
+        defaultOptions: {
+            queries: {
+                staleTime: Infinity,
+            },
+        },
+    })
     const blog = useQueryBlog(params)
     const categories = useQueryCategories(params)
+    const mutation = useMutationDeleteCategory()
+    const deleteFn = (id) => {
+        mutation.mutateAsync(id, {
+            onSuccess: () => {
+                console.log("XD"); queryClient.invalidateQueries('categories', {
+                    // exact,
+                    refetchActive: true,
+                    refetchInactive: true
+                }, true)
+            }
+        })
+    }
 
     return (
         <Container>
@@ -39,7 +58,10 @@ const Post = () => {
                 </AlertInfo>
 
                 {categories.isError ? <div>Nie można załadować kategorii</div> : categories.data?.map((category) => (
-                    <CategoryTile key={category.id} title={category.title} cover={`${paths.PLAIN}${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
+                    <>
+                        <button type="submit" onClick={() => deleteFn(category.id)}>usuń</button>
+                        <CategoryTile key={category.id} id={category.id} title={category.title} cover={`${paths.PLAIN}${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
+                    </>
                 ))}
 
             </StyledContainer>
