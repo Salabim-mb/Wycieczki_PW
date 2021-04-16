@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
 import { useParams, Redirect } from 'react-router-dom'
-import { QueryClient } from 'react-query'
 import paths from 'constants/api'
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -18,32 +17,21 @@ const StyledContainer = styled(Container)`
 
 const Post = () => {
     const params = useParams()
-    const queryClient = new QueryClient({
-        defaultOptions: {
-            queries: {
-                staleTime: Infinity,
-            },
-        },
-    })
+
     const blog = useQueryBlog(params)
     const categories = useQueryCategories(params)
     const mutation = useMutationDeleteCategory()
-    const deleteFn = (id) => {
-        mutation.mutateAsync(id, {
-            onSuccess: () => {
-                console.log("XD"); queryClient.invalidateQueries('categories', {
-                    // exact,
-                    refetchActive: true,
-                    refetchInactive: true
-                }, true)
-            }
+    const deleteFn = async (id) => {
+        await mutation.mutateAsync(id, {
+            onSuccess: () => categories.refetch().then(xd => console.log('dane z then', xd.data))
+            // onSuccess: () => console.log("XD")
         })
     }
 
+    console.log(categories?.data)
+
     return (
         <Container>
-
-
             <AlertInfo isLoading={blog.isLoading} isError={blog.isError}>
                 {blog.error?.message}
             </AlertInfo>
