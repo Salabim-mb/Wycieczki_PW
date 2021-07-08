@@ -36,7 +36,7 @@ const addBlogTile = async (token, data) => {
 	const url = api.BLOG;
 	const res = await fetch(url, {
 		headers: {
-			"Content-Type": "multipart/form-data"
+			// "Content-Type": "multipart/form-data"
 		},
 		method: "POST",
 		body: (() => {

@@ -3,6 +3,10 @@ export const paths = {
 		name: "Strona główna",
 		path: "/",
 	},
+	BLOG: {
+		name: 'Blog',
+		path: '/:blog',
+	},
 	BLOG_CATEGORIES: {
 		name: "Kategorie",
 		path: "/blog/:category",
