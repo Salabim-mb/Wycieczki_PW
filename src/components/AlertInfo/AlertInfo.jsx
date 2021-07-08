@@ -14,7 +14,8 @@ const AlertInfo = ({ isLoading, isError, children }) =>
 		<Alert color={ERROR}>{children}</Alert>
 	) : null;
 
-/* eslint-enable no-nested-ternary */
+
+/* eslint-ebable no-nested-ternary */
 
 AlertInfo.propTypes = {
 	isLoading: PropTypes.bool.isRequired,

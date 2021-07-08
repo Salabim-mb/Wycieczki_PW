@@ -16,7 +16,11 @@ const StyledCard = styled(Card)`
     @media (min-width: 1024px){
         width: 50%;
     }
+`;
 
+const StyledImage = styled.img`
+    width: 40%;
+    height: 100%;
 `;
 
 const CategoryTile = ({ title, desc, cover, link }) => (
@@ -26,6 +30,7 @@ const CategoryTile = ({ title, desc, cover, link }) => (
                 image={cover}
                 title={title}
             />
+            <StyledImage src={cover} alt="obrazek" />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
                     {title}
@@ -46,13 +51,14 @@ const CategoryTile = ({ title, desc, cover, link }) => (
 CategoryTile.propTypes = {
     title: PropTypes.string.isRequired,
     desc: PropTypes.string,
-    link: PropTypes.string.isRequired,
+    link: PropTypes.string,
     cover: PropTypes.string,
 }
 
 CategoryTile.defaultProps = {
     desc: '',
     cover: '',
+    link: '',
 }
 
 export default CategoryTile

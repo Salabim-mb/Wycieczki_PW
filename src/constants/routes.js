@@ -1,4 +1,4 @@
-import { PostCreator, Blog, Category } from 'views';
+import { PostCreator, Blog, Category, CategoryCreator } from 'views';
 
 export const pathList = {
 	DASHBOARD: {
@@ -22,6 +22,10 @@ export const pathList = {
 		name: 'Kreator wpisów',
 		path: '/blog/post-creator/:id?',
 	},
+	CREATOR_CATEGORY: {
+		name: "Krator kategorii",
+		path: "/blog/category-creator/:id?",
+	}
 };
 
 export default [
@@ -37,6 +41,10 @@ export default [
 	{
 		path: pathList.BLOG.path,
 		component: Blog,
-		exact: true,
+		exact: true
 	},
+	{
+		path: pathList.CREATOR_CATEGORY.path,
+		component: CategoryCreator
+	}
 ];

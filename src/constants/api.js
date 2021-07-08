@@ -8,7 +8,7 @@ const BLOG_POST = `${BLOG}post/`;
 const paths = {
     PLAIN: `${domain}`,
     BLOG,
-    BLOGS: `${domain}/blogs/`,
+    BLOGS: `${BLOG}blogs/`,
     BLOG_TOPIC,
     BLOG_TOPICS: `${BLOG}topics/`,
     BLOG_RESERVATION,
@@ -18,6 +18,9 @@ const paths = {
     TOPIC_INDEX_CHANGE: `${BLOG_TOPIC}index-change/`,
     BLOG_IMAGE: `${BLOG}image-attachment/`,
     BLOG_DOWNLOADABLE: `${BLOG}downloadable-attachment/`,
+
 };
+
+
 
 export default paths;
