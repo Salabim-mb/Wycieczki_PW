@@ -16,7 +16,11 @@ const paths = {
 	ERROR: {
 		name: "Strona 404",
 		path: "/error"
-	}
+	},
+	POST_CREATOR: {
+		name: 'Kreator wpisów',
+		path: '/blog/post-creator/:id?',
+	},
 }
 
 export default paths;

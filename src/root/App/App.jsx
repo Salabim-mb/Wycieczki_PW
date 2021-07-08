@@ -1,26 +1,24 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'root/Router';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
 import GlobalStyle from 'style/GlobalStyle';
 import { AlertProvider } from 'context/AlertContext';
-import { AlertPopup } from '../../components';
-
-const queryClient = new QueryClient();
+import { AlertPopup, QCProvider } from 'components';
 
 const App = () => (
 	<ThemeProvider theme={theme}>
 		<GlobalStyle />
-		<QueryClientProvider client={queryClient}>
+		<QCProvider>
 			<AlertProvider>
+				<AlertPopup />
 				<BrowserRouter>
 					<Router />
 				</BrowserRouter>
 				<AlertPopup />
 			</AlertProvider>
-		</QueryClientProvider>
+		</QCProvider>
 	</ThemeProvider>
 );
 

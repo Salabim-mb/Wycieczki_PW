@@ -52,6 +52,7 @@ const getEntryContent = async (id) => {
 	});
 
 	if (res.status === 200) {
+
 		return await res.json();
 	}
 	// eslint-disable-next-line no-throw-literal
@@ -118,8 +119,8 @@ const BlogEntry = () => {
 			) : (
 				<>
 					<CssBaseline />
-					<Paper className={classes.mainPhoto} style={{ backgroundImage: `url(${entryData.mainPhoto})`}}>
-						<img style={{ display: 'none' }} src={entryData.mainPhoto} alt={entryData.title} />
+					<Paper className={classes.mainPhoto}>
+						<img style={{ display: '' }} src={entryData.mainPhoto} alt={entryData.title} />
 					</Paper>
 					<Grid container className={classes.mainGrid}>
 						<Grid item xs={12} md={8}>

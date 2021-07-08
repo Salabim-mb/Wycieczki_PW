@@ -6,7 +6,7 @@ const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
 
 const api = {
-	PLAIN: domain,
+	PLAIN: `${domain}`,
 	BLOG,
 	BLOGS: `${domain}/blogs/`,
 	BLOG_TOPIC,
