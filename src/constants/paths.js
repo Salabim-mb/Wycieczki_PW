@@ -1,4 +1,4 @@
-const paths = {
+export const paths = {
 	DASHBOARD: {
 		name: "Strona główna",
 		path: "/",
@@ -20,7 +20,11 @@ const paths = {
 	POST_CREATOR: {
 		name: 'Kreator wpisów',
 		path: '/blog/post-creator/:id?',
+		redirect: (entryId) => `/blog/post-creator/${entryId}`
 	},
+	CREATOR_CATEGORY: {
+		name: "Krator kategorii",
+		path: "/blog/category-creator/:id?",
+		redirect: (categoryId) => `/blog/category-creator/${categoryId}`
+	}
 }
-
-export default paths;

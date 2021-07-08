@@ -1,5 +1,7 @@
-import paths from 'constants/api';
+import api from 'constants/api';
 import { errorMessage, errorMessageText } from 'constants/errorHandler';
+
+const paths = api;
 
 export const getPost = async id => {
 	if (id) {

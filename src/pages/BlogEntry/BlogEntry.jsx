@@ -3,7 +3,7 @@ import {Redirect, useParams} from 'react-router-dom';
 import { Backdrop, CircularProgress, CssBaseline, Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { AlertContext } from 'context/AlertContext';
 import { makeStyles } from '@material-ui/core/styles';
-import paths from 'constants/paths';
+import { paths } from 'constants/paths';
 import api from 'constants/api';
 import BlogSideBar from './components/BlogSideBar';
 import AttachmentContainer from './components/AttachmentContainer';
@@ -52,7 +52,7 @@ const getEntryContent = async (id) => {
 	});
 
 	if (res.status === 200) {
-
+		// eslint-disable-next-line no-return-await
 		return await res.json();
 	}
 	// eslint-disable-next-line no-throw-literal
