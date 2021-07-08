@@ -1,6 +1,7 @@
 // import React from 'react';
 import { PostCreator, Blog, Category, BlogList, CategoryCreator } from 'views';
 import { paths } from './paths';
+import BlogEntry from '../pages/BlogEntry/BlogEntry';
 
 export default [
 	{
@@ -25,5 +26,10 @@ export default [
 	{
 		path: paths.CREATOR_CATEGORY.path,
 		component: CategoryCreator
+	},
+	{
+		path: paths.BLOG_ENTRY.path,
+		component: BlogEntry,
+		exact: true
 	}
 ];

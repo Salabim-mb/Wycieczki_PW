@@ -16,6 +16,7 @@ const App = () => (
 				<BrowserRouter>
 					<Router />
 				</BrowserRouter>
+				<AlertPopup />
 			</AlertProvider>
 		</QCProvider>
 	</ThemeProvider>

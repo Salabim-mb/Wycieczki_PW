@@ -1,12 +1,13 @@
 import React from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import PostTile from 'components/PostTile';
-import paths from 'constants/api';
+import api from 'constants/api';
 import Typography from '@material-ui/core/Typography';
 import { AlertInfo } from 'components';
 import Image from './components/Image';
 import { StyledContainer, StyledPostDisplay } from './Category.css';
 import { useQueryCategory, useQueryPosts } from './Category.hooks';
+import { paths } from '../../constants/paths';
 
 const Category = () => {
 	const params = useParams();
@@ -26,7 +27,7 @@ const Category = () => {
 				<>
 					{category?.data?.header_url ? (
 						<Image
-							imgSrc={`${paths.PLAIN}${category?.data?.header_url}`}
+							imgSrc={`${api.PLAIN}${category?.data?.header_url}`}
 							imgAlt={category?.data?.title}
 						/>
 					) : null}
@@ -49,7 +50,7 @@ const Category = () => {
 							cover={data.cover}
 							title={data.title}
 							summary={data.summary}
-							link={`/${params.category}/${params.category}/${data.reservation}`}
+							link={paths.BLOG_ENTRY.redirect(params.category, data.reservation)}
 						/>
 					))
 				)}

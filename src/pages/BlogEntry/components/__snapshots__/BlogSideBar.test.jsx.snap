@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BlogSideBar should match snapshot 1`] = `
+<div>
+  <div
+    class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12 MuiGrid-grid-md-4"
+  >
+    <div
+      class="MuiPaper-root makeStyles-sidebarBreadcrumbs-1 MuiPaper-elevation0 MuiPaper-rounded"
+    >
+      <h6
+        class="MuiTypography-root MuiTypography-h6"
+      >
+        Nawigacja
+      </h6>
+      <nav
+        aria-label="breadcrumb"
+        class="MuiTypography-root MuiBreadcrumbs-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+      >
+        <ol
+          class="MuiBreadcrumbs-ol"
+        >
+          <li
+            class="MuiBreadcrumbs-li"
+          >
+            <div
+              class="MuiButtonBase-root MuiChip-root MuiChip-outlined MuiChip-clickable"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="MuiChip-label"
+              >
+                Strona główna
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </li>
+          <li
+            aria-hidden="true"
+            class="MuiBreadcrumbs-separator"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+              />
+            </svg>
+          </li>
+          <li
+            class="MuiBreadcrumbs-li"
+          >
+            <div
+              class="MuiButtonBase-root MuiChip-root MuiChip-outlined MuiChip-clickable"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="MuiChip-label"
+              >
+                Strona 1
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </li>
+          <li
+            aria-hidden="true"
+            class="MuiBreadcrumbs-separator"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+              />
+            </svg>
+          </li>
+          <li
+            class="MuiBreadcrumbs-li"
+          >
+            <div
+              class="MuiButtonBase-root MuiChip-root MuiChip-outlined MuiChip-clickable"
+              role="button"
+              tabindex="0"
+            >
+              <span
+                class="MuiChip-label"
+              >
+                Strona 2
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </div>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <h6
+      class="MuiTypography-root MuiTypography-h5"
+    >
+      Proponowane wpisy
+    </h6>
+    Tu będą ze 3 tytuły proponowanych / losowych wpisów
+  </div>
+</div>
+`;
