@@ -1,5 +1,6 @@
-import paths from 'constants/api';
+import api from 'constants/api';
 
+const paths = api;
 
 export const getCategories = async params => {
 	const url = `${paths.BLOG_TOPICS}?blog=${params.blog}`;
