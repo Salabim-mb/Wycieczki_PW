@@ -1,8 +1,9 @@
 {
-	"extends": ["airbnb", "prettier", "prettier/react"],
+	"extends": ["airbnb", "prettier", "prettier/react", "plugin:react-hooks/recommended"],
 	"parser": "babel-eslint",
 	"env": {
-		"jest": true
+		"jest": true,
+		"browser": true
 	},
 	"globals": {
 		"window": true,
@@ -13,9 +14,15 @@
 		"import/prefer-default-export": 0,
 		"import/no-named-as-default": 0,
 		"import/no-named-as-default-member": 0,
+		"no-return-await": 0,
+		"no-else-return": 0,
+		"no-return-assign": "off",
 		"react/prop-types": 1,
 		"react/destructuring-assignment": 0,
 		"react/jsx-props-no-spreading": 0,
+		"no-nested-ternary": 0,
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
 		"react/jsx-filename-extension": [
 			1,
 			{

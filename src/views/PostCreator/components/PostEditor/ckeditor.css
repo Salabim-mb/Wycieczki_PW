@@ -1,0 +1,8 @@
+.ck-editor__editable {
+	min-height: 60vh;
+	text-align: justify;
+}
+
+figcaption.ck-editor__editable {
+	min-height: 0 !important;
+}

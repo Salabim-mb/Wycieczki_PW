@@ -1,20 +1,27 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Router from 'root/Router';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { ThemeProvider } from 'styled-components';
 import theme from 'constants/theme';
-
-const queryClient = new QueryClient();
+import GlobalStyle from 'style/GlobalStyle';
+import { AlertProvider } from 'context/AlertContext';
+import { AlertPopup, QCProvider } from 'components';
+import { UserProvider } from 'context/UserContext';
 
 const App = () => (
-	<ThemeProvider theme={theme}>
-		<QueryClientProvider client={queryClient}>
-			<BrowserRouter>
-				<Router />
-			</BrowserRouter>
-		</QueryClientProvider>
-	</ThemeProvider>
+	<UserProvider>
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
+			<QCProvider>
+				<AlertProvider>
+					<AlertPopup />
+					<BrowserRouter>
+						<Router />
+					</BrowserRouter>
+				</AlertProvider>
+			</QCProvider>
+		</ThemeProvider>
+	</UserProvider>
 );
 
 export default App;
