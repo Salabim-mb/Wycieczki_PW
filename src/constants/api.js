@@ -5,10 +5,10 @@ const BLOG_TOPIC = `${BLOG}topic/`;
 const BLOG_RESERVATION = `${BLOG}post-reservation/`;
 const BLOG_POST = `${BLOG}post/`;
 
-const paths = {
+const api = {
 	PLAIN: `${domain}`,
 	BLOG,
-	BLOGS: `${domain}/blogs/`,
+	BLOGS: `${BLOG}blogs/`,
 	BLOG_TOPIC,
 	BLOG_TOPICS: `${BLOG}topics/`,
 	BLOG_RESERVATION,
@@ -20,4 +20,4 @@ const paths = {
 	BLOG_DOWNLOADABLE: `${BLOG}downloadable-attachment/`,
 };
 
-export default paths;
+export default api;

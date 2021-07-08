@@ -1,28 +1,35 @@
-import { PostCreator } from 'views';
-
-export const pathList = {
-	DASHBOARD: {
-		name: 'Strona główna',
-		path: '/',
-	},
-	BLOG_CATEGORIES: {
-		name: 'Kategorie',
-		path: '/blog/:category',
-	},
-	BLOG_ENTRY: {
-		name: 'Wpis',
-		path: '/blog/:category/:entry_id',
-		redirect: (category, entryId) => `/blog/${category}/${entryId}`,
-	},
-	POST_CREATOR: {
-		name: 'Kreator wpisów',
-		path: '/blog/post-creator/:id?',
-	},
-};
+// import React from 'react';
+import { PostCreator, Blog, Category, BlogList, CategoryCreator } from 'views';
+import { paths } from './paths';
+import BlogEntry from '../pages/BlogEntry/BlogEntry';
 
 export default [
 	{
-		path: pathList.POST_CREATOR.path,
+		path: paths.POST_CREATOR.path,
 		component: PostCreator,
 	},
+	{
+		component: Category,
+		path: paths.BLOG_CATEGORIES.path,
+		exact: true,
+	},
+	{
+		path: paths.BLOG.path,
+		component: Blog,
+		exact: true
+	},
+	{
+		path: paths.DASHBOARD.path,
+		component: BlogList,
+		exact: true
+	},
+	{
+		path: paths.CREATOR_CATEGORY.path,
+		component: CategoryCreator
+	},
+	{
+		path: paths.BLOG_ENTRY.path,
+		component: BlogEntry,
+		exact: true
+	}
 ];
