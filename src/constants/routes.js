@@ -1,11 +1,16 @@
 // import React from 'react';
+import { PostCreator } from 'views';
 import BlogList from '../pages/BlogList';
-import { paths as pathList } from './paths';
+import { paths } from './paths';
 
 export default [
-    {
-        path: pathList.DASHBOARD.path,
-        component: BlogList,
-        exact: true
-    }
-]
+	{
+		path: paths.POST_CREATOR.path,
+		component: PostCreator,
+	},
+	{
+		path: paths.DASHBOARD.path,
+		component: BlogList,
+		exact: true
+	}
+];
