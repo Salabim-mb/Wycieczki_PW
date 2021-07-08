@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import { AlertInfo } from 'components';
 import CategoryTile from 'components/CategoryTile'
-import { useQueryBlog, useQueryCategories } from './Blog.hooks'
+import { useQueryBlog, useQueryCategories, useMutationDeleteCategory } from './Blog.hooks'
 
 const StyledContainer = styled(Container)`
     display:flex!important;
@@ -20,11 +20,18 @@ const Post = () => {
 
     const blog = useQueryBlog(params)
     const categories = useQueryCategories(params)
+    const mutation = useMutationDeleteCategory()
+    const deleteFn = async (id) => {
+        await mutation.mutateAsync(id, {
+            onSuccess: () => categories.refetch().then(xd => console.log('dane z then', xd.data))
+            // onSuccess: () => console.log("XD")
+        })
+    }
+
+    console.log(categories?.data)
 
     return (
         <Container>
-
-
             <AlertInfo isLoading={blog.isLoading} isError={blog.isError}>
                 {blog.error?.message}
             </AlertInfo>
@@ -39,7 +46,10 @@ const Post = () => {
                 </AlertInfo>
 
                 {categories.isError ? <div>Nie można załadować kategorii</div> : categories.data?.map((category) => (
-                    <CategoryTile key={category.id} title={category.title} cover={`${paths.PLAIN}${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
+                    <>
+                        <button type="submit" onClick={() => deleteFn(category.id)}>usuń</button>
+                        <CategoryTile key={category.id} id={category.id} title={category.title} cover={`${paths.PLAIN}${category.cover_url}`} desc={category.description} link={`/${params.blog}/${category.id}`} />
+                    </>
                 ))}
 
             </StyledContainer>

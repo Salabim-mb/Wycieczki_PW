@@ -1,5 +1,6 @@
 import paths from 'constants/api';
 
+
 export const getCategories = async params => {
 	const url = `${paths.BLOG_TOPICS}?blog=${params.blog}`;
 
@@ -12,8 +13,8 @@ export const getCategories = async params => {
 	if (response.status !== 200) {
 		throw new Error('błąd');
 	}
-
 	return response.json();
+
 };
 
 export const getBlog = async params => {
@@ -31,3 +32,15 @@ export const getBlog = async params => {
 
 	return response.json();
 };
+
+export const deleteCategory = (id) => (
+	fetch(`${paths.BLOG_TOPIC}${id}/`, {
+		method: 'DELETE', // or 'PUT'
+	})
+		// .then(response => response.json())
+		.catch((error) => {
+			console.error('Error:', error);
+		})
+
+)
+
