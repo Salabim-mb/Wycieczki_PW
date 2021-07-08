@@ -4,13 +4,13 @@ import { paths } from './paths';
 
 export default [
 	{
+		path: paths.POST_CREATOR.path,
+		component: PostCreator,
+	},
+	{
 		component: Category,
 		path: paths.BLOG_CATEGORIES.path,
 		exact: true,
-	},
-	{
-		path: paths.POST_CREATOR.path,
-		component: PostCreator,
 	},
 	{
 		path: paths.BLOG.path,
