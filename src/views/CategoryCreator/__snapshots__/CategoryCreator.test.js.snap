@@ -1,0 +1,696 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryCreator should match snapshot - data 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-hKgILt havGhI MuiContainer-maxWidthLg"
+  >
+    <h2>
+      Dodaj kategorię
+    </h2>
+    <form
+      class="sc-eCssSg cmKfWZ"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Tytuł
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="test-id"
+            maxlength="100"
+            minlength="1"
+            name="title"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-3"
+            >
+              <span>
+                Tytuł
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Opis
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            name="description"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-1 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-3"
+            >
+              <span>
+                Opis
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline"
+      >
+        <select
+          class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          id="blog"
+        >
+          <option
+            value=""
+          >
+            -----------
+          </option>
+          <option
+            value="1"
+          >
+            bbb
+          </option>
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="cover_image"
+            name="cover_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="header_image"
+            name="header_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Zatwierdź
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`CategoryCreator should match snapshot - isError 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-hKgILt havGhI MuiContainer-maxWidthLg"
+  >
+    <h2>
+      Dodaj kategorię
+    </h2>
+    <form
+      class="sc-eCssSg cmKfWZ"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Tytuł
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="test-id"
+            maxlength="100"
+            minlength="1"
+            name="title"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-7"
+            >
+              <span>
+                Tytuł
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Opis
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            name="description"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-5 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-7"
+            >
+              <span>
+                Opis
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline"
+      >
+        <select
+          class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          id="blog"
+        >
+          <option
+            value=""
+          >
+            -----------
+          </option>
+          <option
+            value=""
+          >
+            Nie udało się pobrać blogów
+          </option>
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiPaper-root MuiAlert-root MuiAlert-standardError MuiPaper-elevation0"
+        role="alert"
+      >
+        <div
+          class="MuiAlert-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiAlert-message"
+        />
+      </div>
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="cover_image"
+            name="cover_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="header_image"
+            name="header_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Zatwierdź
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`CategoryCreator should match snapshot - isLoading 1`] = `
+<div>
+  <div
+    class="MuiContainer-root sc-hKgILt havGhI MuiContainer-maxWidthLg"
+  >
+    <h2>
+      Dodaj kategorię
+    </h2>
+    <form
+      class="sc-eCssSg cmKfWZ"
+    >
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Tytuł
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            data-testid="test-id"
+            maxlength="100"
+            minlength="1"
+            name="title"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-11"
+            >
+              <span>
+                Tytuł
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiFormControl-root MuiTextField-root MuiFormControl-fullWidth"
+        rest="[object Object]"
+      >
+        <label
+          class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated MuiInputLabel-outlined"
+          data-shrink="false"
+        >
+          Opis
+        </label>
+        <div
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-fullWidth MuiInputBase-formControl"
+        >
+          <input
+            aria-invalid="false"
+            class="MuiInputBase-input MuiOutlinedInput-input"
+            name="description"
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <fieldset
+            aria-hidden="true"
+            class="PrivateNotchedOutline-root-9 MuiOutlinedInput-notchedOutline"
+          >
+            <legend
+              class="PrivateNotchedOutline-legendLabelled-11"
+            >
+              <span>
+                Opis
+              </span>
+            </legend>
+          </fieldset>
+        </div>
+        
+      </div>
+      <div
+        class="MuiInputBase-root MuiInput-root MuiInput-underline"
+      >
+        <select
+          class="MuiSelect-root MuiSelect-select MuiInputBase-input MuiInput-input"
+          id="blog"
+        >
+          <option
+            value=""
+          >
+            -----------
+          </option>
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSelect-icon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+      <div
+        class="MuiPaper-root MuiAlert-root MuiAlert-standardInfo MuiPaper-elevation0"
+        role="alert"
+      >
+        <div
+          class="MuiAlert-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4C12.76,4 13.5,4.11 14.2, 4.31L15.77,2.74C14.61,2.26 13.34,2 12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0, 0 22,12M7.91,10.08L6.5,11.5L11,16L21,6L19.59,4.58L11,13.17L7.91,10.08Z"
+            />
+          </svg>
+        </div>
+        <div
+          class="MuiAlert-message"
+        >
+          Ładowanie...
+        </div>
+      </div>
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="cover_image"
+            name="cover_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <label
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <span
+            class="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="3.2"
+              />
+              <path
+                d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"
+              />
+            </svg>
+          </span>
+          Prześlij cover
+          <input
+            accept="image/*"
+            hidden=""
+            id="header_image"
+            name="header_image"
+            type="file"
+          />
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </label>
+      
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Zatwierdź
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </form>
+  </div>
+</div>
+`;

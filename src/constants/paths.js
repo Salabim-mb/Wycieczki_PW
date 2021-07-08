@@ -22,4 +22,9 @@ export const paths = {
 		path: '/blog/post-creator/:id?',
 		redirect: (entryId) => `/blog/post-creator/${entryId}`
 	},
+	CREATOR_CATEGORY: {
+		name: "Krator kategorii",
+		path: "/blog/category-creator/:id?",
+		redirect: (categoryId) => `/blog/category-creator/${categoryId}`
+	}
 }
