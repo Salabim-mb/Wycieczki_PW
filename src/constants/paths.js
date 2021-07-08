@@ -20,7 +20,10 @@ export const paths = {
 	POST_CREATOR: {
 		name: 'Kreator wpisów',
 		path: '/blog/post-creator/:id?',
-		redirect: (entryId) => `/blog/post-creator/${entryId}`
+	},
+	BLOG: {
+		name: 'Blog',
+		path: '/:blog',
 	},
 	CREATOR_CATEGORY: {
 		name: "Krator kategorii",
@@ -28,3 +31,4 @@ export const paths = {
 		redirect: (categoryId) => `/blog/category-creator/${categoryId}`
 	}
 }
+
